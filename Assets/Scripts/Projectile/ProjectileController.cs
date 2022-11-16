@@ -30,7 +30,10 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
 
     [Header("Options")]
 
-    [Tooltip("Time before the projectile despawning. If negative, the projectile will never despawn.")]
+    [Tooltip("If is immortal, the projectile will never self despawn.")]
+    [SerializeField] protected bool isImmortal;
+
+    [Tooltip("Time before the projectile despawns.")]
     [SerializeField] protected float timeToLive;
 
     [SerializeField] protected bool disappearWhenTouchingTarget;
@@ -64,6 +67,12 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
     {
         get { return timeToLive; }
         set { timeToLive = value; }
+    }
+
+    public bool IsImmortal
+    {
+        get { return isImmortal; }
+        set { isImmortal = value; }
     }
 
     public bool DisappearWhenTouchingTarget
@@ -102,6 +111,7 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
     {
         damage = projectile.damage;
         timeToLive = projectile.timeToLive;
+        isImmortal = projectile.isImmortal;
         disappearWhenTouchingTarget = projectile.disappearWhenTouchingTarget;
         visibilityDespawn = projectile.visibilityDespawn;
         isContinuouslyAffected = projectile.isContinuouslyAffected;
@@ -145,7 +155,7 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
     {
         if(projectileAnimation != null)
             projectileAnimation.StartAnimation(); //think for desactivating damage at the start animation or not
-        if (timeToLive < 0) return; // make a boolean variable to check if projectile is immortal or not
+        if (isImmortal) return; // make a boolean variable to check if projectile is immortal or not
         if (_selfDespawn != null) { StopCoroutine(_selfDespawn); }
         _selfDespawn = SelfDespawnAfter(timeToLive);
         StartCoroutine(_selfDespawn);

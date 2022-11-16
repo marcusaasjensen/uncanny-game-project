@@ -60,11 +60,13 @@ public class SoundManager : MonoBehaviour
         AudioListener.volume = volume;
     }
 
+    [ContextMenu("Toggle Effects")]
     public void ToggleEffects()
     {
         _effectsSource.mute = !_effectsSource.mute;
     }
 
+    [ContextMenu("Toggle Music")]
     public void ToggleMusic()
     {
         _musicSource.mute = !_musicSource.mute;
