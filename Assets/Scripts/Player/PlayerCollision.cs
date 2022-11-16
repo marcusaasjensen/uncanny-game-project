@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
@@ -10,18 +9,17 @@ public class PlayerCollision : MonoBehaviour
 
     IEnumerator _doDamage;
 
-    private void Awake()
+    void Awake()
     {
         PlayerController = GetComponent<PlayerController>();
     }
 
-    private IEnumerator OnTriggerEnter2D(Collider2D collider)
+    IEnumerator OnTriggerEnter2D(Collider2D collider)
     {
 
         if (collider.CompareTag("Damage") && !PlayerController._playerLife.IsInvisible && !PlayerController._playerMovement.IsDashing)
         {
             ProjectileController proj = collider.GetComponent<ProjectileController>();
-            proj.HasCollided = true;
 
             PlayCollisionParticle();
 

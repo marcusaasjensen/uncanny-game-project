@@ -50,7 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileMovement: {fileID: 1460005130517453235}
   projectileAnimation: {fileID: 0}
-  projectileCollider: {fileID: 0}
+  projectileCollider: {fileID: -7828293860912942882}
+  collisionSounds: []
   projectileName: 0
   damage: 0
   minimumSizeOfDamage: 0

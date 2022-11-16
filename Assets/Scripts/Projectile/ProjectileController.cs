@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum ProjectileName
@@ -18,9 +17,9 @@ public enum ProjectileName
 public abstract class ProjectileController: MonoBehaviour, IPooledObject<ProjectileController>
 {
     public ProjectileMovement projectileMovement;
+    public ProjectileCollision projectileCollision;
     public ProjectileAnimation projectileAnimation;
-    public Collider2D projectileCollider;
-    public List<AudioClip> collisionSounds;
+    public Transform target;
 
     [Tooltip("Name of the projectile. Must be assigned for each prefab but assignment not relevant for the template projectiles (TMP).")]
     [SerializeField] protected ProjectileName projectileName;
@@ -34,28 +33,23 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
     [Tooltip("Time before the projectile despawning. If negative, the projectile will never despawn.")]
     [SerializeField] protected float timeToLive;
 
+    [SerializeField] protected bool disappearWhenTouchingTarget;
+
     [Tooltip("The projectile self-despawn when being outside of camera visibility.")]
     [SerializeField] protected bool visibilityDespawn;
 
     [Tooltip("The projectile can be affected in run-time instead of being affected only when spawning.")]
     [SerializeField] protected bool isContinuouslyAffected;
 
-    [SerializeField] protected bool disappearWhenTouchingPlayer;
-
     CameraManager _cameraManager;
     IEnumerator _selfDespawn;
-    bool _hasCollided = false;
 
     public ProjectileName Name
     {
         get { return projectileName; }
         set { projectileName = value; }
     }
-    public bool DisappearWhenTouchingPlayer
-    {
-        get { return disappearWhenTouchingPlayer; }
-        set { disappearWhenTouchingPlayer = value; }
-    }
+
     public int Damage
     {
         get { return damage; }
@@ -71,6 +65,13 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
         get { return timeToLive; }
         set { timeToLive = value; }
     }
+
+    public bool DisappearWhenTouchingTarget
+    {
+        get { return disappearWhenTouchingTarget; }
+        set { disappearWhenTouchingTarget = value; }
+    }
+
     public bool IsContinuouslyAffected
     {
         get { return isContinuouslyAffected; }
@@ -82,27 +83,12 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
         set { if (_cameraManager != value) { _cameraManager = value; } }
     }
 
-    public bool HasCollided
-    {
-        get { return _hasCollided; }
-        set { _hasCollided = value; }
-    }
-
     public void OnObjectSpawn(ProjectileController projectile){
         SetInitialValues(projectile); //values that will change only when spawning
         SetProjectile(projectile);
         StartLifeTime();
     }
 
-    void StartLifeTime()
-    {
-        if(projectileAnimation != null)
-            projectileAnimation.StartAnimation();
-        if (timeToLive < 0) return;
-        if (_selfDespawn != null) { StopCoroutine(_selfDespawn); }
-        _selfDespawn = SelfDespawnAfter(timeToLive);
-        StartCoroutine(_selfDespawn);
-    }
 
     void SetInitialValues(ProjectileController projectile)
     {
@@ -116,40 +102,29 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
     {
         damage = projectile.damage;
         timeToLive = projectile.timeToLive;
-        disappearWhenTouchingPlayer = projectile.disappearWhenTouchingPlayer;
+        disappearWhenTouchingTarget = projectile.disappearWhenTouchingTarget;
         visibilityDespawn = projectile.visibilityDespawn;
         isContinuouslyAffected = projectile.isContinuouslyAffected;
         minimumSizeOfDamage = projectile.minimumSizeOfDamage;
+        target = projectile.target;
+
         projectileMovement.SetProjectileMovement(projectile.projectileMovement);
     }
 
     void Awake()
     {
-        projectileCollider = GetComponent<Collider2D>();
         _cameraManager = CameraManager.Instance;
     }
 
     void FixedUpdate(){
         SetVisibility();
         SetDamageAccordingToSize();
-        SetCollision();
     }
 
     void SetVisibility()
     {
         if (!visibilityDespawn || _cameraManager.IsTargetVisible(gameObject)) return;
         this.gameObject.SetActive(false);
-    }
-
-    void SetCollision()
-    {
-        if (_hasCollided)
-        {
-            SoundManager.Instance.PlayRandomSound(collisionSounds, true);
-            _hasCollided = false;
-            if (disappearWhenTouchingPlayer)
-                gameObject.SetActive(false);
-        }
     }
 
     int tmpDamage;
@@ -162,23 +137,32 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
             damage = 0;
         }
         else
-            if(damage==0)
+            if(damage == 0)
                damage = tmpDamage;
+    }
+
+    void StartLifeTime()
+    {
+        if(projectileAnimation != null)
+            projectileAnimation.StartAnimation(); //think for desactivating damage at the start animation or not
+        if (timeToLive < 0) return; // make a boolean variable to check if projectile is immortal or not
+        if (_selfDespawn != null) { StopCoroutine(_selfDespawn); }
+        _selfDespawn = SelfDespawnAfter(timeToLive);
+        StartCoroutine(_selfDespawn);
     }
 
     IEnumerator SelfDespawnAfter(float ttl)
     {
-        EnableCollider(true);
-        yield return new WaitForSeconds(ttl);
-        EnableCollider(false);
+        if (projectileCollision != null)
+        {
+            projectileCollision.EnableCollider(true);
+            yield return new WaitForSeconds(ttl);
+            projectileCollision.EnableCollider(false);
+        }
+        else
+            yield return new WaitForSeconds(ttl);
 
-        yield return new WaitForSeconds(projectileAnimation!=null?projectileAnimation.EndAnimation():0);
+        yield return new WaitForSeconds(projectileAnimation != null ? projectileAnimation.EndAnimation() : 0);
         this.gameObject.SetActive(false);
-    }
-
-    void EnableCollider(bool value)
-    {
-        if (projectileCollider == null) return;
-        projectileCollider.enabled = value; 
     }
 }

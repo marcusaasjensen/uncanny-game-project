@@ -188,10 +188,9 @@ public class SpawningBehaviour : MonoBehaviour
     {
         if (_isTargetting)
         {
-            ProjectileMovement spawner = spawnerController.projectileMovement;
             float angle = (projectileToSpawnConfig.projectileMovement.Direction + projectileToSpawnConfig.projectileMovement.CurrentDirection) * Deg2Rad;
 
-            Vector2 direction = spawner.target.position - transform.position;
+            Vector2 direction = spawnerController.target.position - transform.position;
             Vector3 forward = new(Cos(angle), Sin(angle));
             direction.Normalize();
 

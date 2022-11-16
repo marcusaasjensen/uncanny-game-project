@@ -21,14 +21,16 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(AudioClip clip)
     {
+        if (clip == null) return;
         _effectsSource.PlayOneShot(clip);
     }
-
 
     int _indexTMP = -1;
 
     public void PlayRandomSound(List<AudioClip> clipList, bool neverPlayInARow)
     {
+        if (clipList.Count == 0) return;
+
         int randomIndex;
 
         if(neverPlayInARow && clipList.Count > 1)

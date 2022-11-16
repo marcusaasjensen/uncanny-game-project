@@ -26,7 +26,6 @@ public enum MovementBehaviour
 public class ProjectileMovement : MonoBehaviour
 {
     public ProjectileController projectileController;
-    public Transform target;
     public SettingBehaviour settingBehaviour;
 
     [Header("Movement")]
@@ -169,7 +168,6 @@ public class ProjectileMovement : MonoBehaviour
         _direction = tmp.Direction;
         _movementBehaviour = tmp.MovementBehaviour;
         _rotateToDirection = tmp.RotateToDirection;
-        target = tmp.target;
         settingBehaviour?.SetSpeedBehaviour(tmp.settingBehaviour);
     }
 
@@ -270,7 +268,7 @@ public class ProjectileMovement : MonoBehaviour
         float angle = (_direction + _currentDirection) * Deg2Rad;
         float speed = (_moveSpeed + _currentMoveSpeed) * Time.deltaTime;
 
-        Vector2 direction = target.position - _transform.position;
+        Vector2 direction = projectileController.target.position - _transform.position;
         Vector3 forward = new(Cos(angle), Sin(angle));
         direction.Normalize();
 
@@ -386,18 +384,19 @@ public class ProjectileMovement : MonoBehaviour
 
     void FollowTargetBehaviour()
     {
-        if (target == null)
+        Transform trg = projectileController.target;
+        if (trg == null)
         {
             Debug.LogWarning("the projectile can't follow the target because the target is not referenced in the ProjectileMovement component.");
             return;
         }
 
-        float distanceToTarget = Abs(Vector3.Distance(target.position, _transform.position));
+        float distanceToTarget = Abs(Vector3.Distance(trg.position, _transform.position));
 
-        if (!target.gameObject.activeSelf || distanceToTarget <= 0.5f) return;
+        if (!trg.gameObject.activeSelf || distanceToTarget <= 0.5f) return;
 
         float speed = (_moveSpeed + _currentMoveSpeed) * Time.deltaTime;
-        Vector3 followPosition = target.position - _transform.position;
+        Vector3 followPosition = trg.position - _transform.position;
 
         _vectorMovement = followPosition * speed;
     }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8240345986110569324}
   - component: {fileID: 1460005130517453235}
   - component: {fileID: -6061470574538020774}
+  - component: {fileID: -7442901418272769055}
   - component: {fileID: -8295610730354246764}
   - component: {fileID: 1069460923502531632}
   - component: {fileID: -7828293860912942882}
@@ -51,23 +52,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileMovement: {fileID: 1460005130517453235}
+  projectileCollision: {fileID: -7442901418272769055}
   projectileAnimation: {fileID: -8295610730354246764}
-  projectileCollider: {fileID: 0}
-  collisionSounds:
-  - {fileID: 8300000, guid: db5bc95349ef5e44baf09bad39a82a44, type: 3}
-  - {fileID: 8300000, guid: 364dc97f72153cb47b637b273c7d9a07, type: 3}
-  - {fileID: 8300000, guid: 1f4e613e53782d849b57f241e25303bc, type: 3}
-  - {fileID: 8300000, guid: 4392e07fa7d95614e8a8618f2a76dd94, type: 3}
-  - {fileID: 8300000, guid: c19fa82001a92e343b16308e7dfe1db2, type: 3}
-  - {fileID: 8300000, guid: ea8f969cfd926f94b98434b5811a4a08, type: 3}
-  - {fileID: 8300000, guid: 86708cee67a076647a1a8702b9f8c469, type: 3}
+  target: {fileID: 0}
   projectileName: 2
   damage: 0
   minimumSizeOfDamage: 0
   timeToLive: 0
   visibilityDespawn: 0
   isContinuouslyAffected: 0
-  disappearWhenTouchingPlayer: 0
   bulletTMP: {fileID: 0}
 --- !u!114 &1460005130517453235
 MonoBehaviour:
@@ -82,7 +75,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileController: {fileID: 8240345986110569324}
-  target: {fileID: 0}
   settingBehaviour: {fileID: -6061470574538020774}
   _moveSpeed: 0
   _direction: 0
@@ -114,6 +106,29 @@ MonoBehaviour:
   _affectSpeed: 0
   _affectDirection: 0
   _affectSize: 0
+--- !u!114 &-7442901418272769055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3997874689077100777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d6a4249731bacb4c9a83ce4ea5186e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 8240345986110569324}
+  projectileCollider: {fileID: -7828293860912942882}
+  collisionSounds:
+  - {fileID: 8300000, guid: db5bc95349ef5e44baf09bad39a82a44, type: 3}
+  - {fileID: 8300000, guid: 1f4e613e53782d849b57f241e25303bc, type: 3}
+  - {fileID: 8300000, guid: 4392e07fa7d95614e8a8618f2a76dd94, type: 3}
+  - {fileID: 8300000, guid: c19fa82001a92e343b16308e7dfe1db2, type: 3}
+  - {fileID: 8300000, guid: ea8f969cfd926f94b98434b5811a4a08, type: 3}
+  - {fileID: 8300000, guid: 86708cee67a076647a1a8702b9f8c469, type: 3}
+  - {fileID: 8300000, guid: 364dc97f72153cb47b637b273c7d9a07, type: 3}
+  disappearWhenTouchingTarget: 0
 --- !u!114 &-8295610730354246764
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5640,7 +5640,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseClickingRecorder: {fileID: 0}
-  soundManager: {fileID: 0}
   recordingTagToPlay: example3
   timeBeforeStarting: 1
 --- !u!1 &477068641
@@ -10674,6 +10673,7 @@ GameObject:
   - component: {fileID: 695966875}
   - component: {fileID: 695966869}
   - component: {fileID: 695966879}
+  - component: {fileID: 695966880}
   - component: {fileID: 695966872}
   - component: {fileID: 695966876}
   - component: {fileID: 695966878}
@@ -10697,12 +10697,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileController: {fileID: 695966875}
-  target: {fileID: 1752679068}
   settingBehaviour: {fileID: 695966879}
   _moveSpeed: 7
-  _direction: 0
+  _direction: 55
   _rotation: 0
-  _movementBehaviour: 7
+  _movementBehaviour: 12
   _size: 0.7
   _rotateToDirection: 1
 --- !u!58 &695966872
@@ -10749,16 +10748,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileMovement: {fileID: 695966869}
+  projectileCollision: {fileID: 695966880}
   projectileAnimation: {fileID: 0}
-  projectileCollider: {fileID: 695966872}
-  collisionSounds: []
+  target: {fileID: 1752679068}
   projectileName: 2
   damage: 7
   minimumSizeOfDamage: 0.26
   timeToLive: 0.4
   visibilityDespawn: 1
   isContinuouslyAffected: 1
-  disappearWhenTouchingPlayer: 1
   bulletTMP: {fileID: 695966875}
 --- !u!95 &695966876
 Animator:
@@ -10819,6 +10817,22 @@ MonoBehaviour:
   _affectSpeed: 1
   _affectDirection: 1
   _affectSize: 1
+--- !u!114 &695966880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695966867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d6a4249731bacb4c9a83ce4ea5186e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 695966875}
+  projectileCollider: {fileID: 695966872}
+  disappearWhenTouchingTarget: 1
+  collisionSounds: []
 --- !u!1 &753835024
 GameObject:
   m_ObjectHideFlags: 0
@@ -10894,7 +10908,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseClickingRecorder: {fileID: 302372267}
-  soundManager: {fileID: 0}
   recordingTagToPlay: example
   timeBeforeStarting: 0
 --- !u!4 &822734798
@@ -16136,7 +16149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseClickingRecorder: {fileID: 302372267}
-  soundManager: {fileID: 0}
   recordingTagToPlay: example2
   timeBeforeStarting: 0
 --- !u!4 &1290546390
@@ -26120,7 +26132,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileController: {fileID: 1598943336}
-  target: {fileID: 1752679068}
   settingBehaviour: {fileID: 1598943339}
   _moveSpeed: 2
   _direction: 0
@@ -26141,16 +26152,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileMovement: {fileID: 1598943335}
+  projectileCollision: {fileID: 0}
   projectileAnimation: {fileID: 0}
-  projectileCollider: {fileID: 0}
-  collisionSounds: []
+  target: {fileID: 0}
   projectileName: 4
   damage: 0
   minimumSizeOfDamage: 0
   timeToLive: 10
   visibilityDespawn: 0
   isContinuouslyAffected: 1
-  disappearWhenTouchingPlayer: 0
   spawningBehaviour: {fileID: 1598943334}
   spawnerTMP: {fileID: 1598943336}
 --- !u!4 &1598943337
@@ -26335,7 +26345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3811127ebe2f4c5408e15a4475d94a00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PlayerController>k__BackingField: {fileID: 0}
+  PlayerController: {fileID: 0}
   _collisionParticle: {fileID: 1061773088}
   _damageParticle: {fileID: 333003186}
 --- !u!114 &1752679066
@@ -26663,7 +26673,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileController: {fileID: 1865365109}
-  target: {fileID: 1752679068}
   settingBehaviour: {fileID: 1865365111}
   _moveSpeed: 0
   _direction: 0
@@ -26684,16 +26693,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileMovement: {fileID: 1865365108}
+  projectileCollision: {fileID: 0}
   projectileAnimation: {fileID: 0}
-  projectileCollider: {fileID: 0}
-  collisionSounds: []
+  target: {fileID: 0}
   projectileName: 4
   damage: 0
   minimumSizeOfDamage: 0
   timeToLive: -1
   visibilityDespawn: 0
   isContinuouslyAffected: 0
-  disappearWhenTouchingPlayer: 0
   spawningBehaviour: {fileID: 1865365107}
   spawnerTMP: {fileID: 1865365109}
 --- !u!4 &1865365110
@@ -26872,7 +26880,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileController: {fileID: 6768507520081417528}
-  target: {fileID: 1752679068}
   settingBehaviour: {fileID: 7873909647209103299}
   _moveSpeed: 1.22
   _direction: 0
@@ -26896,6 +26903,7 @@ GameObject:
   - component: {fileID: 7873909647209103300}
   - component: {fileID: 7873909647209103297}
   - component: {fileID: 4244227526889502049}
+  - component: {fileID: 7873909647209103301}
   - component: {fileID: 1624238771}
   - component: {fileID: 7873909647209103298}
   m_Layer: 0
@@ -27010,13 +27018,13 @@ MonoBehaviour:
   rhythm: {fileID: 822734797}
   projectileToSpawnConfig: {fileID: 695966875}
   projectileToSpawn: 2
-  _timeBetweenSpawns: 0.4
+  _timeBetweenSpawns: 0.19
   _spawningOnRhythm: 0
-  _numberOfProjectilesPerSpawn: 40
+  _numberOfProjectilesPerSpawn: 3
   _spawningRange: 1
-  _numberOfScopes: 3
-  _scopeRange: 0.766
-  _numberOfSides: 6
+  _numberOfScopes: 2
+  _scopeRange: 0.842
+  _numberOfSides: 3
   _sideBending: 4.27
   _randomizePosition: 0
   _randomizeDirection: 0
@@ -27058,16 +27066,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileMovement: {fileID: 2007156949335760027}
+  projectileCollision: {fileID: 7873909647209103301}
   projectileAnimation: {fileID: 0}
-  projectileCollider: {fileID: 0}
-  collisionSounds: []
+  target: {fileID: 7873909647209103296}
   projectileName: 3
   damage: 7
   minimumSizeOfDamage: 0
   timeToLive: -1
   visibilityDespawn: 0
   isContinuouslyAffected: 1
-  disappearWhenTouchingPlayer: 0
   spawningBehaviour: {fileID: 4595697673347831860}
   spawnerTMP: {fileID: 6768507520081417528}
 --- !u!4 &7873909647209103296
@@ -27161,6 +27168,22 @@ MonoBehaviour:
   _lineGizmosColor: {r: 0.80927104, g: 0.8867924, b: 0, a: 1}
   _scopeCubeGizmosSize: 0.23
   _scopeCubeGizmosColor: {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &7873909647209103301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3710304223680846932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d6a4249731bacb4c9a83ce4ea5186e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 6768507520081417528}
+  projectileCollider: {fileID: 0}
+  disappearWhenTouchingTarget: 0
+  collisionSounds: []
 --- !u!95 &8355601912352608117
 Animator:
   serializedVersion: 4
@@ -27246,7 +27269,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileController: {fileID: 8727563243548909548}
-  target: {fileID: 1752679068}
   settingBehaviour: {fileID: 8727563243548909549}
   _moveSpeed: 1.08
   _direction: 0
@@ -27267,16 +27289,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileMovement: {fileID: 8727563243548909547}
+  projectileCollision: {fileID: 0}
   projectileAnimation: {fileID: 0}
-  projectileCollider: {fileID: 0}
-  collisionSounds: []
+  target: {fileID: 0}
   projectileName: 5
   damage: 7
   minimumSizeOfDamage: 0
   timeToLive: 5
   visibilityDespawn: 1
   isContinuouslyAffected: 1
-  disappearWhenTouchingPlayer: 0
   bulletTMP: {fileID: 8727563243548909548}
 --- !u!114 &8727563243548909549
 MonoBehaviour:

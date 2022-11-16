@@ -9,7 +9,6 @@ public class RecordingPlayer : MonoBehaviour
 
     [Space]
     public MouseClickingRecorder mouseClickingRecorder;
-    public SoundManager soundManager;
 
     [Tooltip("Tag of the recording you want to play.")]
     public string recordingTagToPlay;
@@ -22,8 +21,7 @@ public class RecordingPlayer : MonoBehaviour
 
     void Start()
     {
-        mouseClickingRecorder = MouseClickingRecorder.Instance;        
-        soundManager = GetComponent<SoundManager>();
+        mouseClickingRecorder = MouseClickingRecorder.Instance;
 
         if (mouseClickingRecorder.ContainsRecordingWithTag(recordingTagToPlay) == null) 
         {
