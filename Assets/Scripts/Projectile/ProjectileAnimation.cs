@@ -9,22 +9,23 @@ public class ProjectileAnimation : MonoBehaviour
 
     public float EndAnimation()
     {
-        if (endAnimationClip == null || anim == null) return 0f;
-        anim.Play(endAnimationClip.name);
-        return idleAnimationClip.length;
+        return PlayAnimation(endAnimationClip);
     }
 
     public float StartAnimation()
     {
-        if (startAnimationClip == null || anim == null) return 0f;
-        anim.Play(startAnimationClip.name);
-        return startAnimationClip.length;
+        return PlayAnimation(startAnimationClip);
     }
 
     public float IdleAnimation()
     {
-        if (idleAnimationClip == null || anim == null) return 0f;
-        anim.Play(idleAnimationClip.name);
-        return idleAnimationClip.length;
+        return PlayAnimation(idleAnimationClip);
+    }
+
+    float PlayAnimation(AnimationClip animation)
+    {
+        if(animation == null || anim == null) return 0f;
+        anim.Play(animation.name);
+        return animation.length;
     }
 }

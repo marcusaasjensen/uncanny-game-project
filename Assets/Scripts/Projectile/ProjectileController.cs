@@ -26,7 +26,7 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
 
     [Header("To player")]
     [SerializeField] protected int damage;
-    [SerializeField] protected float minimumSizeOfDamage;
+    [SerializeField] [Min(0)] protected float minimumSizeOfDamage;
 
     [Header("Options")]
 
@@ -34,7 +34,7 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
     [SerializeField] protected bool isImmortal;
 
     [Tooltip("Time before the projectile despawns.")]
-    [SerializeField] protected float timeToLive;
+    [SerializeField] [Min(0)] protected float timeToLive;
 
     [SerializeField] protected bool disappearWhenTouchingTarget;
 
