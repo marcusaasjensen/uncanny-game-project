@@ -10752,6 +10752,7 @@ MonoBehaviour:
   projectileName: 2
   damage: 7
   minimumSizeOfDamage: 0.26
+  isImmortal: 0
   timeToLive: 0.4
   disappearWhenTouchingTarget: 0
   visibilityDespawn: 1
@@ -26121,6 +26122,7 @@ MonoBehaviour:
   projectileName: 4
   damage: 0
   minimumSizeOfDamage: 0
+  isImmortal: 0
   timeToLive: 10
   disappearWhenTouchingTarget: 0
   visibilityDespawn: 0
@@ -26309,7 +26311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3811127ebe2f4c5408e15a4475d94a00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerController: {fileID: 0}
+  PlayerController: {fileID: 1752679066}
   _collisionParticle: {fileID: 1061773088}
   _damageParticle: {fileID: 333003186}
 --- !u!114 &1752679066
@@ -26663,6 +26665,7 @@ MonoBehaviour:
   projectileName: 4
   damage: 0
   minimumSizeOfDamage: 0
+  isImmortal: 0
   timeToLive: -1
   disappearWhenTouchingTarget: 0
   visibilityDespawn: 0
@@ -26986,15 +26989,15 @@ MonoBehaviour:
   projectileToSpawn: 2
   _timeBetweenSpawns: 0.19
   _spawningOnRhythm: 0
-  _numberOfProjectilesPerSpawn: 3
+  _numberOfProjectilesPerSpawn: 46
   _spawningRange: 1
-  _numberOfScopes: 2
-  _scopeRange: 0.842
-  _numberOfSides: 3
-  _sideBending: 4.27
+  _numberOfScopes: 1
+  _scopeRange: 0.757
+  _numberOfSides: 4
+  _sideBending: 10
   _randomizePosition: 0
-  _randomizeDirection: 0
-  _randomizeSpeed: 1
+  _randomizeDirection: 1
+  _randomizeSpeed: 0
   _randomizeSize: 0
   _isSpawning: 1
   _stopWhenNotVisible: 1
@@ -27038,6 +27041,7 @@ MonoBehaviour:
   projectileName: 3
   damage: 7
   minimumSizeOfDamage: 0
+  isImmortal: 1
   timeToLive: -1
   disappearWhenTouchingTarget: 0
   visibilityDespawn: 0
@@ -27287,6 +27291,7 @@ MonoBehaviour:
   projectileName: 5
   damage: 7
   minimumSizeOfDamage: 0
+  isImmortal: 0
   timeToLive: 5
   disappearWhenTouchingTarget: 0
   visibilityDespawn: 1
