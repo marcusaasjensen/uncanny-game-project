@@ -464,6 +464,7 @@ GameObject:
   - component: {fileID: 131471327}
   - component: {fileID: 131471326}
   - component: {fileID: 131471325}
+  - component: {fileID: 131471329}
   m_Layer: 5
   m_Name: PlayerUI
   m_TagString: Untagged
@@ -556,6 +557,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &131471329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131471324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d777af23da9cade45aa8d1c49010fa9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontHealthBar: {fileID: 1405327632}
+  backHealthBar: {fileID: 1268630592}
+  player: {fileID: 1752679062}
 --- !u!1 &192922293
 GameObject:
   m_ObjectHideFlags: 0
@@ -26288,11 +26304,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375db681649f4bf4ebf51008d8ee97f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frontHealthBar: {fileID: 1405327632}
-  backHealthBar: {fileID: 1268630592}
   deathSound: {fileID: 8300000, guid: e70a1a77812e28747a61f6e01454096d, type: 3}
   _playerController: {fileID: 1752679066}
-  _health: 10000
+  _maxHealth: 500
+  _health: 500
   _timeBeforeNewDamage: 0.3
   _damageSpriteColor: {r: 1, g: 1, b: 1, a: 1}
   _colorTransitionTime: 2
@@ -27035,7 +27050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileMovement: {fileID: 2007156949335760027}
-  projectileCollision: {fileID: 0}
+  projectileCollision: {fileID: 7873909647209103302}
   projectileAnimation: {fileID: 0}
   target: {fileID: 7873909647209103296}
   projectileName: 3

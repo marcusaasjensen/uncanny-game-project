@@ -5,45 +5,40 @@ using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour
 {
-    public Image frontHealthBar;
-    public Image backHealthBar;
     public AudioClip deathSound;
 
     [SerializeField] internal PlayerController _playerController;
-    [SerializeField] private float _health;
-    [SerializeField] private const float _maxHealth = 100f;
-    [SerializeField] private float _timeBeforeNewDamage;
-    [SerializeField] private Color _damageSpriteColor;
+    [SerializeField] [Min(0)] float _maxHealth = 100f;
+    [SerializeField] [Min(0)] float _health;
+    [SerializeField] float _timeBeforeNewDamage;
+    [SerializeField] Color _damageSpriteColor;
     [SerializeField] float _colorTransitionTime;
-    [SerializeField] private bool _isInvisible = false;
+    [SerializeField] bool _isInvisible = false;
     public List<AudioClip> _hitSounds;
 
     SpriteRenderer _playerSprite;
 
     float _currentColorTransitionTime;
-    float _lerpTimer;
-    float _chipSpeed = 2f;
-    bool _isBeingDamaged;
+    bool _isBeingDamaged = false;
 
     void Awake()
     {
         _playerSprite = GetComponent<SpriteRenderer>();
         _playerController = GetComponent<PlayerController>();
+
         _health = _maxHealth;
-        _isBeingDamaged = false;
         _currentColorTransitionTime = _colorTransitionTime;
     }
 
     public float Health
     {
         get { return _health; }
-        set
-        {
-            if (value >= 0)
-                _health = value;
-            else
-                _health = 0;
-        }
+        set { _health = ClampHealth(_health); }
+    }
+
+    public float Maxhealth
+    {
+        get { return _maxHealth; }
     }
 
     public bool IsInvisible
@@ -52,14 +47,20 @@ public class PlayerLife : MonoBehaviour
         set { _isInvisible = value; }
     }
 
+    public bool IsBeingDamaged
+    {
+        get { return _isBeingDamaged; }
+    }
 
-    // Update is called once per frame
+    float ClampHealth(float currentHealth)
+    {
+        return Mathf.Clamp(currentHealth, 0, _maxHealth);
+    }
+
     void Update()
     {
-        _health = Mathf.Clamp(_health, 0, _maxHealth);
-        PlayerDeath();
-        if(backHealthBar != null && frontHealthBar != null)
-            UpdateHealthUI();
+        _health = ClampHealth(_health);
+        Die();
         SetPlayerSpriteColor();
     }
 
@@ -69,33 +70,15 @@ public class PlayerLife : MonoBehaviour
         _currentColorTransitionTime += Time.deltaTime;
     }
 
-    public void UpdateHealthUI()
-    {
-        float fillF = frontHealthBar.fillAmount;
-        float fillB = backHealthBar.fillAmount;
-        float healthFraction = _health/ _maxHealth;
-        if(fillB > healthFraction)
-        {
-            frontHealthBar.fillAmount = healthFraction;
-            backHealthBar.color = Color.red;
-            _lerpTimer += Time.deltaTime;
-            float percentComplete = _lerpTimer / _chipSpeed;
-            backHealthBar.fillAmount = Mathf.Lerp(fillB,healthFraction,percentComplete);
-        }
-    }
-
-    public void PlayerDeath()
+    public void Die()
     {
         if (_health > 0) return;
-        backHealthBar.fillAmount = 0;
-        frontHealthBar.fillAmount = 0;
         AudioSource.PlayClipAtPoint(deathSound, transform.position);
         gameObject.SetActive(false);
     }
 
     public IEnumerator DoDamage(float damage)
     {
-        _lerpTimer = 0f;
         if (!_isBeingDamaged)
         {
             SoundManager.Instance.PlayRandomSound(_hitSounds, true);
