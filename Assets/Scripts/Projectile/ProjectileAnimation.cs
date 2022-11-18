@@ -2,30 +2,34 @@ using UnityEngine;
 
 public class ProjectileAnimation : MonoBehaviour
 {
-    public Animator anim;
-    public AnimationClip endAnimationClip;
-    public AnimationClip startAnimationClip;
-    public AnimationClip idleAnimationClip;
+    [SerializeField] Animator _anim;
+    [SerializeField] AnimationClip _endAnimationClip;
+    [SerializeField] AnimationClip _startAnimationClip;
+    [SerializeField] AnimationClip _idleAnimationClip;
 
     public float EndAnimation()
     {
-        return PlayAnimation(endAnimationClip);
+        return PlayAnimation(_endAnimationClip);
     }
 
     public float StartAnimation()
     {
-        return PlayAnimation(startAnimationClip);
+        return PlayAnimation(_startAnimationClip);
     }
 
     public float IdleAnimation()
     {
-        return PlayAnimation(idleAnimationClip);
+        return PlayAnimation(_idleAnimationClip);
     }
 
     float PlayAnimation(AnimationClip animation)
     {
-        if(animation == null || anim == null) return 0f;
-        anim.Play(animation.name);
+        if (animation == null || _anim == null) 
+        { 
+            Debug.LogWarning("A projectile animation clip reference is missing."); 
+            return 0f;
+        }
+        _anim.Play(animation.name);
         return animation.length;
     }
 }

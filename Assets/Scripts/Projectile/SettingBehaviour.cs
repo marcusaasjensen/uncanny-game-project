@@ -1,12 +1,5 @@
 using UnityEngine;
 
-public enum TimingBehaviour
-{
-    EachTime,
-    RealTime,
-    ShiftedTime,
-}
-
 [DisallowMultipleComponent]
 public class SettingBehaviour : MonoBehaviour
 {

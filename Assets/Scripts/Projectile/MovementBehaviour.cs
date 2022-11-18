@@ -1,0 +1,20 @@
+﻿public enum MovementBehaviour
+{
+    Unchanged,
+    Static,
+    Regular,
+    Sinusoidal,
+    ZigZag,
+    Circular,
+    SimpleCircular,
+    AllCircular,
+    Pivot,
+    AllPivot,
+    Clock,
+    Looping,
+    Wavy,
+    Knot,
+    Particle,
+    FollowTarget,
+    MissileTarget,
+}

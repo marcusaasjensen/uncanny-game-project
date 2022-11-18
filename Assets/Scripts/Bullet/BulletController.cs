@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class BulletController : ProjectileController, IPooledObject<BulletController>
 {
-    [Tooltip("Necessary bullet template reference for affecting continuously the bullet if continuously affected.")]
-    public BulletController bulletTMP;
+    [Tooltip("Necessary bullet Configuration reference for affecting continuously the bullets if continuously affected.")]
+    [SerializeField] BulletController _bulletConfiguration;
     void Update()
     {
-        if (bulletTMP == null || !isContinuouslyAffected) return;
-        SetProjectile(bulletTMP);
+        if (_bulletConfiguration == null || !realTimeConfiguration) return;
+        SetProjectile(_bulletConfiguration);
     }
 
     public void OnObjectSpawn(BulletController bullet){
-        bulletTMP = bullet;
+        _bulletConfiguration = bullet;
         base.OnObjectSpawn(bullet);
     }
 }

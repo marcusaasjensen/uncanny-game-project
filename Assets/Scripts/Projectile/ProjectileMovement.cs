@@ -1,44 +1,23 @@
 using UnityEngine;
 using static UnityEngine.Mathf;
 
-public enum MovementBehaviour
-{
-    Unchanged,
-    Static,
-    Regular,
-    Sinusoidal,
-    ZigZag,
-    Circular,
-    SimpleCircular,
-    AllCircular,
-    Pivot,
-    AllPivot,
-    Clock,
-    Looping,
-    Wavy,
-    Knot,
-    Particle,
-    FollowTarget,
-    MissileTarget,
-}
-
 [DisallowMultipleComponent]
 public class ProjectileMovement : MonoBehaviour
 {
-    public ProjectileController projectileController;
-    public SettingBehaviour settingBehaviour;
+    [SerializeField] ProjectileController _projectileController;
+    [SerializeField] SettingBehaviour _settingBehaviour;
 
     [Header("Movement")]
     [SerializeField] float _moveSpeed;
     [SerializeField] float _direction;
-    [SerializeField] [Range(0,360)] float _rotation;
     [SerializeField] MovementBehaviour _movementBehaviour = default;
 
     [Header("Size")]
     [SerializeField] float _size;
 
-    [Header("Options")]
+    [Header("Sprite Rotation")]
     [SerializeField] bool _rotateToDirection;
+    [SerializeField] [Range(0,360)] float _rotation;
 
     float _appearanceTime;
     
@@ -47,16 +26,10 @@ public class ProjectileMovement : MonoBehaviour
     float _currentSize;
     float _currentMoveSpeed;
     Vector3 _vectorMovement;
-
-    const int _FPS = 60;
-
     Vector3 _initialLocalScale;
     Transform _transform;
 
-    void Awake()
-    {
-        SetTransform();
-    }
+    void Awake() => SetTransform();
 
     void FixedUpdate()
     {
@@ -66,31 +39,27 @@ public class ProjectileMovement : MonoBehaviour
     }
 
     #region Getters&Setters
+    public ProjectileController ProjectileController
+    {
+        get { return _projectileController; }
+        set { _projectileController = value; }
+    }
+
+    public SettingBehaviour SettingBehaviour
+    {
+        get { return _settingBehaviour; }
+        set { _settingBehaviour = value; }
+    }
+
     public float Direction
     {
         get { return _direction; }
-        set
-        {
-            if (value > 360)
-                _direction = value - 360;
-            else if (value < -360)
-                _direction = value + 360;
-            else
-                _direction = value;
-        }
+        set { _direction = Clamp(value, -360, 360); }
     }
     public float Rotation
     {
         get { return _rotation; }
-        set
-        {
-            if (value > 360)
-                _rotation = value - 360;
-            else if (value < -360)
-                _rotation = value + 360;
-            else
-                _rotation = value;
-        }
+        set { _rotation = Clamp(value, -360, 360); }
     }
     public float Size
     {
@@ -162,18 +131,24 @@ public class ProjectileMovement : MonoBehaviour
 
     public void SetProjectileMovement(ProjectileMovement tmp)
     {
+        if (tmp == null) return;
         _size = tmp.Size;
         _moveSpeed = tmp.MoveSpeed;
         _rotation = tmp.Rotation;
         _direction = tmp.Direction;
         _movementBehaviour = tmp.MovementBehaviour;
         _rotateToDirection = tmp.RotateToDirection;
-        settingBehaviour?.SetSpeedBehaviour(tmp.settingBehaviour);
+
+        if(_settingBehaviour == null)
+        {
+            Debug.LogWarning("Setting behaviour reference in Projectile Movement script is missing.");
+            return;
+        }
+        _settingBehaviour.SetSpeedBehaviour(tmp._settingBehaviour);
     }
 
     void SetMovementBehaviour()
     {
-        //Vector3 validVectorMovement = float.IsNaN(_vectorMovement.x + _vectorMovement.y) ? Vector3.one : _vectorMovement;
         _transform.Translate(_vectorMovement, relativeTo:Space.World);
         switch (_movementBehaviour)
         {
@@ -268,7 +243,7 @@ public class ProjectileMovement : MonoBehaviour
         float angle = (_direction + _currentDirection) * Deg2Rad;
         float speed = (_moveSpeed + _currentMoveSpeed) * Time.deltaTime;
 
-        Vector2 direction = projectileController.target.position - _transform.position;
+        Vector2 direction = _projectileController.Target.position - _transform.position;
         Vector3 forward = new(Cos(angle), Sin(angle));
         direction.Normalize();
 
@@ -384,10 +359,10 @@ public class ProjectileMovement : MonoBehaviour
 
     void FollowTargetBehaviour()
     {
-        Transform trg = projectileController.target;
+        Transform trg = _projectileController.Target;
         if (trg == null)
         {
-            Debug.LogWarning("the projectile can't follow the target because the target is not referenced in the ProjectileMovement component.");
+            Debug.LogWarning("the projectile can't follow the target because the target reference in the ProjectileMovement component is missing.");
             return;
         }
 

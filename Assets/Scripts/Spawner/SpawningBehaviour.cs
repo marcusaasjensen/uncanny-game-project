@@ -174,13 +174,13 @@ public class SpawningBehaviour : MonoBehaviour
     #region SpecificGetter&Setters
     void SetDesactivationVisibility()
     {
-        if (!_stopWhenNotVisible || spawnerController.CameraManager.IsTargetVisible(gameObject)) return;
+        if (!_stopWhenNotVisible || CameraManager.Instance.IsTargetVisible(gameObject)) return;
         _isSpawning = false;
     }
 
     void SetActivationVisibility()
     {
-        if (!_activateWhenVisible || !spawnerController.CameraManager.IsTargetVisible(gameObject)) return;
+        if (!_activateWhenVisible || !CameraManager.Instance.IsTargetVisible(gameObject)) return;
         _isSpawning = true;
     }
 
@@ -188,9 +188,9 @@ public class SpawningBehaviour : MonoBehaviour
     {
         if (_isTargetting)
         {
-            float angle = (projectileToSpawnConfig.projectileMovement.Direction + projectileToSpawnConfig.projectileMovement.CurrentDirection) * Deg2Rad;
+            float angle = (projectileToSpawnConfig.ProjectileMovement.Direction + projectileToSpawnConfig.ProjectileMovement.CurrentDirection) * Deg2Rad;
 
-            Vector2 direction = spawnerController.target.position - transform.position;
+            Vector2 direction = spawnerController.Target.position - transform.position;
             Vector3 forward = new(Cos(angle), Sin(angle));
             direction.Normalize();
 
@@ -198,7 +198,7 @@ public class SpawningBehaviour : MonoBehaviour
             _rotationOffset -= rotateAmount * _targettingSpeed;
         }
         else
-            _rotationOffset = _spawnerDirectionAffectsProjectile ? spawnerController.projectileMovement.Direction : 0;
+            _rotationOffset = _spawnerDirectionAffectsProjectile ? spawnerController.ProjectileMovement.Direction : 0;
     }
 
     void SetSpawning()
@@ -250,7 +250,7 @@ public class SpawningBehaviour : MonoBehaviour
     #region SpawningBehaviourFunctions
     void RadialSpawning()
     {
-        ProjectileMovement proj = projectileToSpawnConfig.projectileMovement;
+        ProjectileMovement proj = projectileToSpawnConfig.ProjectileMovement;
         float angle;
         float initAngle = 0;
         float offSet = 360 / _numberOfScopes;
@@ -307,7 +307,7 @@ public class SpawningBehaviour : MonoBehaviour
         if (_randomizePosition)
         {
             float teta = Deg2Rad * _scopeRange * 360;
-            float radius = Random.Range(0, _spawningRange * spawnerController.CameraManager.GetScreenBounds().x);
+            float radius = Random.Range(0, _spawningRange * CameraManager.Instance.GetScreenBounds().x);
             float randAngle = Random.Range(angle, angle + teta);
             float x = transform.position.x + radius * Cos(randAngle);
             float y = transform.position.y + radius * Sin(randAngle);

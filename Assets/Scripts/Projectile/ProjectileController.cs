@@ -1,51 +1,62 @@
 using System.Collections;
 using UnityEngine;
 
-public enum ProjectileName
-{
-    Bullet,
-    Red_Bullet,
-    Square_Bullet,
-    Spawner,
-    SpawnerTMP,
-    BulletTMP,
-
-}
-
 [DisallowMultipleComponent]
 [RequireComponent(typeof(ProjectileMovement))]
 public abstract class ProjectileController: MonoBehaviour, IPooledObject<ProjectileController>
 {
-    public ProjectileMovement projectileMovement;
-    public ProjectileCollision projectileCollision;
-    public ProjectileAnimation projectileAnimation;
-    public Transform target;
-
     [Tooltip("Name of the projectile. Must be assigned for each prefab but assignment not relevant for the template projectiles (TMP).")]
     [SerializeField] protected ProjectileName projectileName;
+    [SerializeField] ProjectileMovement _projectileMovement;
+    [SerializeField] protected Transform target;
+
+    [Header("Optional")]
+    [SerializeField] ProjectileCollision _projectileCollision;
+    [SerializeField] ProjectileAnimation _projectileAnimation;
+
 
     [Header("To player")]
     [SerializeField] protected int damage;
     [SerializeField] [Min(0)] protected float minimumSizeOfDamage;
 
-    [Header("Options")]
-
+    [Header("Life-time")]
     [Tooltip("If is immortal, the projectile will never self despawn.")]
     [SerializeField] protected bool isImmortal;
-
     [Tooltip("Time before the projectile despawns.")]
     [SerializeField] [Min(0)] protected float timeToLive;
-
     [SerializeField] protected bool disappearWhenTouchingTarget;
-
     [Tooltip("The projectile self-despawn when being outside of camera visibility.")]
-    [SerializeField] protected bool visibilityDespawn;
+    [SerializeField] protected bool despawnWhenNotVisible;
 
-    [Tooltip("The projectile can be affected in run-time instead of being affected only when spawning.")]
-    [SerializeField] protected bool isContinuouslyAffected;
+    [Header("Configuration")]
+    [Tooltip("The projectile can be affected in real-time with the configuration instead of being affected only when spawning.")]
+    [SerializeField] protected bool realTimeConfiguration;
 
-    CameraManager _cameraManager;
     IEnumerator _selfDespawn;
+
+    public ProjectileMovement ProjectileMovement
+    {
+        get { return _projectileMovement; }
+        set { _projectileMovement = value; }
+    }
+
+    public ProjectileCollision ProjectileCollision
+    {
+        get { return _projectileCollision; }
+        set { _projectileCollision = value; }
+    }
+
+    public ProjectileAnimation ProjectileAnimation
+    {
+        get { return _projectileAnimation; }
+        set { _projectileAnimation = value; }
+    }
+
+    public Transform Target
+    {
+        get { return target; }
+        set { target = value; }
+    }
 
     public ProjectileName Name
     {
@@ -81,15 +92,10 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
         set { disappearWhenTouchingTarget = value; }
     }
 
-    public bool IsContinuouslyAffected
+    public bool RealTimeConfiguration
     {
-        get { return isContinuouslyAffected; }
-        set { isContinuouslyAffected = value; }
-    }
-    public CameraManager CameraManager
-    {
-        get { return _cameraManager; }
-        set { if (_cameraManager != value) { _cameraManager = value; } }
+        get { return realTimeConfiguration; }
+        set { realTimeConfiguration = value; }
     }
 
     public void OnObjectSpawn(ProjectileController projectile){
@@ -101,10 +107,15 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
 
     void SetInitialValues(ProjectileController projectile)
     {
-        projectileMovement.CurrentSize = projectile.projectileMovement.CurrentSize;
-        projectileMovement.CurrentDirection = projectile.projectileMovement.CurrentDirection;
-        projectileMovement.CurrentMoveSpeed = projectile.projectileMovement.CurrentMoveSpeed;
-        projectileMovement.AppearanceTime = Time.time;
+        if(_projectileMovement == null)
+        {
+            Debug.LogWarning("Projectile Movement reference in projectile controller is missing.");
+            return;
+        }
+        _projectileMovement.CurrentSize = projectile._projectileMovement.CurrentSize;
+        _projectileMovement.CurrentDirection = projectile._projectileMovement.CurrentDirection;
+        _projectileMovement.CurrentMoveSpeed = projectile._projectileMovement.CurrentMoveSpeed;
+        _projectileMovement.AppearanceTime = Time.time;
     }
 
     public void SetProjectile(ProjectileController projectile)
@@ -113,17 +124,12 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
         timeToLive = projectile.timeToLive;
         isImmortal = projectile.isImmortal;
         disappearWhenTouchingTarget = projectile.disappearWhenTouchingTarget;
-        visibilityDespawn = projectile.visibilityDespawn;
-        isContinuouslyAffected = projectile.isContinuouslyAffected;
+        despawnWhenNotVisible = projectile.despawnWhenNotVisible;
+        realTimeConfiguration = projectile.realTimeConfiguration;
         minimumSizeOfDamage = projectile.minimumSizeOfDamage;
         target = projectile.target;
 
-        projectileMovement.SetProjectileMovement(projectile.projectileMovement);
-    }
-
-    void Awake()
-    {
-        _cameraManager = CameraManager.Instance;
+        _projectileMovement.SetProjectileMovement(projectile._projectileMovement);
     }
 
     void FixedUpdate(){
@@ -133,7 +139,7 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
 
     void SetVisibility()
     {
-        if (!visibilityDespawn || _cameraManager.IsTargetVisible(gameObject)) return;
+        if (!despawnWhenNotVisible || CameraManager.Instance.IsTargetVisible(gameObject)) return;
         this.gameObject.SetActive(false);
     }
 
@@ -141,7 +147,7 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
 
     void SetDamageAccordingToSize()
     {
-        if (Mathf.Abs(projectileMovement.Size) < minimumSizeOfDamage)
+        if (Mathf.Abs(_projectileMovement.Size) < minimumSizeOfDamage)
         {
             tmpDamage = damage;
             damage = 0;
@@ -153,8 +159,8 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
 
     void StartLifeTime()
     {
-        if(projectileAnimation != null)
-            projectileAnimation.StartAnimation(); //think for desactivating damage at the start animation or not
+        if(_projectileAnimation != null)
+            _projectileAnimation.StartAnimation(); //think for desactivating damage at the start animation or not
         if (isImmortal) return; // make a boolean variable to check if projectile is immortal or not
         if (_selfDespawn != null) { StopCoroutine(_selfDespawn); }
         _selfDespawn = SelfDespawnAfter(timeToLive);
@@ -163,16 +169,16 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
 
     IEnumerator SelfDespawnAfter(float ttl)
     {
-        if (projectileCollision != null)
+        if (_projectileCollision != null)
         {
-            projectileCollision.EnableCollider(true);
+            _projectileCollision.EnableCollider(true);
             yield return new WaitForSeconds(ttl);
-            projectileCollision.EnableCollider(false);
+            _projectileCollision.EnableCollider(false);
         }
         else
             yield return new WaitForSeconds(ttl);
 
-        yield return new WaitForSeconds(projectileAnimation != null ? projectileAnimation.EndAnimation() : 0);
+        yield return new WaitForSeconds(_projectileAnimation != null ? _projectileAnimation.EndAnimation() : 0);
         this.gameObject.SetActive(false);
     }
 }

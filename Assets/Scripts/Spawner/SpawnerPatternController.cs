@@ -71,17 +71,17 @@ public class SpawnerPatternController : MonoBehaviour
         spawnerController.spawningBehaviour.SpawningRange = spawningRange;
         spawnerController.spawningBehaviour.SpawningRange = spawningRange;
 
-        spawnerController.projectileMovement.MovementBehaviour = spawnerMB;
-        spawnerController.projectileMovement.MoveSpeed = spawnerSpeed;
+        spawnerController.ProjectileMovement.MovementBehaviour = spawnerMB;
+        spawnerController.ProjectileMovement.MoveSpeed = spawnerSpeed;
 
-        spawnerController.IsContinuouslyAffected = isSpawnerContinous;
+        spawnerController.RealTimeConfiguration = isSpawnerContinous;
 
-        projectileController.projectileMovement.MoveSpeed = bulletSpeed;
-        projectileController.projectileMovement.MovementBehaviour = bulletMB;
-        projectileController.projectileMovement.Direction = bulletDir;
+        projectileController.ProjectileMovement.MoveSpeed = bulletSpeed;
+        projectileController.ProjectileMovement.MovementBehaviour = bulletMB;
+        projectileController.ProjectileMovement.Direction = bulletDir;
         projectileController.TimeToLive = ttlBullet;
 
-        projectileController.IsContinuouslyAffected = isBulletContinous;
+        projectileController.RealTimeConfiguration = isBulletContinous;
 
         spawner.spawningBehaviour.projectileToSpawnConfig = projectileController;
 
@@ -95,13 +95,13 @@ public class SpawnerPatternController : MonoBehaviour
             1, 
             8, 
             MovementBehaviour.Static, 
-            spawner.projectileMovement.MoveSpeed, 
-            spawner.IsContinuouslyAffected, 
+            spawner.ProjectileMovement.MoveSpeed, 
+            spawner.RealTimeConfiguration, 
             5.0f, 
             30.0f, 
             1.0f, 
             MovementBehaviour.AllCircular, 
-            spawner.spawningBehaviour.projectileToSpawnConfig.IsContinuouslyAffected
+            spawner.spawningBehaviour.projectileToSpawnConfig.RealTimeConfiguration
         );
     }
 
@@ -113,12 +113,12 @@ public class SpawnerPatternController : MonoBehaviour
             7, 
             MovementBehaviour.SimpleCircular, 
             1.6f, 
-            spawner.IsContinuouslyAffected, 
+            spawner.RealTimeConfiguration, 
             1.3f, 
             0, 
             6.0f, 
             MovementBehaviour.SimpleCircular, 
-            spawner.spawningBehaviour.projectileToSpawnConfig.IsContinuouslyAffected
+            spawner.spawningBehaviour.projectileToSpawnConfig.RealTimeConfiguration
         );
      }
 

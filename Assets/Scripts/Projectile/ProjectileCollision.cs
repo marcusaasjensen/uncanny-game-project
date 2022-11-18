@@ -5,30 +5,29 @@ using System.Collections.Generic;
 [RequireComponent(typeof(ProjectileController))]
 public class ProjectileCollision : MonoBehaviour
 {
-    public ProjectileController controller;
-    public Collider2D projectileCollider;
-
-    public List<AudioClip> collisionSounds;
+    [SerializeField] ProjectileController _projectileController;
+    [SerializeField] Collider2D _projectileCollider;
+    [SerializeField] List<AudioClip> _collisionSounds;
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (controller == null)
+        if (_projectileController == null)
         {
             Debug.LogWarning("Projectile Controller needs to be referenced in Projectile Collision script.");
             return;
         }
 
-        if (!collider.CompareTag(controller.target.tag)) return;
+        if (!collider.CompareTag(_projectileController.Target.tag)) return; //fix no collision when player is dashing
 
-        SoundManager.Instance.PlayRandomSound(collisionSounds, true);
+        SoundManager.Instance.PlayRandomSound(_collisionSounds, true);
 
-        if (controller.DisappearWhenTouchingTarget)
+        if (_projectileController.DisappearWhenTouchingTarget)
             gameObject.SetActive(false);
     }
 
     public void EnableCollider(bool value)
     {
-        if (projectileCollider == null) return;
-        projectileCollider.enabled = value;
+        if (_projectileCollider == null) return;
+        _projectileCollider.enabled = value;
     }
 }

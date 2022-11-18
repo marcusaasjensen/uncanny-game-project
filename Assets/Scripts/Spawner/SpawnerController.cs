@@ -53,7 +53,7 @@ public class SpawnerController : ProjectileController, IPooledObject<SpawnerCont
     void Update() => ContinuouslyAffectedToggler();
     
     void ContinuouslyAffectedToggler() {
-        if (spawnerTMP == null || !isContinuouslyAffected) return;
+        if (spawnerTMP == null || !realTimeConfiguration) return;
 
         SetProjectile(spawnerTMP);
         SetSpawningBehaviour(spawnerTMP.spawningBehaviour);

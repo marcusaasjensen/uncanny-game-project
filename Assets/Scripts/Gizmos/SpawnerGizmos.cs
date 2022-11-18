@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpawnerController))]
 public class SpawnerGizmos : MonoBehaviour
 {
-    public SpawnerController controller;
+    [SerializeField] SpawnerController _spawnerController;
 
     [Header("Direction visualizer")]
     [SerializeField] Color _lineGizmosColor = Color.white;
@@ -15,49 +15,66 @@ public class SpawnerGizmos : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        if (controller == null) return;
+        if (_spawnerController == null)
+        {
+            Debug.LogWarning("Spawner Controller reference in Spawner Gizmos script is missing.");
+            return; 
+        }
+
+        SpawningBehaviour behaviour = _spawnerController.spawningBehaviour;
         
-        SpawningBehaviour behaviour = controller.spawningBehaviour;
-        ProjectileController proj = controller.spawningBehaviour.projectileToSpawnConfig;
+        if (behaviour == null)
+        {
+            Debug.LogWarning("Spawning Behaviour reference in spawner controller is missing.");
+            return;
+        }
+
+        ProjectileController proj = _spawnerController.spawningBehaviour.projectileToSpawnConfig;
+
+        if(proj == null)
+        {
+            Debug.LogWarning("Projectile Controller reference (config) in spawner controller is missing.");
+            return;
+        }
 
         Vector3 gizmosLineEndPos;
         Vector3 endPosition;
 
         float angle;
         float initAngle = 0;
-        float offSet = 360 / controller.spawningBehaviour.NumberOfScopes;
-        float nBProjectilePerScope = controller.spawningBehaviour.NumberOfProjectiles / behaviour.NumberOfScopes;
+        float offSet = 360 / _spawnerController.spawningBehaviour.NumberOfScopes;
+        float nBProjectilePerScope = _spawnerController.spawningBehaviour.NumberOfProjectiles / behaviour.NumberOfScopes;
         float counter = 0;
 
         float rayLength;
 
-        float rotationOffset = behaviour.SpawnerDirectionAffectsProjectile ? controller.projectileMovement.Direction : 0;
+        float rotationOffset = behaviour.SpawnerDirectionAffectsProjectile ? _spawnerController.ProjectileMovement.Direction : 0;
 
         for (int j = 0; j < behaviour.NumberOfScopes; j++)
         {
             angle = initAngle;
-            endPosition = CalculateEndPoint(2 * proj.projectileMovement.Direction, angle, rotationOffset);
+            endPosition = CalculateEndPoint(2 * proj.ProjectileMovement.Direction, angle, rotationOffset);
             Gizmos.color = _scopeCubeGizmosColor;
-            Gizmos.DrawCube(controller.transform.position + endPosition, _scopeCubeGizmosSize * Vector3.one);
+            Gizmos.DrawCube(_spawnerController.transform.position + endPosition, _scopeCubeGizmosSize * Vector3.one);
 
             for (int i = 1; i <= nBProjectilePerScope; i++)
             {
-                rayLength = (proj.projectileMovement.MoveSpeed + GetNewMoveSpeed(proj.projectileMovement.MoveSpeed, counter)) * proj.TimeToLive;
+                rayLength = (proj.ProjectileMovement.MoveSpeed + GetNewMoveSpeed(proj.ProjectileMovement.MoveSpeed, counter)) * proj.TimeToLive;
 
                 if (counter < behaviour.NumberOfProjectiles)
                     counter++;
 
-                endPosition = CalculateEndPoint(2 * proj.projectileMovement.Direction, angle, rotationOffset);
+                endPosition = CalculateEndPoint(2 * proj.ProjectileMovement.Direction, angle, rotationOffset);
                 gizmosLineEndPos = rayLength * endPosition;
 
                 Gizmos.color = _lineGizmosColor;
-                Gizmos.DrawLine(controller.transform.position, controller.transform.position + gizmosLineEndPos);
+                Gizmos.DrawLine(_spawnerController.transform.position, _spawnerController.transform.position + gizmosLineEndPos);
 
                 angle += offSet * behaviour.ScopeRange / nBProjectilePerScope;
                 if (i == nBProjectilePerScope)
                 {
                     Gizmos.color = _scopeCubeGizmosColor;
-                    Gizmos.DrawCube(controller.transform.position + endPosition, _scopeCubeGizmosSize * Vector3.one);
+                    Gizmos.DrawCube(_spawnerController.transform.position + endPosition, _scopeCubeGizmosSize * Vector3.one);
                 }
             }
             initAngle += offSet;
@@ -73,14 +90,14 @@ public class SpawnerGizmos : MonoBehaviour
 
     float GetNewDirection(float dir, float angle, float offSet)
     {
-        SpawningBehaviour behaviour = controller.spawningBehaviour;
+        SpawningBehaviour behaviour = _spawnerController.spawningBehaviour;
 
         return dir + offSet + angle * behaviour.SpawningRange;
     }
 
     float GetNewMoveSpeed(float speed, float step)
     {
-        SpawningBehaviour behaviour = controller.spawningBehaviour;
+        SpawningBehaviour behaviour = _spawnerController.spawningBehaviour;
 
         return speed + Mathf.Pow(Mathf.Sin(behaviour.NumberOfSides * Mathf.PI / behaviour.NumberOfProjectiles * step), 2) * behaviour.SideBending;
     }

@@ -7,7 +7,7 @@ public class PlayerLife : MonoBehaviour
 {
     public AudioClip deathSound;
 
-    [SerializeField] internal PlayerController _playerController;
+    [SerializeField] PlayerController _playerController;
     [SerializeField] [Min(0)] float _maxHealth = 100f;
     [SerializeField] [Min(0)] float _health;
     [SerializeField] float _timeBeforeNewDamage;
