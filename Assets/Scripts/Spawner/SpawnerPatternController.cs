@@ -11,11 +11,11 @@ public enum PatternName
 [RequireComponent(typeof(SpawnerController))]
 public class SpawnerPatternController : MonoBehaviour
 {
-    public SpawnerController spawner;
+    [SerializeField] SpawnerController _spawner;
 
     [SerializeField] PatternName _patternName = default;
 
-    PatternName _patternNameTMP = default;
+    PatternName _patternNameBuffer = default;
 
     void FixedUpdate()
     {
@@ -24,9 +24,9 @@ public class SpawnerPatternController : MonoBehaviour
 
     void SetPatternName()
     {
-        if (_patternName == _patternNameTMP) return;
+        if (_patternName == _patternNameBuffer) return;
 
-        _patternNameTMP = _patternName;
+        _patternNameBuffer = _patternName;
         switch (_patternName)
         {
             case PatternName.Default:
@@ -58,18 +58,18 @@ public class SpawnerPatternController : MonoBehaviour
         bool isBulletContinous
     )
     {
-        SpawnerController spawnerController = spawner.GetComponent<SpawnerController>();
-        ProjectileController projectileController = spawner.spawningBehaviour.projectileToSpawnConfig.GetComponent<ProjectileController>();
+        SpawnerController spawnerController = _spawner.GetComponent<SpawnerController>();
+        ProjectileController projectileController = _spawner.SpawningBehaviour.ProjectileToSpawnConfig.GetComponent<ProjectileController>();
 
         //Default settings
-        spawnerController.spawningBehaviour.IsSpawning = true;
+        spawnerController.SpawningBehaviour.IsSpawning = true;
 
         //Setting
-        spawnerController.spawningBehaviour.TimeBetweenSpawns = spawningSpeed;
-        spawnerController.spawningBehaviour.NumberOfProjectiles = nbProj;
-        spawnerController.spawningBehaviour.SpawningRange = spawningRange;
-        spawnerController.spawningBehaviour.SpawningRange = spawningRange;
-        spawnerController.spawningBehaviour.SpawningRange = spawningRange;
+        spawnerController.SpawningBehaviour.TimeBetweenSpawns = spawningSpeed;
+        spawnerController.SpawningBehaviour.NumberOfProjectiles = nbProj;
+        spawnerController.SpawningBehaviour.SpawningRange = spawningRange;
+        spawnerController.SpawningBehaviour.SpawningRange = spawningRange;
+        spawnerController.SpawningBehaviour.SpawningRange = spawningRange;
 
         spawnerController.ProjectileMovement.MovementBehaviour = spawnerMB;
         spawnerController.ProjectileMovement.MoveSpeed = spawnerSpeed;
@@ -83,9 +83,9 @@ public class SpawnerPatternController : MonoBehaviour
 
         projectileController.RealTimeConfiguration = isBulletContinous;
 
-        spawner.spawningBehaviour.projectileToSpawnConfig = projectileController;
+        _spawner.SpawningBehaviour.ProjectileToSpawnConfig = projectileController;
 
-        spawner.SetProjectile(spawnerController);
+        _spawner.SetProjectile(spawnerController);
     }
 
     void Tentacular()
@@ -95,13 +95,13 @@ public class SpawnerPatternController : MonoBehaviour
             1, 
             8, 
             MovementBehaviour.Static, 
-            spawner.ProjectileMovement.MoveSpeed, 
-            spawner.RealTimeConfiguration, 
+            _spawner.ProjectileMovement.MoveSpeed, 
+            _spawner.RealTimeConfiguration, 
             5.0f, 
             30.0f, 
             1.0f, 
             MovementBehaviour.AllCircular, 
-            spawner.spawningBehaviour.projectileToSpawnConfig.RealTimeConfiguration
+            _spawner.SpawningBehaviour.ProjectileToSpawnConfig.RealTimeConfiguration
         );
     }
 
@@ -113,12 +113,12 @@ public class SpawnerPatternController : MonoBehaviour
             7, 
             MovementBehaviour.SimpleCircular, 
             1.6f, 
-            spawner.RealTimeConfiguration, 
+            _spawner.RealTimeConfiguration, 
             1.3f, 
             0, 
             6.0f, 
             MovementBehaviour.SimpleCircular, 
-            spawner.spawningBehaviour.projectileToSpawnConfig.RealTimeConfiguration
+            _spawner.SpawningBehaviour.ProjectileToSpawnConfig.RealTimeConfiguration
         );
      }
 

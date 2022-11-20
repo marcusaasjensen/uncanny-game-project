@@ -8,7 +8,7 @@ public class SettingBehaviour : MonoBehaviour
     public RecordingPlayer rhythm;
     [Space]
     [Header("Curve")]
-    [SerializeField] AnimationCurveTypes _curveType;
+    [SerializeField] AnimationCurveType _curveType;
     [SerializeField] TimingBehaviour _timingBehaviour;
     [Space]
     [Header("Behaviour")]
@@ -26,7 +26,7 @@ public class SettingBehaviour : MonoBehaviour
     float _elapsedTime;
     float _previousPeriod = 1;
 
-    public AnimationCurveTypes CurveType
+    public AnimationCurveType CurveType
     {
         get { return _curveType; }
         set { _curveType = value; }

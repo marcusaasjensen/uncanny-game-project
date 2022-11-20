@@ -17,23 +17,23 @@ public class SpawnerGizmos : MonoBehaviour
     {
         if (_spawnerController == null)
         {
-            Debug.LogWarning("Spawner Controller reference in Spawner Gizmos script is missing.");
+            Debug.LogWarning("Spawner Controller reference in Spawner Gizmos script is missing.", this);
             return; 
         }
 
-        SpawningBehaviour behaviour = _spawnerController.spawningBehaviour;
+        SpawningBehaviour behaviour = _spawnerController.SpawningBehaviour;
         
         if (behaviour == null)
         {
-            Debug.LogWarning("Spawning Behaviour reference in spawner controller is missing.");
+            Debug.LogWarning("Spawning Behaviour reference in spawner controller is missing.", this);
             return;
         }
 
-        ProjectileController proj = _spawnerController.spawningBehaviour.projectileToSpawnConfig;
+        ProjectileController proj = _spawnerController.SpawningBehaviour.ProjectileToSpawnConfig;
 
         if(proj == null)
         {
-            Debug.LogWarning("Projectile Controller reference (config) in spawner controller is missing.");
+            Debug.LogWarning("Projectile Controller reference (config) in spawner controller is missing.", this);
             return;
         }
 
@@ -42,8 +42,8 @@ public class SpawnerGizmos : MonoBehaviour
 
         float angle;
         float initAngle = 0;
-        float offSet = 360 / _spawnerController.spawningBehaviour.NumberOfScopes;
-        float nBProjectilePerScope = _spawnerController.spawningBehaviour.NumberOfProjectiles / behaviour.NumberOfScopes;
+        float offSet = 360 / _spawnerController.SpawningBehaviour.NumberOfScopes;
+        float nBProjectilePerScope = _spawnerController.SpawningBehaviour.NumberOfProjectiles / behaviour.NumberOfScopes;
         float counter = 0;
 
         float rayLength;
@@ -90,14 +90,14 @@ public class SpawnerGizmos : MonoBehaviour
 
     float GetNewDirection(float dir, float angle, float offSet)
     {
-        SpawningBehaviour behaviour = _spawnerController.spawningBehaviour;
+        SpawningBehaviour behaviour = _spawnerController.SpawningBehaviour;
 
         return dir + offSet + angle * behaviour.SpawningRange;
     }
 
     float GetNewMoveSpeed(float speed, float step)
     {
-        SpawningBehaviour behaviour = _spawnerController.spawningBehaviour;
+        SpawningBehaviour behaviour = _spawnerController.SpawningBehaviour;
 
         return speed + Mathf.Pow(Mathf.Sin(behaviour.NumberOfSides * Mathf.PI / behaviour.NumberOfProjectiles * step), 2) * behaviour.SideBending;
     }

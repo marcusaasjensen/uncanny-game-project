@@ -5,24 +5,11 @@ public class AnimationCurveFunction : MonoBehaviour
 {
     public static AnimationCurveFunction Instance;
     public List<AnimationCurve> animationCurves;
-    public AnimationCurve GetCurve(AnimationCurveTypes type)
+
+    public AnimationCurve GetCurve(AnimationCurveType type)
     {
         return animationCurves[(int)type];
     }
 
     void Awake() { if(Instance == null) Instance = this; }
-}
-
-public enum AnimationCurveTypes
-{
-    Constant,
-    Acceleration,
-    Deceleration,
-    Progressive,
-    Degressive,
-    Squary,
-    Triangular,
-    Sinusoidal,
-    Smooth,
-    Custom,
 }

@@ -3,8 +3,14 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class CameraManager : MonoBehaviour
 {
-    public Camera cam;
+    [SerializeField] Camera cam;
     public static CameraManager Instance;
+
+    public Camera Cam
+    {
+        get { return cam ; }
+        set { cam = value; }
+    }
 
     void Awake()
     {

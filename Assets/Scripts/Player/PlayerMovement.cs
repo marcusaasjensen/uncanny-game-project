@@ -5,8 +5,9 @@ using System.Collections.Generic;
 [DisallowMultipleComponent]
 public class PlayerMovement : MonoBehaviour
 {
-    public PlayerInputActions playerActions;
-    [SerializeField] internal PlayerController _playerController;
+    PlayerInputActions playerActions;
+
+    [SerializeField] PlayerController _playerController;
 
     [SerializeField] float _moveSpeed;
     [SerializeField] [Min(0)] float _startingMoveDuration;
@@ -212,7 +213,6 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
         transform.Translate(Time.deltaTime * _currentMoveSpeed * _currentDirection, relativeTo: Space.World);
-        //print(_currentDashSpeed);
     }
 
     float CalculateCurveValue(AnimationCurve curve, float duration)

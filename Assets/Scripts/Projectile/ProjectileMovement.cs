@@ -141,7 +141,7 @@ public class ProjectileMovement : MonoBehaviour
 
         if(_settingBehaviour == null)
         {
-            Debug.LogWarning("Setting behaviour reference in Projectile Movement script is missing.");
+            Debug.LogWarning("Setting behaviour reference in Projectile Movement script is missing.", this);
             return;
         }
         _settingBehaviour.SetSpeedBehaviour(tmp._settingBehaviour);
@@ -362,7 +362,7 @@ public class ProjectileMovement : MonoBehaviour
         Transform trg = _projectileController.Target;
         if (trg == null)
         {
-            Debug.LogWarning("the projectile can't follow the target because the target reference in the ProjectileMovement component is missing.");
+            Debug.LogWarning("the projectile can't follow the target because the target reference in the ProjectileMovement component is missing.", this);
             return;
         }
 

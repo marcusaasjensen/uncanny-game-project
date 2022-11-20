@@ -13,7 +13,7 @@ public class ProjectileCollision : MonoBehaviour
     {
         if (_projectileController == null)
         {
-            Debug.LogWarning("Projectile Controller needs to be referenced in Projectile Collision script.");
+            Debug.LogWarning("Projectile Controller needs to be referenced in Projectile Collision script.", this);
             return;
         }
 

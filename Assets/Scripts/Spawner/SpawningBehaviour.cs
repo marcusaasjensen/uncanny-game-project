@@ -5,16 +5,16 @@ using static UnityEngine.Mathf;
 [DisallowMultipleComponent]
 public class SpawningBehaviour : MonoBehaviour
 {
-    public SpawnerController spawnerController;
-    public RecordingPlayer rhythm;
+    [SerializeField] SpawnerController _spawnerController;
+    [SerializeField] RecordingPlayer _rhythm;
 
     [Header("Projectile To Spawn")]
 
     [Tooltip("Reference of a projectile configuration with which the parameters of the projectile to spawn are going to be affected.")]
-    public ProjectileController projectileToSpawnConfig;
+    [SerializeField] ProjectileController _projectileToSpawnConfig;
 
-    [Tooltip("Name of the actual projectile that is going to spawn.")]
-    public ProjectileName projectileToSpawn;
+    [Tooltip("Name of the actual projectile (prefab) that is going to spawn.")]
+    [SerializeField] ProjectileName _projectileToSpawn;
 
     [Header("Spawning")]
 
@@ -64,6 +64,30 @@ public class SpawningBehaviour : MonoBehaviour
 
     float _rotationOffset;
     bool _hasStartedSpawning;
+
+    public SpawnerController SpawnerController
+    {
+        get { return _spawnerController; }
+        set { _spawnerController = value; }
+    }     
+
+    public ProjectileController ProjectileToSpawnConfig
+    {
+        get { return _projectileToSpawnConfig; }
+        set { _projectileToSpawnConfig = value; }
+    }
+
+    public ProjectileName ProjectileToSpawn
+    {
+        get { return _projectileToSpawn; }
+        set { _projectileToSpawn = value; }
+    }
+
+    public RecordingPlayer Rhythm
+    {
+        get { return _rhythm; }
+        set { _rhythm = value; }
+    }
 
     void Update()
     {
@@ -188,9 +212,9 @@ public class SpawningBehaviour : MonoBehaviour
     {
         if (_isTargetting)
         {
-            float angle = (projectileToSpawnConfig.ProjectileMovement.Direction + projectileToSpawnConfig.ProjectileMovement.CurrentDirection) * Deg2Rad;
+            float angle = (_projectileToSpawnConfig.ProjectileMovement.Direction + _projectileToSpawnConfig.ProjectileMovement.CurrentDirection) * Deg2Rad;
 
-            Vector2 direction = spawnerController.Target.position - transform.position;
+            Vector2 direction = _spawnerController.Target.position - transform.position;
             Vector3 forward = new(Cos(angle), Sin(angle));
             direction.Normalize();
 
@@ -198,7 +222,7 @@ public class SpawningBehaviour : MonoBehaviour
             _rotationOffset -= rotateAmount * _targettingSpeed;
         }
         else
-            _rotationOffset = _spawnerDirectionAffectsProjectile ? spawnerController.ProjectileMovement.Direction : 0;
+            _rotationOffset = _spawnerDirectionAffectsProjectile ? _spawnerController.ProjectileMovement.Direction : 0;
     }
 
     void SetSpawning()
@@ -227,8 +251,8 @@ public class SpawningBehaviour : MonoBehaviour
 
     float GetSpawningSpeed()
     {
-        MouseClickingRecorder.Recording recording = rhythm.recordingDictionary[rhythm.recordingTagToPlay];
-        if (_spawningOnRhythm && rhythm != null && recording.index < recording.timeBetweenClicks.Count - 1)
+        MouseClickingRecorder.Recording recording = _rhythm.recordingDictionary[_rhythm.recordingTagToPlay];
+        if (_spawningOnRhythm && _rhythm != null && recording.index < recording.timeBetweenClicks.Count - 1)
             return (float)recording.timeBetweenClicks[recording.index];
         else
             return _timeBetweenSpawns;
@@ -250,7 +274,7 @@ public class SpawningBehaviour : MonoBehaviour
     #region SpawningBehaviourFunctions
     void RadialSpawning()
     {
-        ProjectileMovement proj = projectileToSpawnConfig.ProjectileMovement;
+        ProjectileMovement proj = _projectileToSpawnConfig.ProjectileMovement;
         float angle;
         float initAngle = 0;
         float offSet = 360 / _numberOfScopes;
@@ -274,7 +298,7 @@ public class SpawningBehaviour : MonoBehaviour
 
                 projectileSpawningPosition = GetNewPosition(angle);
 
-                spawnerController.ObjectPooler.SpawnFromPool(projectileToSpawn, projectileToSpawnConfig, projectileSpawningPosition);
+                _spawnerController.ObjectPooler.SpawnFromPool(_projectileToSpawn, _projectileToSpawnConfig, projectileSpawningPosition);
                 angle += offSet*_scopeRange/ nBProjectilePerScope;
             }
             initAngle += offSet;

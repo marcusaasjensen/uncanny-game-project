@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour
 {
-    public AudioClip deathSound;
+    [SerializeField] AudioClip _deathSound;
 
     [SerializeField] PlayerController _playerController;
     [SerializeField] [Min(0)] float _maxHealth = 100f;
@@ -14,7 +14,7 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] Color _damageSpriteColor;
     [SerializeField] float _colorTransitionTime;
     [SerializeField] bool _isInvisible = false;
-    public List<AudioClip> _hitSounds;
+    [SerializeField] List<AudioClip> _hitSounds;
 
     SpriteRenderer _playerSprite;
 
@@ -73,7 +73,7 @@ public class PlayerLife : MonoBehaviour
     public void Die()
     {
         if (_health > 0) return;
-        AudioSource.PlayClipAtPoint(deathSound, transform.position);
+        AudioSource.PlayClipAtPoint(_deathSound, transform.position);
         gameObject.SetActive(false);
     }
 
