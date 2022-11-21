@@ -10,10 +10,7 @@ public class SpawnerPatternController : MonoBehaviour
 
     PatternName _patternNameBuffer = default;
 
-    void FixedUpdate()
-    {
-        SetPatternName();
-    }
+    void FixedUpdate() => SetPatternName();
 
     void SetPatternName()
     {
@@ -112,7 +109,7 @@ public class SpawnerPatternController : MonoBehaviour
             ttlBullet: 6.0f,
             bulletMB: MovementBehaviour.SimpleCircular,
             isBulletContinous: _spawner.SpawningBehaviour.ProjectileToSpawnConfig.RealTimeConfiguration
-        ); ;
+        );
      }
 
 }

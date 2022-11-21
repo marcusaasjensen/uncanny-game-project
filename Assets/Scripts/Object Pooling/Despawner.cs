@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Despawner : MonoBehaviour
 {
-    [SerializeField] ProjectileName _projectileToDespawn;
+    [SerializeField] ProjectilePrefabName _projectileToDespawn;
     [SerializeField] bool _despawn;
     [SerializeField][Min(0)] float _despawningSpeed;
 
@@ -11,7 +11,7 @@ public class Despawner : MonoBehaviour
     bool _isCurrentlyDespawning;
     IEnumerator _despawning;
 
-    public ProjectileName ProjectileToDespawn
+    public ProjectilePrefabName ProjectileToDespawn
     {
         get { return _projectileToDespawn; }
         set { _projectileToDespawn = value; }

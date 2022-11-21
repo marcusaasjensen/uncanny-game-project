@@ -10765,14 +10765,15 @@ MonoBehaviour:
   projectileName: 5
   _projectileMovement: {fileID: 695966869}
   target: {fileID: 1752679068}
+  _rhythm: {fileID: 822734797}
   _projectileCollision: {fileID: 0}
   _projectileAnimation: {fileID: 0}
-  damage: 7
-  minimumSizeOfDamage: 0.26
   isImmortal: 0
   timeToLive: 0.4
   disappearWhenTouchingTarget: 1
   despawnWhenNotVisible: 0
+  damage: 7
+  minimumSizeOfDamage: 0.26
   realTimeConfiguration: 1
   _bulletConfiguration: {fileID: 695966875}
 --- !u!114 &695966878
@@ -10804,7 +10805,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationCurveFunctions: {fileID: 68498873}
   projectile: {fileID: 695966869}
-  rhythm: {fileID: 822734797}
   _curveType: 7
   _timingBehaviour: 2
   _period: 1
@@ -26078,9 +26078,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnerController: {fileID: 0}
-  _rhythm: {fileID: 0}
   _projectileToSpawnConfig: {fileID: 0}
-  _projectileToSpawn: 0
+  _projectilePrefabToSpawn: 0
+  _spawnerDirectionAffectsProjectile: 0
   _timeBetweenSpawns: 0
   _spawningOnRhythm: 0
   _numberOfProjectilesPerSpawn: 0
@@ -26093,13 +26093,12 @@ MonoBehaviour:
   _randomizeDirection: 0
   _randomizeSpeed: 0
   _randomizeSize: 0
+  _timeBeforeActivating: 2
   _isSpawning: 1
   _stopWhenNotVisible: 1
   _activateWhenVisible: 1
-  _timeBeforeActivating: 2
   _isTargetting: 0
   _targettingSpeed: 0
-  _spawnerDirectionAffectsProjectile: 0
 --- !u!114 &1598943335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26135,14 +26134,15 @@ MonoBehaviour:
   projectileName: 4
   _projectileMovement: {fileID: 0}
   target: {fileID: 0}
+  _rhythm: {fileID: 0}
   _projectileCollision: {fileID: 0}
   _projectileAnimation: {fileID: 0}
-  damage: 0
-  minimumSizeOfDamage: 0
   isImmortal: 0
   timeToLive: 10
   disappearWhenTouchingTarget: 0
   despawnWhenNotVisible: 0
+  damage: 0
+  minimumSizeOfDamage: 0
   realTimeConfiguration: 0
   _spawningBehaviour: {fileID: 0}
   _spawnerConfiguration: {fileID: 0}
@@ -26192,7 +26192,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationCurveFunctions: {fileID: 68498873}
   projectile: {fileID: 1598943335}
-  rhythm: {fileID: 822734797}
   _curveType: 0
   _timingBehaviour: 0
   _period: 1
@@ -26621,9 +26620,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnerController: {fileID: 0}
-  _rhythm: {fileID: 0}
   _projectileToSpawnConfig: {fileID: 0}
-  _projectileToSpawn: 0
+  _projectilePrefabToSpawn: 0
+  _spawnerDirectionAffectsProjectile: 0
   _timeBetweenSpawns: 0
   _spawningOnRhythm: 0
   _numberOfProjectilesPerSpawn: 0
@@ -26636,13 +26635,12 @@ MonoBehaviour:
   _randomizeDirection: 0
   _randomizeSpeed: 0
   _randomizeSize: 0
+  _timeBeforeActivating: 0
   _isSpawning: 1
   _stopWhenNotVisible: 1
   _activateWhenVisible: 0
-  _timeBeforeActivating: 0
   _isTargetting: 0
   _targettingSpeed: 0
-  _spawnerDirectionAffectsProjectile: 0
 --- !u!114 &1865365108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26678,14 +26676,15 @@ MonoBehaviour:
   projectileName: 4
   _projectileMovement: {fileID: 0}
   target: {fileID: 0}
+  _rhythm: {fileID: 0}
   _projectileCollision: {fileID: 0}
   _projectileAnimation: {fileID: 0}
-  damage: 0
-  minimumSizeOfDamage: 0
   isImmortal: 0
   timeToLive: -1
   disappearWhenTouchingTarget: 0
   despawnWhenNotVisible: 0
+  damage: 0
+  minimumSizeOfDamage: 0
   realTimeConfiguration: 0
   _spawningBehaviour: {fileID: 0}
   _spawnerConfiguration: {fileID: 0}
@@ -26719,7 +26718,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationCurveFunctions: {fileID: 68498873}
   projectile: {fileID: 1865365108}
-  rhythm: {fileID: 822734797}
   _curveType: 0
   _timingBehaviour: 0
   _period: 1
@@ -27000,9 +26998,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnerController: {fileID: 6768507520081417528}
-  _rhythm: {fileID: 822734797}
   _projectileToSpawnConfig: {fileID: 695966875}
-  _projectileToSpawn: 2
+  _projectilePrefabToSpawn: 2
+  _spawnerDirectionAffectsProjectile: 1
   _timeBetweenSpawns: 0.19
   _spawningOnRhythm: 0
   _numberOfProjectilesPerSpawn: 46
@@ -27015,13 +27013,12 @@ MonoBehaviour:
   _randomizeDirection: 0
   _randomizeSpeed: 0
   _randomizeSize: 1
+  _timeBeforeActivating: 3
   _isSpawning: 1
   _stopWhenNotVisible: 1
   _activateWhenVisible: 1
-  _timeBeforeActivating: 3
   _isTargetting: 1
   _targettingSpeed: 1
-  _spawnerDirectionAffectsProjectile: 1
 --- !u!58 &5822999079716411845
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -27053,14 +27050,15 @@ MonoBehaviour:
   projectileName: 3
   _projectileMovement: {fileID: 2007156949335760027}
   target: {fileID: 1752679068}
+  _rhythm: {fileID: 822734797}
   _projectileCollision: {fileID: 7873909647209103302}
   _projectileAnimation: {fileID: 0}
-  damage: 7
-  minimumSizeOfDamage: 0
   isImmortal: 1
   timeToLive: -1
   disappearWhenTouchingTarget: 0
   despawnWhenNotVisible: 0
+  damage: 7
+  minimumSizeOfDamage: 0
   realTimeConfiguration: 0
   _spawningBehaviour: {fileID: 4595697673347831860}
   _spawnerConfiguration: {fileID: 6768507520081417528}
@@ -27108,7 +27106,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationCurveFunctions: {fileID: 68498873}
   projectile: {fileID: 2007156949335760027}
-  rhythm: {fileID: 822734797}
   _curveType: 0
   _timingBehaviour: 0
   _period: 0
@@ -27282,14 +27279,15 @@ MonoBehaviour:
   projectileName: 5
   _projectileMovement: {fileID: 0}
   target: {fileID: 0}
+  _rhythm: {fileID: 0}
   _projectileCollision: {fileID: 0}
   _projectileAnimation: {fileID: 0}
-  damage: 7
-  minimumSizeOfDamage: 0
   isImmortal: 0
   timeToLive: 5
   disappearWhenTouchingTarget: 0
   despawnWhenNotVisible: 0
+  damage: 7
+  minimumSizeOfDamage: 0
   realTimeConfiguration: 0
   _bulletConfiguration: {fileID: 0}
 --- !u!114 &8727563243548909549
@@ -27306,7 +27304,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationCurveFunctions: {fileID: 68498873}
   projectile: {fileID: 8727563243548909547}
-  rhythm: {fileID: 822734797}
   _curveType: 0
   _timingBehaviour: 0
   _period: 0

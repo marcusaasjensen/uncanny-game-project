@@ -6,18 +6,15 @@ using UnityEngine;
 public abstract class ProjectileController: MonoBehaviour, IPooledObject<ProjectileController>
 {
     [Tooltip("Name of the projectile. Must be assigned for each prefab but assignment not relevant for the template projectiles (TMP).")]
-    [SerializeField] protected ProjectileName projectileName;
+    [SerializeField] protected ProjectilePrefabName projectileName;
     [SerializeField] ProjectileMovement _projectileMovement;
     [SerializeField] protected Transform target;
+    [SerializeField] RecordingPlayer _rhythm;
+
 
     [Header("Optional")]
     [SerializeField] ProjectileCollision _projectileCollision;
     [SerializeField] ProjectileAnimation _projectileAnimation;
-
-
-    [Header("To player")]
-    [SerializeField] protected int damage;
-    [SerializeField] [Min(0)] protected float minimumSizeOfDamage;
 
     [Header("Life-time")]
     [Tooltip("If is immortal, the projectile will never self despawn.")]
@@ -27,6 +24,10 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
     [SerializeField] protected bool disappearWhenTouchingTarget;
     [Tooltip("The projectile self-despawn when being outside of camera visibility.")]
     [SerializeField] protected bool despawnWhenNotVisible;
+    
+    [Header("Damage")]
+    [SerializeField] protected int damage;
+    [SerializeField] [Min(0)] protected float minimumSizeOfDamage;
 
     [Header("Configuration")]
     [Tooltip("The projectile can be affected in real-time with the configuration instead of being affected only when spawning.")]
@@ -58,7 +59,13 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
         set { target = value; }
     }
 
-    public ProjectileName Name
+    public RecordingPlayer Rhythm
+    {
+        get { return _rhythm; }
+        set { _rhythm = value; }
+    }
+
+    public ProjectilePrefabName Name
     {
         get { return projectileName; }
         set { projectileName = value; }
@@ -128,6 +135,7 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
         realTimeConfiguration = projectile.realTimeConfiguration;
         minimumSizeOfDamage = projectile.minimumSizeOfDamage;
         target = projectile.target;
+        _rhythm = projectile.Rhythm;
 
         _projectileMovement.SetProjectileMovement(projectile._projectileMovement);
     }

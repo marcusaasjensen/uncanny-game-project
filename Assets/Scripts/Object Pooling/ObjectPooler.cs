@@ -9,14 +9,14 @@ public class ObjectPooler : MonoBehaviour
     [System.Serializable]
     public class Pool
     {
-        public ProjectileName tag;
+        public ProjectilePrefabName tag;
         public GameObject prefab;
         public int size;
     }
 
     public Transform parent;
     public List<Pool> pools;
-    public Dictionary<ProjectileName, Queue<GameObject>> poolDictionary;
+    public Dictionary<ProjectilePrefabName, Queue<GameObject>> poolDictionary;
 
     public static ObjectPooler Instance;
 
@@ -29,7 +29,7 @@ public class ObjectPooler : MonoBehaviour
         InstantiateAllPools();
     }
 
-    public GameObject SpawnFromPool(ProjectileName tag, ProjectileController proj, Vector3 position)
+    public GameObject SpawnFromPool(ProjectilePrefabName tag, ProjectileController proj, Vector3 position)
     {
         if (!poolDictionary.ContainsKey(tag))
         {
@@ -70,7 +70,7 @@ public class ObjectPooler : MonoBehaviour
         pooledObj.OnObjectSpawn(proj);
     }
 
-    public void DespawnFromPool(ProjectileName tag)
+    public void DespawnFromPool(ProjectilePrefabName tag)
     {
         if (!poolDictionary.ContainsKey(tag)){
             Debug.LogWarning("Pool with tag " + tag + " doesn't exist.", this);
@@ -82,7 +82,7 @@ public class ObjectPooler : MonoBehaviour
         poolDictionary[tag].Enqueue(objectToSpawn);
     }
 
-    public void DespawnAllFromPool(ProjectileName tag){
+    public void DespawnAllFromPool(ProjectilePrefabName tag){
 
         if (!poolDictionary.ContainsKey(tag)) { 
             Debug.LogWarning("Pool with tag " + tag + " doesn't exist.", this); 
@@ -95,7 +95,7 @@ public class ObjectPooler : MonoBehaviour
 
     void InstantiateAllPools()
     {
-        poolDictionary = new Dictionary<ProjectileName, Queue<GameObject>>();
+        poolDictionary = new Dictionary<ProjectilePrefabName, Queue<GameObject>>();
         foreach (Pool pool in pools)
         {
             GameObject poolParent = new ("Pool_" + pool.tag);
@@ -116,9 +116,9 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    void InstantiatePools(List<ProjectileName> projectiles)
+    void InstantiatePools(List<ProjectilePrefabName> projectiles)
     {
-        poolDictionary = new Dictionary<ProjectileName, Queue<GameObject>>();
+        poolDictionary = new Dictionary<ProjectilePrefabName, Queue<GameObject>>();
         foreach (Pool pool in pools)
         {
             if (!projectiles.Contains(pool.tag)) return;

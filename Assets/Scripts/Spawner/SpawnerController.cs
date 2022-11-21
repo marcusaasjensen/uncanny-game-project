@@ -57,7 +57,6 @@ public class SpawnerController : ProjectileController, IPooledObject<SpawnerCont
         _spawningBehaviour.IsTargetting = tmp.IsTargetting;
         _spawningBehaviour.TargettingSpeed = tmp.TargettingSpeed;
         _spawningBehaviour.SpawningOnRhythm = tmp.SpawningOnRhythm;
-        _spawningBehaviour.Rhythm = tmp.Rhythm;
         _spawningBehaviour.SpawnerDirectionAffectsProjectile = tmp.SpawnerDirectionAffectsProjectile;
     }
 

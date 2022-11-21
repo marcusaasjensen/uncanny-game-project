@@ -5,7 +5,7 @@ public class SettingBehaviour : MonoBehaviour
 {
     public AnimationCurveFunction animationCurveFunctions;
     public ProjectileMovement projectile;
-    public RecordingPlayer rhythm;
+
     [Space]
     [Header("Curve")]
     [SerializeField] AnimationCurveType _curveType;
@@ -87,7 +87,6 @@ public class SettingBehaviour : MonoBehaviour
 
     public void SetSpeedBehaviour(SettingBehaviour sb)
     {
-        rhythm = sb.rhythm;
         _period = sb.Period;
         _curveType = sb.CurveType;
         _emphasize = sb.Emphasize;
@@ -124,9 +123,11 @@ public class SettingBehaviour : MonoBehaviour
 
     float GetPeriodOnRhythm()
     {
+        RecordingPlayer rhythm = projectile.ProjectileController.Rhythm;
+
         if (rhythm == null) { 
-            Debug.LogWarning("Rhythm is not referenced. Check reference in Spawned projectile prefab and in all TMP projectile."); 
-            return _period; 
+            Debug.LogWarning("Rhythm reference in projectile controller script is missing."); 
+            return _period;
         }
 
         MouseClickingRecorder.Recording recording = rhythm.recordingDictionary[rhythm.recordingTagToPlay];

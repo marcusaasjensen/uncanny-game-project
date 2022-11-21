@@ -1,4 +1,4 @@
-﻿public enum ProjectileName
+﻿public enum ProjectilePrefabName
 {
     Bullet,
     Red_Bullet,

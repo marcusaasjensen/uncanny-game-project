@@ -6,61 +6,52 @@ using static UnityEngine.Mathf;
 public class SpawningBehaviour : MonoBehaviour
 {
     [SerializeField] SpawnerController _spawnerController;
-    [SerializeField] RecordingPlayer _rhythm;
 
     [Header("Projectile To Spawn")]
-
     [Tooltip("Reference of a projectile configuration with which the parameters of the projectile to spawn are going to be affected.")]
     [SerializeField] ProjectileController _projectileToSpawnConfig;
-
     [Tooltip("Name of the actual projectile (prefab) that is going to spawn.")]
-    [SerializeField] ProjectileName _projectileToSpawn;
+    [SerializeField] ProjectilePrefabName _projectilePrefabToSpawn;
+    [Tooltip("If true, the spawner's direction will affect projectile's direction.")]
+    [SerializeField] bool _spawnerDirectionAffectsProjectile;
 
-    [Header("Spawning")]
-
+    [Header("Timing")]
     [Tooltip("Time between each spawning of a projectile.")]
     [SerializeField][Min(0)] float _timeBetweenSpawns;
-
     [Tooltip("If set to true, the time between each spawn will depends on the rhythm of the recording player.")]
     [SerializeField] bool _spawningOnRhythm;
 
+    [Header("Spawning Direction")]
     [Tooltip("Number of projectiles to spawn at the same time at every 'spawning speed'.")]
     [SerializeField] int _numberOfProjectilesPerSpawn;
-
     [Tooltip("Range at which the spawner spawns projectiles.")]
     [SerializeField] [Range(0,1)] float _spawningRange = 1f;
-
     [Tooltip("Allows you to have multiple ranges of spawning (scope) you can control.")]
     [SerializeField][Min(1)] int _numberOfScopes;
-
     [Tooltip("Range at which each scopes are going to spaw projectiles.")]
     [SerializeField] [Range(0,1)] float _scopeRange;
 
     [Header("Radial Shape")]
-
     [SerializeField] int _numberOfSides;
     [Tooltip("How much a side of the shape bends in terms of each projectile move speed.")]
     [SerializeField] [Range(0, 10)] float _sideBending;
 
-    [Header("Projectile Values On Spawn")]
-
+    [Header("Randomizing Projectiles")]
     [SerializeField] bool _randomizePosition;
     [SerializeField] bool _randomizeDirection;
     [SerializeField] bool _randomizeSpeed;
     [SerializeField] bool _randomizeSize;
 
-    [Header("Options")]
-
+    [Header("Spawning")]
+    [Tooltip("Time before the active spawner starts to spawn projectiles.")]
+    [SerializeField] float _timeBeforeActivating;
     [SerializeField] bool _isSpawning;
     [SerializeField] bool _stopWhenNotVisible;
     [SerializeField] bool _activateWhenVisible;
 
-    [Tooltip("Time before the active spawner starts to spawn projectiles.")]
-    [SerializeField] float _timeBeforeActivating;
-
+    [Header("Targetting")]
     [SerializeField] bool _isTargetting;
     [SerializeField] float _targettingSpeed;
-    [SerializeField] bool _spawnerDirectionAffectsProjectile;
 
     float _rotationOffset;
     bool _hasStartedSpawning;
@@ -77,16 +68,10 @@ public class SpawningBehaviour : MonoBehaviour
         set { _projectileToSpawnConfig = value; }
     }
 
-    public ProjectileName ProjectileToSpawn
+    public ProjectilePrefabName ProjectileToSpawn
     {
-        get { return _projectileToSpawn; }
-        set { _projectileToSpawn = value; }
-    }
-
-    public RecordingPlayer Rhythm
-    {
-        get { return _rhythm; }
-        set { _rhythm = value; }
+        get { return _projectilePrefabToSpawn; }
+        set { _projectilePrefabToSpawn = value; }
     }
 
     void Update()
@@ -251,8 +236,13 @@ public class SpawningBehaviour : MonoBehaviour
 
     float GetSpawningSpeed()
     {
-        MouseClickingRecorder.Recording recording = _rhythm.recordingDictionary[_rhythm.recordingTagToPlay];
-        if (_spawningOnRhythm && _rhythm != null && recording.index < recording.timeBetweenClicks.Count - 1)
+        RecordingPlayer rhythm = _spawnerController.Rhythm;
+
+        if (rhythm == null)
+            return _timeBetweenSpawns;
+
+        MouseClickingRecorder.Recording recording = rhythm.recordingDictionary[rhythm.recordingTagToPlay];
+        if (_spawningOnRhythm && recording.index < recording.timeBetweenClicks.Count - 1)
             return (float)recording.timeBetweenClicks[recording.index];
         else
             return _timeBetweenSpawns;
@@ -298,7 +288,7 @@ public class SpawningBehaviour : MonoBehaviour
 
                 projectileSpawningPosition = GetNewPosition(angle);
 
-                _spawnerController.ObjectPooler.SpawnFromPool(_projectileToSpawn, _projectileToSpawnConfig, projectileSpawningPosition);
+                _spawnerController.ObjectPooler.SpawnFromPool(_projectilePrefabToSpawn, _projectileToSpawnConfig, projectileSpawningPosition);
                 angle += offSet*_scopeRange/ nBProjectilePerScope;
             }
             initAngle += offSet;
