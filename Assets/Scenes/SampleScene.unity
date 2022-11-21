@@ -26077,10 +26077,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67a33bafd9a86d4e89d61f9418592af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnerController: {fileID: 1598943336}
-  rhythm: {fileID: 822734797}
-  projectileToSpawnConfig: {fileID: 8727563243548909548}
-  projectileToSpawn: 2
+  _spawnerController: {fileID: 0}
+  _rhythm: {fileID: 0}
+  _projectileToSpawnConfig: {fileID: 0}
+  _projectileToSpawn: 0
   _timeBetweenSpawns: 0
   _spawningOnRhythm: 0
   _numberOfProjectilesPerSpawn: 0
@@ -26144,8 +26144,8 @@ MonoBehaviour:
   disappearWhenTouchingTarget: 0
   despawnWhenNotVisible: 0
   realTimeConfiguration: 0
-  spawningBehaviour: {fileID: 1598943334}
-  spawnerTMP: {fileID: 1598943336}
+  _spawningBehaviour: {fileID: 0}
+  _spawnerConfiguration: {fileID: 0}
 --- !u!4 &1598943337
 Transform:
   m_ObjectHideFlags: 0
@@ -26305,7 +26305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375db681649f4bf4ebf51008d8ee97f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathSound: {fileID: 8300000, guid: e70a1a77812e28747a61f6e01454096d, type: 3}
+  _deathSound: {fileID: 8300000, guid: e70a1a77812e28747a61f6e01454096d, type: 3}
   _playerController: {fileID: 1752679066}
   _maxHealth: 500
   _health: 500
@@ -26327,7 +26327,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3811127ebe2f4c5408e15a4475d94a00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerController: {fileID: 1752679066}
+  _playerController: {fileID: 1752679066}
+  _collider: {fileID: 1752679060}
   _collisionParticle: {fileID: 1061773088}
   _damageParticle: {fileID: 333003186}
 --- !u!114 &1752679066
@@ -26619,10 +26620,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67a33bafd9a86d4e89d61f9418592af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnerController: {fileID: 1865365109}
-  rhythm: {fileID: 822734797}
-  projectileToSpawnConfig: {fileID: 1598943336}
-  projectileToSpawn: 3
+  _spawnerController: {fileID: 0}
+  _rhythm: {fileID: 0}
+  _projectileToSpawnConfig: {fileID: 0}
+  _projectileToSpawn: 0
   _timeBetweenSpawns: 0
   _spawningOnRhythm: 0
   _numberOfProjectilesPerSpawn: 0
@@ -26686,8 +26687,8 @@ MonoBehaviour:
   disappearWhenTouchingTarget: 0
   despawnWhenNotVisible: 0
   realTimeConfiguration: 0
-  spawningBehaviour: {fileID: 1865365107}
-  spawnerTMP: {fileID: 1865365109}
+  _spawningBehaviour: {fileID: 0}
+  _spawnerConfiguration: {fileID: 0}
 --- !u!4 &1865365110
 Transform:
   m_ObjectHideFlags: 0
@@ -26998,10 +26999,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67a33bafd9a86d4e89d61f9418592af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnerController: {fileID: 6768507520081417528}
-  rhythm: {fileID: 822734797}
-  projectileToSpawnConfig: {fileID: 695966875}
-  projectileToSpawn: 2
+  _spawnerController: {fileID: 6768507520081417528}
+  _rhythm: {fileID: 822734797}
+  _projectileToSpawnConfig: {fileID: 695966875}
+  _projectileToSpawn: 2
   _timeBetweenSpawns: 0.19
   _spawningOnRhythm: 0
   _numberOfProjectilesPerSpawn: 46
@@ -27061,8 +27062,8 @@ MonoBehaviour:
   disappearWhenTouchingTarget: 0
   despawnWhenNotVisible: 0
   realTimeConfiguration: 0
-  spawningBehaviour: {fileID: 4595697673347831860}
-  spawnerTMP: {fileID: 6768507520081417528}
+  _spawningBehaviour: {fileID: 4595697673347831860}
+  _spawnerConfiguration: {fileID: 6768507520081417528}
 --- !u!4 &7873909647209103296
 Transform:
   m_ObjectHideFlags: 0
@@ -27091,7 +27092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb3cf018fdb9cf41ab102b426dacde6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 6768507520081417528}
+  _spawner: {fileID: 6768507520081417528}
   _patternName: 0
 --- !u!114 &7873909647209103299
 MonoBehaviour:
@@ -27171,8 +27172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6a4249731bacb4c9a83ce4ea5186e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectileController: {fileID: 0}
-  _projectileCollider: {fileID: 0}
+  _projectileController: {fileID: 6768507520081417528}
+  _projectileCollider: {fileID: 7873909647209103301}
   _collisionSounds: []
 --- !u!95 &8355601912352608117
 Animator:

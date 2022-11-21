@@ -1,12 +1,5 @@
 using UnityEngine;
 
-public enum PatternName
-{
-    Default,
-    Tentacular,
-    Weed,
-}
-
 [DisallowMultipleComponent]
 [RequireComponent(typeof(SpawnerController))]
 public class SpawnerPatternController : MonoBehaviour
@@ -91,35 +84,35 @@ public class SpawnerPatternController : MonoBehaviour
     void Tentacular()
     {
         SetSpawnerPattern(
-            0.1f, 
-            1, 
-            8, 
-            MovementBehaviour.Static, 
-            _spawner.ProjectileMovement.MoveSpeed, 
-            _spawner.RealTimeConfiguration, 
-            5.0f, 
-            30.0f, 
-            1.0f, 
-            MovementBehaviour.AllCircular, 
-            _spawner.SpawningBehaviour.ProjectileToSpawnConfig.RealTimeConfiguration
+            spawningSpeed: 0.1f, 
+            spawningRange: 1, 
+            nbProj: 8, 
+            spawnerMB: MovementBehaviour.Static, 
+            spawnerSpeed: _spawner.ProjectileMovement.MoveSpeed, 
+            isSpawnerContinous: _spawner.RealTimeConfiguration, 
+            bulletSpeed: 5.0f, 
+            bulletDir: 30.0f, 
+            ttlBullet: 1.0f, 
+            bulletMB: MovementBehaviour.AllCircular, 
+            isBulletContinous: _spawner.SpawningBehaviour.ProjectileToSpawnConfig.RealTimeConfiguration
         );
     }
 
     void Weed()
     {
         SetSpawnerPattern(
-            0.22f, 
-            1, 
-            7, 
-            MovementBehaviour.SimpleCircular, 
-            1.6f, 
-            _spawner.RealTimeConfiguration, 
-            1.3f, 
-            0, 
-            6.0f, 
-            MovementBehaviour.SimpleCircular, 
-            _spawner.SpawningBehaviour.ProjectileToSpawnConfig.RealTimeConfiguration
-        );
+            spawningSpeed: 0.22f,
+            spawningRange: 1,
+            nbProj: 7,
+            spawnerMB: MovementBehaviour.SimpleCircular,
+            spawnerSpeed: 1.6f,
+            isSpawnerContinous: _spawner.RealTimeConfiguration,
+            bulletSpeed: 1.3f,
+            bulletDir: 0,
+            ttlBullet: 6.0f,
+            bulletMB: MovementBehaviour.SimpleCircular,
+            isBulletContinous: _spawner.SpawningBehaviour.ProjectileToSpawnConfig.RealTimeConfiguration
+        ); ;
      }
 
 }

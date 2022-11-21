@@ -17,7 +17,7 @@ public class ProjectileCollision : MonoBehaviour
             return;
         }
 
-        if (!collider.CompareTag(_projectileController.Target.tag)) return; //fix no collision when player is dashing
+        if (!collider.CompareTag(_projectileController.Target.tag)) return;
 
         SoundManager.Instance.PlayRandomSound(_collisionSounds, true);
 
