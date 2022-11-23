@@ -3,19 +3,21 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class SettingBehaviour : MonoBehaviour
 {
-    public AnimationCurveFunction animationCurveFunctions;
-    public ProjectileMovement projectile;
+    [SerializeField] AnimationCurveFunction _animationCurveFunctions;
+    [SerializeField] ProjectileMovement _projectile;
 
     [Space]
     [Header("Curve")]
     [SerializeField] AnimationCurveType _curveType;
     [SerializeField] TimingBehaviour _timingBehaviour;
+
     [Space]
     [Header("Behaviour")]
     [SerializeField] [Min(0.1f)] float _period;
     [SerializeField] float _emphasize;
     [SerializeField] bool _periodDependsOnRhythm;
     [SerializeField] bool _smoothPeriodChanges;
+
     [Space]
     [Header("Settings to affect")]
     [SerializeField] bool _affectSpeed;
@@ -26,6 +28,30 @@ public class SettingBehaviour : MonoBehaviour
     float _elapsedTime;
     float _previousPeriod = 1;
 
+
+    public AnimationCurveFunction AnimationCurveFunctions
+    {
+        get 
+        {
+            if (!_animationCurveFunctions)
+                _animationCurveFunctions = AnimationCurveFunction.Instance;
+
+            return _animationCurveFunctions;
+        }
+        set { _animationCurveFunctions = value; }
+    }
+    public ProjectileMovement Projectile
+    {
+        get 
+        {
+            if (_projectile)
+                return _projectile;
+            else
+                Debug.LogWarning("The Projectile Movement reference in Setting Behaviour script is missing.", this);
+            return null;
+        }
+        set { _projectile = value; }
+    }
     public AnimationCurveType CurveType
     {
         get { return _curveType; }
@@ -72,16 +98,23 @@ public class SettingBehaviour : MonoBehaviour
         set { _timingBehaviour = value; }
     }
 
-    void Awake() => animationCurveFunctions = AnimationCurveFunction.Instance;
+    void Awake()
+    {
+        if(!_animationCurveFunctions)
+            _animationCurveFunctions = AnimationCurveFunction.Instance;
+
+        if (!_projectile)
+            _projectile = GetComponent<ProjectileMovement>();
+    }
 
     void Update()
     {
-        if (animationCurveFunctions == null)
+        if (!_animationCurveFunctions)
         {
-            Debug.LogWarning("animation Curve Functions is not referenced or does not exist. Create a single GameObject with AnimationCurveFunction script associated. Reference the GameObject in this current script.");
+            Debug.LogWarning("The Projectile Movement reference in Setting Behaviour script is missing.");
             return;
         }
-        _curve = animationCurveFunctions.GetCurve(_curveType);
+        _curve = _animationCurveFunctions.GetCurve(_curveType);
         SetLerpFunction();
     }
 
@@ -116,16 +149,16 @@ public class SettingBehaviour : MonoBehaviour
 
     void AffectChosenSetting(float curveValue)
     {
-        if (_affectSpeed) { projectile.MoveSpeed *= curveValue; }
-        if(_affectDirection) { projectile.Direction *= curveValue; }
-        if (_affectSize) { projectile.Size *= curveValue; }
+        if (_affectSpeed) { _projectile.MoveSpeed *= curveValue; }
+        if(_affectDirection) { _projectile.Direction *= curveValue; }
+        if (_affectSize) { _projectile.Size *= curveValue; }
     }
 
     float GetPeriodOnRhythm()
     {
-        RecordingPlayer rhythm = projectile.ProjectileController.Rhythm;
+        RecordingPlayer rhythm = _projectile.ProjectileController.Rhythm;
 
-        if (rhythm == null) { 
+        if (!rhythm) { 
             Debug.LogWarning("Rhythm reference in projectile controller script is missing."); 
             return _period;
         }
@@ -142,9 +175,9 @@ public class SettingBehaviour : MonoBehaviour
     {
         return behaviourName switch
         {
-            TimingBehaviour.ShiftedTime => Time.time + projectile.AppearanceTime,
+            TimingBehaviour.ShiftedTime => Time.time + _projectile.AppearanceTime,
             TimingBehaviour.RealTime => Time.time,
-            TimingBehaviour.EachTime => projectile.AppearanceTime,
+            TimingBehaviour.EachTime => _projectile.AppearanceTime,
             _ => default,
         };
     }

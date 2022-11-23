@@ -15,7 +15,7 @@ public class SpawnerGizmos : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        if (_spawnerController == null)
+        if (!_spawnerController)
         {
             Debug.LogWarning("Spawner Controller reference in Spawner Gizmos script is missing.", this);
             return; 
@@ -23,7 +23,7 @@ public class SpawnerGizmos : MonoBehaviour
 
         SpawningBehaviour behaviour = _spawnerController.SpawningBehaviour;
         
-        if (behaviour == null)
+        if (!behaviour)
         {
             Debug.LogWarning("Spawning Behaviour reference in spawner controller is missing.", this);
             return;
@@ -31,7 +31,7 @@ public class SpawnerGizmos : MonoBehaviour
 
         ProjectileController proj = _spawnerController.SpawningBehaviour.ProjectileToSpawnConfig;
 
-        if(proj == null)
+        if(!proj)
         {
             Debug.LogWarning("Projectile Controller reference (config) in spawner controller is missing.", this);
             return;

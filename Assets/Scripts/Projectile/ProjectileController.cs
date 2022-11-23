@@ -11,7 +11,6 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
     [SerializeField] protected Transform target;
     [SerializeField] RecordingPlayer _rhythm;
 
-
     [Header("Optional")]
     [SerializeField] ProjectileCollision _projectileCollision;
     [SerializeField] ProjectileAnimation _projectileAnimation;

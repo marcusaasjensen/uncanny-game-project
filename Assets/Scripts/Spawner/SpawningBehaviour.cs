@@ -74,6 +74,15 @@ public class SpawningBehaviour : MonoBehaviour
         set { _projectilePrefabToSpawn = value; }
     }
 
+    void Awake()
+    {
+        if (!_spawnerController)
+            _spawnerController = GetComponent<SpawnerController>();
+
+        if (!_projectileToSpawnConfig && _spawnerController.Name == ProjectilePrefabName.SpawnerConfig)
+            _projectileToSpawnConfig = transform.GetChild(0).GetComponent<ProjectileController>();
+    }
+
     void Update()
     {
         SetDesactivationVisibility();
@@ -238,7 +247,7 @@ public class SpawningBehaviour : MonoBehaviour
     {
         RecordingPlayer rhythm = _spawnerController.Rhythm;
 
-        if (rhythm == null)
+        if (!rhythm)
             return _timeBetweenSpawns;
 
         MouseClickingRecorder.Recording recording = rhythm.recordingDictionary[rhythm.recordingTagToPlay];

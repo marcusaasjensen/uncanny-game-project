@@ -27047,14 +27047,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04064161166d393448ffc5ecf33f3336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileName: 3
+  projectileName: 4
   _projectileMovement: {fileID: 2007156949335760027}
   target: {fileID: 1752679068}
   _rhythm: {fileID: 822734797}
   _projectileCollision: {fileID: 7873909647209103302}
   _projectileAnimation: {fileID: 0}
   isImmortal: 1
-  timeToLive: -1
+  timeToLive: 0
   disappearWhenTouchingTarget: 0
   despawnWhenNotVisible: 0
   damage: 7

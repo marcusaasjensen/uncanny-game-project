@@ -9,6 +9,12 @@ public class ProjectileCollision : MonoBehaviour
     [SerializeField] Collider2D _projectileCollider;
     [SerializeField] List<AudioClip> _collisionSounds;
 
+    void Awake()
+    {
+        if(!_projectileCollider)
+            _projectileCollider = GetComponent<Collider2D>();
+    }
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (_projectileController == null)

@@ -9,7 +9,20 @@ public class SpawnerController : ProjectileController, IPooledObject<SpawnerCont
 
     ObjectPooler _objectPooler;
 
-    public void OnObjectSpawn(SpawnerController spawner){
+    void Awake() 
+    {
+        if(!_spawningBehaviour)
+            _spawningBehaviour = gameObject.GetComponent<SpawningBehaviour>();
+
+        if (!_spawnerConfiguration && base.projectileName == ProjectilePrefabName.SpawnerConfig)
+            _spawnerConfiguration = GetComponent<SpawnerController>();
+
+        if (!_objectPooler)
+            _objectPooler = ObjectPooler.Instance;
+    }
+
+    public void OnObjectSpawn(SpawnerController spawner)
+    {
         _spawnerConfiguration = spawner;
 
         base.OnObjectSpawn(spawner);
@@ -18,7 +31,15 @@ public class SpawnerController : ProjectileController, IPooledObject<SpawnerCont
 
     public SpawningBehaviour SpawningBehaviour
     {
-        get { return _spawningBehaviour; }
+        get 
+        { 
+            if(_spawningBehaviour) 
+                return _spawningBehaviour;
+            else
+                Debug.LogWarning($"Spawning Behaviour reference in Spawner Controller script is missing ({projectileName}).", this);
+            
+            return null;
+        }
         set { _spawningBehaviour = value; }
     }
 
@@ -28,11 +49,9 @@ public class SpawnerController : ProjectileController, IPooledObject<SpawnerCont
         set { _spawnerConfiguration = value; }
     }
 
-
     public ObjectPooler ObjectPooler
     {
         get { return _objectPooler; }
-        set { if (_objectPooler != value) { _objectPooler = value; } }
     }
 
     public void SetSpawningBehaviour(SpawningBehaviour tmp)
@@ -60,12 +79,10 @@ public class SpawnerController : ProjectileController, IPooledObject<SpawnerCont
         _spawningBehaviour.SpawnerDirectionAffectsProjectile = tmp.SpawnerDirectionAffectsProjectile;
     }
 
-    void Start() => _objectPooler = ObjectPooler.Instance;
-
     void Update() => ContinuouslyAffectedToggler();
     
     void ContinuouslyAffectedToggler() {
-        if (_spawnerConfiguration == null || !realTimeConfiguration) return;
+        if (!_spawnerConfiguration || !realTimeConfiguration) return;
 
         SetProjectile(_spawnerConfiguration);
         SetSpawningBehaviour(_spawnerConfiguration._spawningBehaviour);
