@@ -36,35 +36,70 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
 
     public ProjectileMovement ProjectileMovement
     {
-        get { return _projectileMovement; }
+        get 
+        {
+            if (_projectileMovement)
+                return _projectileMovement;
+            else
+                Debug.LogWarning("Projectile Movement reference in Projectile Controller script is missing.", this);
+            return null;
+        }
         set { _projectileMovement = value; }
     }
 
     public ProjectileCollision ProjectileCollision
     {
-        get { return _projectileCollision; }
+        get
+        {
+            if (_projectileCollision)
+                return _projectileCollision;
+            else
+                Debug.LogWarning("Projectile Collision reference in Projectile Controller script is missing.", this);
+            return null;
+        }
         set { _projectileCollision = value; }
     }
 
     public ProjectileAnimation ProjectileAnimation
     {
-        get { return _projectileAnimation; }
+        get
+        {
+            if (_projectileAnimation)
+                return _projectileAnimation;
+            else
+                Debug.LogWarning("Projectile Animation reference in Projectile Controller script is missing.", this);
+            return null;
+        }
         set { _projectileAnimation = value; }
     }
 
     public Transform Target
     {
-        get { return target; }
+        get
+        {
+            if (target)
+                return target;
+            else
+                Debug.LogWarning("Target (Transform) reference in Projectile Controller script is missing.", this);
+            return null;
+        }
         set { target = value; }
     }
 
     public RecordingPlayer Rhythm
     {
-        get { return _rhythm; }
+        get
+        {
+            if (_rhythm)
+                return _rhythm;
+            else
+                Debug.LogWarning("Rhythm (Recording Player) reference in Projectile Controller script is missing.", this);
+            return null;
+        }
         set { _rhythm = value; }
     }
 
-    public ProjectilePrefabName Name
+    public ProjectilePrefabName ProjectileName
     {
         get { return projectileName; }
         set { projectileName = value; }
@@ -75,11 +110,13 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
         get { return damage; }
         set { damage = value; }
     }
+
     public float MinimumSizeOfDamage
     {
         get { return minimumSizeOfDamage; }
         set { minimumSizeOfDamage = value; }
     }
+
     public float TimeToLive
     {
         get { return timeToLive; }
@@ -113,7 +150,7 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
 
     void SetInitialValues(ProjectileController projectile)
     {
-        if(_projectileMovement == null)
+        if(!_projectileMovement)
         {
             Debug.LogWarning("Projectile Movement reference in projectile controller is missing.");
             return;
@@ -139,7 +176,8 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
         _projectileMovement.SetProjectileMovement(projectile._projectileMovement);
     }
 
-    void FixedUpdate(){
+    void FixedUpdate()
+    {
         SetVisibility();
         SetDamageAccordingToSize();
     }
@@ -166,7 +204,7 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
 
     void StartLifeTime()
     {
-        if(_projectileAnimation != null)
+        if(_projectileAnimation)
             _projectileAnimation.StartAnimation(); //think for desactivating damage at the start animation or not
         if (isImmortal) return; // make a boolean variable to check if projectile is immortal or not
         if (_selfDespawn != null) { StopCoroutine(_selfDespawn); }
@@ -176,7 +214,7 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
 
     IEnumerator SelfDespawnAfter(float ttl)
     {
-        if (_projectileCollision != null)
+        if (_projectileCollision)
         {
             _projectileCollision.EnableCollider(true);
             yield return new WaitForSeconds(ttl);
@@ -185,7 +223,7 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
         else
             yield return new WaitForSeconds(ttl);
 
-        yield return new WaitForSeconds(_projectileAnimation != null ? _projectileAnimation.EndAnimation() : 0);
+        yield return new WaitForSeconds(_projectileAnimation ? _projectileAnimation.EndAnimation() : 0);
         this.gameObject.SetActive(false);
     }
 }

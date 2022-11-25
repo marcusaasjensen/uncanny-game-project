@@ -24,9 +24,9 @@ public class ProjectileAnimation : MonoBehaviour
 
     float PlayAnimation(AnimationClip animation)
     {
-        if (animation == null || _anim == null) 
+        if (!animation || !_anim) 
         { 
-            Debug.LogWarning("A projectile animation clip reference is missing.", this); 
+            Debug.LogWarning("A projectile animation clip or animator reference in Projectile Animation script missing.", this); 
             return 0f;
         }
         _anim.Play(animation.name);

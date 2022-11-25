@@ -26,7 +26,7 @@ public class SpawnerController : ProjectileController, IPooledObject<SpawnerCont
         _spawnerConfiguration = spawner;
 
         base.OnObjectSpawn(spawner);
-        SetSpawningBehaviour(spawner._spawningBehaviour);
+        SetSpawningBehaviour(spawner.SpawningBehaviour);
     }
 
     public SpawningBehaviour SpawningBehaviour
@@ -36,8 +36,7 @@ public class SpawnerController : ProjectileController, IPooledObject<SpawnerCont
             if(_spawningBehaviour) 
                 return _spawningBehaviour;
             else
-                Debug.LogWarning($"Spawning Behaviour reference in Spawner Controller script is missing ({projectileName}).", this);
-            
+                Debug.LogWarning($"Spawning Behaviour reference in Spawner Controller script is missing.", this);
             return null;
         }
         set { _spawningBehaviour = value; }
@@ -45,13 +44,25 @@ public class SpawnerController : ProjectileController, IPooledObject<SpawnerCont
 
     public SpawnerController SpawnerConfiguration
     {
-        get { return _spawnerConfiguration; }
+        get 
+        {
+            if (_spawnerConfiguration)
+                return _spawnerConfiguration;
+            else
+                Debug.LogWarning("The Spawner Controller reference (as Spawner Configuration) in Spawner Controller script is missing.", this);
+            return null;
+        }
         set { _spawnerConfiguration = value; }
     }
 
     public ObjectPooler ObjectPooler
     {
-        get { return _objectPooler; }
+        get 
+        {
+            if (!_objectPooler)
+                _objectPooler = ObjectPooler.Instance;    
+            return _objectPooler; 
+        }
     }
 
     public void SetSpawningBehaviour(SpawningBehaviour tmp)
@@ -85,6 +96,6 @@ public class SpawnerController : ProjectileController, IPooledObject<SpawnerCont
         if (!_spawnerConfiguration || !realTimeConfiguration) return;
 
         SetProjectile(_spawnerConfiguration);
-        SetSpawningBehaviour(_spawnerConfiguration._spawningBehaviour);
+        SetSpawningBehaviour(_spawnerConfiguration.SpawningBehaviour);
     }
 }

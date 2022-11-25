@@ -10803,8 +10803,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7af3852f85c404d95793d86bbf5058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationCurveFunctions: {fileID: 68498873}
-  projectile: {fileID: 695966869}
+  _animationCurveFunctions: {fileID: 68498873}
+  _projectile: {fileID: 695966869}
   _curveType: 7
   _timingBehaviour: 2
   _period: 1
@@ -26190,8 +26190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7af3852f85c404d95793d86bbf5058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationCurveFunctions: {fileID: 68498873}
-  projectile: {fileID: 1598943335}
+  _animationCurveFunctions: {fileID: 0}
+  _projectile: {fileID: 0}
   _curveType: 0
   _timingBehaviour: 0
   _period: 1
@@ -26716,8 +26716,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7af3852f85c404d95793d86bbf5058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationCurveFunctions: {fileID: 68498873}
-  projectile: {fileID: 1865365108}
+  _animationCurveFunctions: {fileID: 0}
+  _projectile: {fileID: 0}
   _curveType: 0
   _timingBehaviour: 0
   _period: 1
@@ -27104,8 +27104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7af3852f85c404d95793d86bbf5058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationCurveFunctions: {fileID: 68498873}
-  projectile: {fileID: 2007156949335760027}
+  _animationCurveFunctions: {fileID: 68498873}
+  _projectile: {fileID: 2007156949335760027}
   _curveType: 0
   _timingBehaviour: 0
   _period: 0
@@ -27302,8 +27302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7af3852f85c404d95793d86bbf5058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationCurveFunctions: {fileID: 68498873}
-  projectile: {fileID: 8727563243548909547}
+  _animationCurveFunctions: {fileID: 0}
+  _projectile: {fileID: 0}
   _curveType: 0
   _timingBehaviour: 0
   _period: 0

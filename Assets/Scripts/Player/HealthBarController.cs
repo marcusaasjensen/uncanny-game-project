@@ -19,7 +19,7 @@ public class HealthBarController : MonoBehaviour
 
     void OnPLayerDeath()
     {
-        if (_player.Health > 0) return;
+        if (!_player || _player.Health > 0) return;
         _backHealthBar.fillAmount = 0;
         _frontHealthBar.fillAmount = 0;
     }
@@ -33,12 +33,13 @@ public class HealthBarController : MonoBehaviour
 
     public void UpdateHealthUI()
     {
-        if (_backHealthBar == null || _frontHealthBar == null)
+        if (!_backHealthBar || !_frontHealthBar)
         {
-            Debug.LogWarning("An health bar image reference is missing.");
+            Debug.LogWarning("An Health Bar Image reference in the healthBarController script is missing.");
             return; 
         }
-            float fillB = _backHealthBar.fillAmount;
+        
+        float fillB = _backHealthBar.fillAmount;
         float healthFraction = _player.Health / _player.Maxhealth;
         if (fillB > healthFraction)
         {

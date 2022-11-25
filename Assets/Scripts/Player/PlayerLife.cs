@@ -23,8 +23,11 @@ public class PlayerLife : MonoBehaviour
 
     void Awake()
     {
-        _playerSprite = GetComponent<SpriteRenderer>();
-        _playerController = GetComponent<PlayerController>();
+        if(!_playerSprite)
+            _playerSprite = GetComponent<SpriteRenderer>();
+        
+        if(!_playerController)
+            _playerController = GetComponent<PlayerController>();
 
         _health = _maxHealth;
         _currentColorTransitionTime = _colorTransitionTime;

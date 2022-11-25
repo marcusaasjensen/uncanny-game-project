@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [DisallowMultipleComponent]
-[RequireComponent(typeof(ProjectileController))]
+[RequireComponent(typeof(ProjectileController), typeof(Collider2D))]
 public class ProjectileCollision : MonoBehaviour
 {
     [SerializeField] ProjectileController _projectileController;
@@ -17,9 +17,9 @@ public class ProjectileCollision : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (_projectileController == null)
+        if (!_projectileController)
         {
-            Debug.LogWarning("Projectile Controller needs to be referenced in Projectile Collision script.", this);
+            Debug.LogWarning("Projectile Controller reference in Projectile Collision script is missing.", this);
             return;
         }
 
@@ -33,7 +33,7 @@ public class ProjectileCollision : MonoBehaviour
 
     public void EnableCollider(bool value)
     {
-        if (_projectileCollider == null) return;
+        if (!_projectileCollider) return;
         _projectileCollider.enabled = value;
     }
 }

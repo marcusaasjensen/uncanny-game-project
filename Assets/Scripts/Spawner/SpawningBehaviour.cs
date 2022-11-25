@@ -58,13 +58,27 @@ public class SpawningBehaviour : MonoBehaviour
 
     public SpawnerController SpawnerController
     {
-        get { return _spawnerController; }
+        get 
+        {
+            if (_spawnerController)
+                return _spawnerController;
+            else
+                Debug.LogWarning("The Spawner Controller reference in the Spawning Behabiour script is missing.", this);
+            return null;
+        }
         set { _spawnerController = value; }
     }     
 
     public ProjectileController ProjectileToSpawnConfig
     {
-        get { return _projectileToSpawnConfig; }
+        get
+        {
+            if (_projectileToSpawnConfig)
+                return _projectileToSpawnConfig;
+            else
+                Debug.LogWarning("The Projectile To Spawn Configuration (Projectile Controller) reference in the Spawning Behabiour script is missing.", this);
+            return null;
+        }
         set { _projectileToSpawnConfig = value; }
     }
 
@@ -79,7 +93,7 @@ public class SpawningBehaviour : MonoBehaviour
         if (!_spawnerController)
             _spawnerController = GetComponent<SpawnerController>();
 
-        if (!_projectileToSpawnConfig && _spawnerController.Name == ProjectilePrefabName.SpawnerConfig)
+        if (!_projectileToSpawnConfig && _spawnerController.ProjectileName == ProjectilePrefabName.SpawnerConfig)
             _projectileToSpawnConfig = transform.GetChild(0).GetComponent<ProjectileController>();
     }
 

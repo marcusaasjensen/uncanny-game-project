@@ -59,6 +59,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
+
+        if(!_playerController)
+            _playerController = GetComponent<PlayerController>();
+
         _cam = Camera.main.transform;
         _transform = GetComponent<Transform>();
         _defaultScale = _transform.localScale;
@@ -179,10 +183,7 @@ public class PlayerMovement : MonoBehaviour
         return Mathf.Lerp(_dashSpeed, 0, _currentDashDuration / _dashDuration);
     }
 
-    void PlayDashAudio()
-    {
-        SoundManager.Instance.PlayAllSound(_dashSounds);
-    }
+    void PlayDashAudio() => SoundManager.Instance.PlayAllSound(_dashSounds);
 
     void PlayDashParticles()
     {
@@ -210,10 +211,7 @@ public class PlayerMovement : MonoBehaviour
         return Vector2.Lerp(_currentDirection, _inputDirection.normalized, curveValue);
     }
 
-    void Move()
-    {
-        transform.Translate(Time.deltaTime * _currentMoveSpeed * _currentDirection, relativeTo: Space.World);
-    }
+    void Move() => _transform.Translate(Time.deltaTime * _currentMoveSpeed * _currentDirection, relativeTo: Space.World);
 
     float CalculateCurveValue(AnimationCurve curve, float duration)
     {

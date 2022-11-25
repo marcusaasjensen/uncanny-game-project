@@ -11,5 +11,10 @@ public class AnimationCurveFunction : MonoBehaviour
         return animationCurves[(int)type];
     }
 
-    void Awake() { if(Instance == null) Instance = this; }
+    void Awake()
+    {
+        #region Singleton
+        if (!Instance) Instance = this;
+        #endregion
+    }
 }

@@ -23,7 +23,7 @@ public class ObjectPooler : MonoBehaviour
     void Awake()
     {
         #region Singleton
-        if (Instance == null) Instance = this;
+        if (!Instance) Instance = this;
         #endregion
 
         InstantiateAllPools();
