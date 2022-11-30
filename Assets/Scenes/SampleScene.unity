@@ -708,21 +708,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174983036}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96d6520f0b5748141b8b3001f23dd56f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   testProperties:
-    angle: 180
-    strength: 1
-    speed: 5
-    duration: 0.2
-    noisePercent: 0.149
+    angle: 0
+    strength: 0.7
+    speed: 10
+    duration: 0.1
+    noisePercent: 0.227
     dampingPercent: 1
     rotationPercent: 0
   _gameObjectToshake: {fileID: 174983039}
-  _player: {fileID: 1752679062}
 --- !u!114 &174983039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10947,7 +10946,7 @@ MonoBehaviour:
   timeToLive: 0.4
   disappearWhenTouchingTarget: 1
   despawnWhenNotVisible: 0
-  damage: 7
+  damage: 12
   minimumSizeOfDamage: 0.26
   realTimeConfiguration: 1
   _bulletConfiguration: {fileID: 695966875}
@@ -16362,7 +16361,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1393836625}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96d6520f0b5748141b8b3001f23dd56f, type: 3}
   m_Name: 
@@ -16372,11 +16371,10 @@ MonoBehaviour:
     strength: 1
     speed: 10
     duration: 0.2
-    noisePercent: 0.518
+    noisePercent: 0.215
     dampingPercent: 1
     rotationPercent: 0
   _gameObjectToshake: {fileID: 519420033}
-  _player: {fileID: 1752679062}
 --- !u!1 &1400815380
 GameObject:
   m_ObjectHideFlags: 0
@@ -26313,7 +26311,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096725413
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0.9150943, g: 0.9150943, b: 0.9150943, a: 1}
@@ -26589,6 +26587,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerController: {fileID: 1752679066}
   _collider: {fileID: 1752679060}
+  _shakeControllers:
+  - {fileID: 1393836627}
+  - {fileID: 174983038}
   _collisionParticle: {fileID: 1061773088}
   _damageParticle: {fileID: 333003186}
 --- !u!114 &1752679066
@@ -26646,7 +26647,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -235968539
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0, g: 0.98039216, b: 0.3247862, a: 1}
@@ -26855,7 +26856,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096725413
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0.9150943, g: 0.9150943, b: 0.9150943, a: 1}
@@ -27233,7 +27234,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096725413
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0ccc508108fa6ed4fa11b4a467d7f609, type: 3}
   m_Color: {r: 0.9150943, g: 0.9150943, b: 0.9150943, a: 1}
@@ -27492,7 +27493,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096725413
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0.21529014, g: 0.7735849, b: 0.6509629, a: 1}

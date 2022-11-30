@@ -1,10 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] PlayerController _playerController;
     [SerializeField] Collider2D _collider;
+    [SerializeField] List<GameObjectShakeController> _shakeControllers;
 
     [Header("Particles")]
     [SerializeField] ParticleSystem _collisionParticle;
@@ -21,7 +23,10 @@ public class PlayerCollision : MonoBehaviour
             _collider = GetComponent<Collider2D>();
     }
 
-    void FixedUpdate() => ColliderOnDashing();
+    void FixedUpdate() 
+    { 
+        ColliderOnEnabling();
+    }
 
     IEnumerator OnTriggerEnter2D(Collider2D collider)
     {
@@ -31,11 +36,12 @@ public class PlayerCollision : MonoBehaviour
             yield break;
         }
 
-        if (collider.CompareTag("Damage") && !_playerController.PlayerLife.IsInvisible && !_playerController.PlayerMovement.IsDashing)
+        if (collider.CompareTag("Damage"))
         {
             ProjectileController proj = collider.GetComponent<ProjectileController>();
 
             PlayCollisionParticle();
+            ShakeOnCollision();
 
             if(_doDamage != null) yield break;
             _doDamage = _playerController.PlayerLife.DoDamage(proj.Damage);
@@ -51,9 +57,19 @@ public class PlayerCollision : MonoBehaviour
         if(_damageParticle) _damageParticle.Play();
     }
 
-    void ColliderOnDashing()
+    void ShakeOnCollision()
     {
-        if (!_collider && !_playerController)
-            _collider.enabled = !_playerController.PlayerMovement.IsDashing;
+        if (_shakeControllers.Count == 0) return;
+        foreach (GameObjectShakeController controller in _shakeControllers) 
+            controller.Shake();
+    }
+
+    void ColliderOnEnabling()
+    {
+        if (!_collider || !_playerController) return;
+
+        PlayerLife playerLife = _playerController.PlayerLife;
+        
+        _collider.enabled = !_playerController.PlayerMovement.IsDashing && !playerLife.IsInvisible && !playerLife.IsBeingDamaged;
     }
 }
