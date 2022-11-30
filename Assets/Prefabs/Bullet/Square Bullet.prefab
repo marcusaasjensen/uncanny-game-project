@@ -54,14 +54,15 @@ MonoBehaviour:
   projectileName: 2
   _projectileMovement: {fileID: 1460005130517453235}
   target: {fileID: 0}
+  _rhythm: {fileID: 0}
   _projectileCollision: {fileID: -7442901418272769055}
   _projectileAnimation: {fileID: -8295610730354246764}
-  damage: 0
-  minimumSizeOfDamage: 0
   isImmortal: 0
   timeToLive: 0
   disappearWhenTouchingTarget: 0
   despawnWhenNotVisible: 0
+  damage: 0
+  minimumSizeOfDamage: 0
   realTimeConfiguration: 0
   _bulletConfiguration: {fileID: 0}
 --- !u!114 &1460005130517453235
@@ -96,9 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7af3852f85c404d95793d86bbf5058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationCurveFunctions: {fileID: 0}
-  projectile: {fileID: 1460005130517453235}
-  rhythm: {fileID: 0}
+  _animationCurveFunctions: {fileID: 0}
+  _projectile: {fileID: 0}
   _curveType: 0
   _timingBehaviour: 0
   _period: 0
@@ -184,11 +184,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1096725413
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.6600313, a: 0.27058825}
+  m_Color: {r: 0, g: 0.64651275, b: 1, a: 0.27058825}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

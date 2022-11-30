@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraShakeController : MonoBehaviour
+public class GameObjectShakeController : MonoBehaviour
 {
 
-	public CameraShake.CameraShakeProperties testProperties;
+	public GameObjectShake.ShakeProperties testProperties;
+    [SerializeField] GameObjectShake _gameObjectToshake;
     [SerializeField] PlayerLife _player;
 
     void Update()
@@ -22,6 +23,7 @@ public class CameraShakeController : MonoBehaviour
     [ContextMenu("Shake")]
     void Shake()
     {
-        FindObjectOfType<CameraShake>().StartShake(testProperties);
+        if (!_gameObjectToshake) return;
+        _gameObjectToshake.StartShake(testProperties);
     }
 }

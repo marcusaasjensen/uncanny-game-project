@@ -3,13 +3,13 @@ using UnityEngine;
 
 // Sebastian Lague's Code from his CameraShake Tutorial
 
-public class CameraShake : MonoBehaviour
+public class GameObjectShake : MonoBehaviour
 {
 
 	const float maxAngle = 10f;
 	IEnumerator currentShakeCoroutine;
 
-	public void StartShake(CameraShakeProperties properties)
+	public void StartShake(ShakeProperties properties)
 	{
 		if (currentShakeCoroutine != null)
 		{
@@ -20,7 +20,7 @@ public class CameraShake : MonoBehaviour
 		StartCoroutine(currentShakeCoroutine);
 	}
 
-	IEnumerator Shake(CameraShakeProperties properties)
+	IEnumerator Shake(ShakeProperties properties)
 	{
 		float completionPercent = 0;
 		float movePercent = 0;
@@ -70,7 +70,7 @@ public class CameraShake : MonoBehaviour
 
 
 	[System.Serializable]
-	public class CameraShakeProperties
+	public class ShakeProperties
 	{
 		public float angle;
 		public float strength;
@@ -83,7 +83,7 @@ public class CameraShake : MonoBehaviour
 		[Range(0, 1)]
 		public float rotationPercent;
 
-		public CameraShakeProperties(float angle, float strength, float speed, float duration, float noisePercent, float dampingPercent, float rotationPercent)
+		public ShakeProperties(float angle, float strength, float speed, float duration, float noisePercent, float dampingPercent, float rotationPercent)
 		{
 			this.angle = angle;
 			this.strength = strength;

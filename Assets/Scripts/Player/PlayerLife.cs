@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour
 {
@@ -93,4 +92,10 @@ public class PlayerLife : MonoBehaviour
         yield return new WaitForSeconds(_timeBeforeNewDamage);
         _isBeingDamaged = false;
     }
+
+    void OnDisable()
+    {
+        _isBeingDamaged = false;
+    }
+
 }
