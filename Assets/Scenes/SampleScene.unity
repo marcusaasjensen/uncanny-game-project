@@ -10943,8 +10943,8 @@ MonoBehaviour:
   _projectileCollision: {fileID: 0}
   _projectileAnimation: {fileID: 0}
   isImmortal: 0
-  timeToLive: 0.4
-  disappearWhenTouchingTarget: 1
+  timeToLive: 2
+  disappearWhenTouchingTarget: 0
   despawnWhenNotVisible: 0
   damage: 12
   minimumSizeOfDamage: 0.26
@@ -10985,9 +10985,9 @@ MonoBehaviour:
   _emphasize: 1
   _periodDependsOnRhythm: 0
   _smoothPeriodChanges: 0
-  _affectSpeed: 0
+  _affectSpeed: 1
   _affectDirection: 1
-  _affectSize: 0
+  _affectSize: 1
 --- !u!1 &753835024
 GameObject:
   m_ObjectHideFlags: 0
@@ -26517,7 +26517,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.006268084, y: 0.006382853}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -26528,7 +26528,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.72635746, y: 0.6565756}
   m_EdgeRadius: 0
 --- !u!50 &1752679061
 Rigidbody2D:
@@ -27263,17 +27263,17 @@ MonoBehaviour:
   _projectileToSpawnConfig: {fileID: 695966875}
   _projectilePrefabToSpawn: 2
   _spawnerDirectionAffectsProjectile: 1
-  _timeBetweenSpawns: 0.19
+  _timeBetweenSpawns: 1
   _spawningOnRhythm: 0
-  _numberOfProjectilesPerSpawn: 46
+  _numberOfProjectilesPerSpawn: 10
   _spawningRange: 1
   _numberOfScopes: 1
   _scopeRange: 1
-  _numberOfSides: 4
-  _sideBending: 4.22
-  _randomizePosition: 0
+  _numberOfSides: 5
+  _sideBending: 3.41
+  _randomizePosition: 1
   _randomizeDirection: 0
-  _randomizeSpeed: 0
+  _randomizeSpeed: 1
   _randomizeSize: 1
   _timeBeforeActivating: 3
   _isSpawning: 1

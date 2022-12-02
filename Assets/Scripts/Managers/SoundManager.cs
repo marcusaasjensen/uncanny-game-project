@@ -10,7 +10,8 @@ public class SoundManager : MonoBehaviour
     void Awake()
     {
         #region Singleton
-        if (Instance == null) { 
+        if (Instance == null) 
+        { 
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
@@ -29,7 +30,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayRandomSound(List<AudioClip> clipList, bool neverPlayInARow)
     {
-        if (clipList.Count == 0) return;
+        if (clipList.Count == 0 || clipList == null) return;
 
         int randomIndex;
 
@@ -46,12 +47,14 @@ public class SoundManager : MonoBehaviour
 
     public void PlayAllSound(List<AudioClip> clipList)
     {
+        if (clipList == null) return;
         foreach(AudioClip clip in clipList)
             PlaySound(clip);
     }
 
     public void PlayMusic(AudioClip clip)
     {
+        if (clip == null) return;
         _musicSource.PlayOneShot(clip);
     }
 

@@ -14,6 +14,7 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] float _colorTransitionTime;
     [SerializeField] bool _isInvisible = false;
     [SerializeField] List<AudioClip> _hitSounds;
+    [SerializeField] ParticleSystem _deathParticle;
 
     SpriteRenderer _playerSprite;
 
@@ -75,8 +76,16 @@ public class PlayerLife : MonoBehaviour
     public void Die()
     {
         if (_health > 0) return;
-        AudioSource.PlayClipAtPoint(_deathSound, transform.position);
+        SoundManager.Instance.PlaySound(_deathSound);
+        PlayDeathParticles();
         gameObject.SetActive(false);
+    }
+
+    void PlayDeathParticles()
+    {
+        if (!_deathParticle) return;
+        _deathParticle.transform.position = transform.position;
+        _deathParticle.Play();
     }
 
     public IEnumerator DoDamage(float damage)

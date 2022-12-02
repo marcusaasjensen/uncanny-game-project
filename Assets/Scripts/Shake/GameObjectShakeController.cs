@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class GameObjectShakeController : MonoBehaviour
 {
-
 	public GameObjectShake.ShakeProperties testProperties;
     [SerializeField] GameObjectShake _gameObjectToshake;
 
