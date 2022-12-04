@@ -18,7 +18,7 @@ public class MouseClickingRecorder : MonoBehaviour
 
     [Tooltip("Tag of the recording you want to affect when recording your mouse clicks.")]
     public string recordingTag;
-    
+
     [Tooltip("List of all of your timing recordings. Make sure to create an empty or an existing recording and use its tag to record your timings with your mouse.")]
     public List<Recording> recordingList;
 
@@ -30,7 +30,8 @@ public class MouseClickingRecorder : MonoBehaviour
     bool hasStartedRecording;
     bool isFirstClick;
 
-    void Awake() {
+    void Awake() 
+    {
         #region Singleton
         if (Instance == null) Instance = this;
         #endregion
