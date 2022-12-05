@@ -5,19 +5,18 @@ using System.Collections.Generic;
 public class Scenario : MonoBehaviour
 {
     public Animator anim;
-    public SoundManager soundManager;
     public AudioClip music; //to add in an audio library
     public List<RecordingPlayer> rhytmicSet;
     public ProjectileController projectilePrefab;
 
-    public ObjectPooler _objectPooler;
+    void Start() => StartLevelBoss();
 
-    void Awake()
+    void StartLevelBoss()
     {
-        if (_objectPooler == null) _objectPooler = ObjectPooler.Instance;
-    }
+        StartRhythmicSet();
+        SoundManager.Instance.PlayMusic(music);
 
-    void Start() => StartRhythmicSet();
+    }
 
     //A rhytmic set is a set of rhythms that are used in a precised scenario. It can be music rhythm, events when projectiles have to follow a certain rhythm.
     void StartRhythmicSet()
@@ -25,4 +24,6 @@ public class Scenario : MonoBehaviour
         foreach (RecordingPlayer recording in rhytmicSet)
             recording.PlayCurrentRecording();
     }
+
+
 }
