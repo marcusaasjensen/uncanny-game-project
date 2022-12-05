@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelBoss : MonoBehaviour
 {
     [SerializeField] Clown _boss;
-    [SerializeField] 
+    [SerializeField] List<GameObject> _levelElements;
     
     protected IEnumerator StartActionSequence()
     {

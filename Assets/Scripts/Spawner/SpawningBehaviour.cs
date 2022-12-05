@@ -97,6 +97,8 @@ public class SpawningBehaviour : MonoBehaviour
             _projectileToSpawnConfig = transform.GetChild(0).GetComponent<ProjectileController>();
     }
 
+    void OnEnable() => _hasStartedSpawning = false;
+
     void Update()
     {
         SetDesactivationVisibility();
