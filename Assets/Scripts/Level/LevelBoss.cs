@@ -14,19 +14,18 @@ public class LevelBoss : MonoBehaviour
     }
 
     [ContextMenu("Start Sequence")]
-    void StartActionSequence() => StartCoroutine(ActionSequence());
+    public void StartActionSequence() => StartCoroutine(ActionSequence());
 
-    public IEnumerator ActionSequence()
+    IEnumerator ActionSequence()
     {
         if (!_boss)
         {
             Debug.LogWarning("The BossController reference in LevelBoss script is missing.", this);
             yield break;
         }
-
-        yield return StartCoroutine(_boss.AttackController.ThrowBalloons(2));
-        yield return new WaitForSeconds(5f);
-        yield return StartCoroutine(_boss.AttackController.ThrowStars(5));
+        yield return StartCoroutine(_boss.AttackController.ThrowStars(15));
+        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(_boss.AttackController.ThrowBalloons(20));
         print("finished");
     }
 }
