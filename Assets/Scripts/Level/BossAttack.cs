@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackController : MonoBehaviour
+public class BossAttack : MonoBehaviour
 {
     [System.Serializable]
     public class ProjectileAttack
@@ -15,7 +15,16 @@ public class AttackController : MonoBehaviour
 
     Dictionary<string, ProjectileAttack> _attackMap;
 
-    void Awake() => InstiantiateAttacks();
+    void Awake() 
+    { 
+        InstiantiateAttacks();
+        SetAttacksToInactive();
+    }
+
+    void SetAttacksToInactive()
+    {
+        foreach (var attack in _attacks) attack.AttackToDeploy.gameObject.SetActive(false);
+    }
 
     IEnumerator DeployAttack(GameObject go, float time)
     {
