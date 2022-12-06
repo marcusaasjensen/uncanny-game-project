@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class LevelBoss : MonoBehaviour
 {
-    [SerializeField] Clown _boss;
+    [SerializeField] BossController _boss;
     [SerializeField] List<GameObject> _levelElements;
     
-    protected IEnumerator StartActionSequence()
+    public IEnumerator StartActionSequence()
     {
-        yield return null;
+        yield return new WaitForSeconds(1f);
     }
 }
