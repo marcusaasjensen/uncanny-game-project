@@ -8,5 +8,12 @@ public class BossController : MonoBehaviour
     [field: SerializeField] public BossAnimation AnimationController { get; private set; }
     [field: SerializeField] public string Alias { get; private set; }
 
+    void Awake()
+    {
+        if (!AttackController)
+            AttackController = GetComponent<BossAttack>();
 
+        if (!AnimationController)
+            AnimationController = GetComponent<BossAnimation>();
+    }
 }

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -7828293860912942882}
   - component: {fileID: -3614039768606310431}
   m_Layer: 0
-  m_Name: Star Bullet
+  m_Name: Balloon Bullet
   m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a74ee6ee3ddb3e4686af7a58486c2da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileName: 4
+  projectileName: 3
   _projectileMovement: {fileID: 1460005130517453235}
   target: {fileID: 0}
   _rhythm: {fileID: 0}
@@ -187,7 +187,7 @@ SpriteRenderer:
   m_SortingLayerID: -1096725413
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f84c33a6b73095744a444ce58128294f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 596bdd71447799047aec1a3de346ac31, type: 3}
   m_Color: {r: 0, g: 0.64651275, b: 1, a: 0.27058825}
   m_FlipX: 0
   m_FlipY: 0

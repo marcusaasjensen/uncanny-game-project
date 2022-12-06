@@ -11028,7 +11028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a74ee6ee3ddb3e4686af7a58486c2da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileName: 5
+  projectileName: 4
   _projectileMovement: {fileID: 695966869}
   target: {fileID: 1752679068}
   _rhythm: {fileID: 822734797}
@@ -11079,7 +11079,7 @@ MonoBehaviour:
   _smoothPeriodChanges: 0
   _affectSpeed: 1
   _affectDirection: 1
-  _affectSize: 1
+  _affectSize: 0
 --- !u!1 &753835024
 GameObject:
   m_ObjectHideFlags: 0
@@ -16367,7 +16367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a74ee6ee3ddb3e4686af7a58486c2da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileName: 5
+  projectileName: 3
   _projectileMovement: {fileID: 1228727386}
   target: {fileID: 1752679068}
   _rhythm: {fileID: 822734797}
@@ -16395,10 +16395,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectileController: {fileID: 1228727385}
   _settingBehaviour: {fileID: 1228727387}
-  _moveSpeed: 2
+  _moveSpeed: 5
   _direction: 30
   _movementBehaviour: 2
-  _size: 0.7
+  _size: 1
   _rotateToDirection: 1
   _rotation: 0
 --- !u!114 &1228727387
@@ -16798,8 +16798,11 @@ MonoBehaviour:
     prefab: {fileID: 3997874689077100777, guid: 69395d7932b4fa34a8781bc14a21efd4, type: 3}
     size: 300
   - tag: 3
-    prefab: {fileID: 3710304225214708452, guid: 70e363ef0e53fba449f94db805585e8e, type: 3}
-    size: 10
+    prefab: {fileID: 3997874689077100777, guid: c1278eec964d9174facb5c8df19c5f20, type: 3}
+    size: 20
+  - tag: 4
+    prefab: {fileID: 3997874689077100777, guid: de92c35a97cf5e14682dd1a9eab03d41, type: 3}
+    size: 20
 --- !u!4 &1467864065
 Transform:
   m_ObjectHideFlags: 0
@@ -16882,12 +16885,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnerController: {fileID: 1478629478}
   _projectileToSpawnConfig: {fileID: 1228727385}
-  _projectilePrefabToSpawn: 2
+  _projectilePrefabToSpawn: 6
   _spawnerDirectionAffectsProjectile: 1
   _timeBetweenSpawns: 1
   _spawningOnRhythm: 0
-  _numberOfProjectilesPerSpawn: 10
-  _spawningRange: 1
+  _numberOfProjectilesPerSpawn: 5
+  _spawningRange: 0.107
   _numberOfScopes: 1
   _scopeRange: 1
   _numberOfSides: 5
@@ -16896,7 +16899,7 @@ MonoBehaviour:
   _randomizeDirection: 0
   _randomizeSpeed: 1
   _randomizeSize: 1
-  _timeBeforeActivating: 3
+  _timeBeforeActivating: 0
   _isSpawning: 1
   _stopWhenNotVisible: 1
   _activateWhenVisible: 1
@@ -16915,8 +16918,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1228727390}
-  m_Father: {fileID: 2032167677}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1478629481
 MonoBehaviour:
@@ -16940,7 +16943,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478629477}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -32381,7 +32384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2032167676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32412,7 +32415,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7873909647209103296}
-  - {fileID: 1478629480}
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32614,7 +32616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &3957568247684054607
 GameObject:
   m_ObjectHideFlags: 0
@@ -32718,7 +32720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnerController: {fileID: 6768507520081417528}
   _projectileToSpawnConfig: {fileID: 695966875}
-  _projectilePrefabToSpawn: 2
+  _projectilePrefabToSpawn: 6
   _spawnerDirectionAffectsProjectile: 1
   _timeBetweenSpawns: 1
   _spawningOnRhythm: 0
@@ -32731,8 +32733,8 @@ MonoBehaviour:
   _randomizePosition: 1
   _randomizeDirection: 0
   _randomizeSpeed: 1
-  _randomizeSize: 1
-  _timeBeforeActivating: 3
+  _randomizeSize: 0
+  _timeBeforeActivating: 0
   _isSpawning: 1
   _stopWhenNotVisible: 1
   _activateWhenVisible: 1
@@ -32857,7 +32859,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3710304223680846932}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0

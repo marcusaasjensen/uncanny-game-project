@@ -323,7 +323,7 @@ public class SpawningBehaviour : MonoBehaviour
     float GetNewDirection(float dir, float angle,  float offSet)
     {
         return _randomizeDirection ?
-            (Random.Range(angle, angle + offSet * _scopeRange) * _spawningRange) :
+            (dir + (angle + _scopeRange * Random.Range(0, offSet)) * _spawningRange + _rotationOffset) :
             (dir + angle * _spawningRange + _rotationOffset);
     }
 
