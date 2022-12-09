@@ -22,6 +22,7 @@ public class SpawningBehaviour : MonoBehaviour
     [SerializeField] bool _spawningOnRhythm;
 
     [Header("Spawning Direction")]
+    [SerializeField] SpawnerHint _spawnerHint;
     [Tooltip("Number of projectiles to spawn at the same time at every 'spawning speed'.")]
     [SerializeField] int _numberOfProjectilesPerSpawn;
     [Tooltip("Range at which the spawner spawns projectiles.")]
@@ -52,6 +53,9 @@ public class SpawningBehaviour : MonoBehaviour
     [Header("Targetting")]
     [SerializeField] bool _isTargetting;
     [SerializeField] float _targettingSpeed;
+
+    //[Header("Animation")]
+    //[SerializeField] AnimationClip _onSpawnAnimation;
 
     float _rotationOffset;
     bool _hasStartedSpawning;
@@ -95,6 +99,9 @@ public class SpawningBehaviour : MonoBehaviour
 
         if (!_projectileToSpawnConfig && _spawnerController.ProjectileName == ProjectilePrefabName.SpawnerConfig)
             _projectileToSpawnConfig = transform.GetChild(0).GetComponent<ProjectileController>();
+
+        if(!_spawnerHint)
+            _spawnerHint = GetComponent<SpawnerHint>();
     }
 
     void OnEnable() => _hasStartedSpawning = false;
@@ -312,12 +319,20 @@ public class SpawningBehaviour : MonoBehaviour
                     counter++;
 
                 projectileSpawningPosition = GetNewPosition(angle);
-
+                StartCoroutine(SpawnWithHint(proj, projectileSpawningPosition));
                 _spawnerController.ObjectPooler.SpawnFromPool(_projectilePrefabToSpawn, _projectileToSpawnConfig, projectileSpawningPosition);
                 angle += offSet*_scopeRange/ nBProjectilePerScope;
             }
             initAngle += offSet;
         }
+    }
+
+    IEnumerator SpawnWithHint(ProjectileMovement projectile, Vector3 position)
+    {
+        if (_spawnerHint)
+            yield return StartCoroutine(_spawnerHint.Appear(projectile));
+        _spawnerController.ObjectPooler.SpawnFromPool(_projectilePrefabToSpawn, _projectileToSpawnConfig, position);
+        yield return null;
     }
 
     float GetNewDirection(float dir, float angle,  float offSet)
