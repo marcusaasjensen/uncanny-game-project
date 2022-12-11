@@ -13,9 +13,9 @@ public class Scenario : MonoBehaviour
 
     void StartLevelBoss()
     {
+        levelBoss.StartActionSequence();
         StartRhythmicSet();
         SoundManager.Instance.PlayMusic(music);
-        levelBoss.StartActionSequence();
     }
 
     //A rhytmic set is a set of rhythms that are used in a precised scenario. It can be music rhythm, events when projectiles have to follow a certain rhythm.

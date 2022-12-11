@@ -23,9 +23,9 @@ public class LevelBoss : MonoBehaviour
             Debug.LogWarning("The BossController reference in LevelBoss script is missing.", this);
             yield break;
         }
-        yield return StartCoroutine(_boss.AttackController.ThrowStars(15));
+        yield return StartCoroutine(_boss.AttackController.ThrowStars(12, 1));
         yield return new WaitForSeconds(1f);
-        yield return StartCoroutine(_boss.AttackController.ThrowBalloons(20));
+        yield return StartCoroutine(_boss.AttackController.ThrowBalloons(18, 2));
         print("finished");
     }
 }

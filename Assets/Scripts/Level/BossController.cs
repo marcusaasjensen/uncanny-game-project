@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
-    [field: SerializeField] public BossAttack AttackController { get; private set; }
+    [field: SerializeField] public BossAttacks AttackController { get; private set; }
     [field: SerializeField] public BossAnimation AnimationController { get; private set; }
     [field: SerializeField] public string Alias { get; private set; }
 
     void Awake()
     {
         if (!AttackController)
-            AttackController = GetComponent<BossAttack>();
+            AttackController = GetComponent<BossAttacks>();
 
         if (!AnimationController)
             AnimationController = GetComponent<BossAnimation>();
