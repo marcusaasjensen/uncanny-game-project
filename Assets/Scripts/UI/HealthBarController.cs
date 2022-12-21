@@ -5,6 +5,7 @@ public class HealthBarController : MonoBehaviour
 {
     [SerializeField] Image _frontHealthBar;
     [SerializeField] Image _backHealthBar;
+    [SerializeField] Image _backgroundHealthBar;
     [SerializeField] PlayerLife _player;
     [SerializeField] [Min(0)] float _damageChipSpeed = 2f;
     [SerializeField][Min(0)] float _healChipSpeed = 4f;
@@ -17,6 +18,7 @@ public class HealthBarController : MonoBehaviour
         SetNewHealth();
         UpdateHealthUI();
         OnPLayerDeath();
+        OnPlayerOverlaps();
     }
 
     void SetNewHealth()
@@ -33,6 +35,22 @@ public class HealthBarController : MonoBehaviour
         if (!_player || _player.Health > 0) return;
         _backHealthBar.fillAmount = 0;
         _frontHealthBar.fillAmount = 0;
+    }
+
+    void OnPlayerOverlaps()
+    {
+        if (_player.transform.position.x < -4 && _player.transform.position.y > 4)
+        {
+            _frontHealthBar.CrossFadeAlpha(.1f, .1f, false);
+            _backHealthBar.CrossFadeAlpha(.1f, .1f, false);
+            _backgroundHealthBar.CrossFadeAlpha(.1f, .1f, false);
+        }
+        else
+        {
+            _frontHealthBar.CrossFadeAlpha(1f, .2f, false);
+            _backHealthBar.CrossFadeAlpha(1f, .2f, false);
+            _backgroundHealthBar.CrossFadeAlpha(1f, .2f, false);
+        }
     }
 
 

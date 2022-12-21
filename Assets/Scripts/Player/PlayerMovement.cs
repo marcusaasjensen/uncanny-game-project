@@ -100,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         float xOffset = 10;
         float yOffset = 5.5f;
         float clampedXPosition = Mathf.Clamp(_transform.position.x, -xOffset + _cam.position.x, xOffset + _cam.position.x);
-        float clampedYPosition = Mathf.Clamp(_transform.position.y, -yOffset + _cam.position.y, yOffset + _cam.position.y);
+        float clampedYPosition = Mathf.Clamp(_transform.position.y, -yOffset + .4f + _cam.position.y, yOffset + _cam.position.y);
         _transform.position = new Vector3(clampedXPosition, clampedYPosition, 0);
     }
 

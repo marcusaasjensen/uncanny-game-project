@@ -33,13 +33,15 @@ public class HealthFillerCheckPoint : MonoBehaviour
     {
         if (_hasBeenActivated) return;
         if (!_progressBarController) return;
-        if (_progressBarController.GetCurrentTime() < _timeOnTimeline) return;
+        if (_progressBarController.CurrentTime < _timeOnTimeline) return;
         
         ActivateHealthFillerCheckPoint();
     }
 
     void ActivateHealthFillerCheckPoint()
     {
+        if (_playerLife.Health <= 0) return;
+
         if (_glowUpAnimation && _anim)
             _anim.Play(_glowUpAnimation.name);
 

@@ -24,8 +24,8 @@ public class ProgressBarController : MonoBehaviour
         _currentTime += Time.deltaTime;
     }
 
-    public float GetCurrentTime()
+    public float CurrentTime
     {
-        return _currentTime;
+        get { return _currentTime; }
     }
 }
