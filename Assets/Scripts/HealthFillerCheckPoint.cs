@@ -5,6 +5,7 @@ public class HealthFillerCheckPoint : MonoBehaviour
     [SerializeField] PlayerLife _playerLife;
     [SerializeField] AnimationClip _glowUpAnimation;
     [SerializeField] Animator _anim;
+    [SerializeField] AudioClip _glowUpAudio;
     [SerializeField] ProgressBarController _progressBarController;
     [SerializeField] float _timeOnTimeline;
 

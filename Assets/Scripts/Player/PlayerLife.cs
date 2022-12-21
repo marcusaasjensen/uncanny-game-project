@@ -63,7 +63,7 @@ public class PlayerLife : MonoBehaviour
     void Update()
     {
         _health = ClampHealth(_health);
-        Die();
+        OnDie();
         SetPlayerSpriteColor();
     }
 
@@ -73,7 +73,7 @@ public class PlayerLife : MonoBehaviour
         _currentColorTransitionTime += Time.deltaTime;
     }
 
-    public void Die()
+    public void OnDie()
     {
         if (_health > 0) return;
         SoundManager.Instance.PlaySound(_deathSound);
@@ -110,7 +110,7 @@ public class PlayerLife : MonoBehaviour
     public void FillHealth()
     {
         _health = _maxHealth;
-        print(_health);
+        print("Player's health filled!");
     }
 
 }
