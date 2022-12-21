@@ -107,4 +107,10 @@ public class PlayerLife : MonoBehaviour
         _isBeingDamaged = false;
     }
 
+    public void FillHealth()
+    {
+        _health = _maxHealth;
+        print(_health);
+    }
+
 }
