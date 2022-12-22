@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7279123173932583764}
   - component: {fileID: -5012754807161717899}
   - component: {fileID: 7279123173932583765}
+  - component: {fileID: 2830352571317494329}
   m_Layer: 5
   m_Name: HealthFiller
   m_TagString: Untagged
@@ -60,8 +61,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerLife: {fileID: 0}
-  _glowUpAnimation: {fileID: 0}
-  _anim: {fileID: 0}
+  _glowUpAnimation: {fileID: 7400000, guid: 907ff1bce151f6849ad6e478b6daf023, type: 2}
+  _anim: {fileID: 2830352571317494329}
+  _glowUpAudio: {fileID: 0}
+  _progressBarController: {fileID: 0}
+  _timeOnTimeline: 0
 --- !u!114 &7279123173932583765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,3 +96,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &2830352571317494329
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7279123173932583771}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 348b2f6f70298ab4980621a86092bf8e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

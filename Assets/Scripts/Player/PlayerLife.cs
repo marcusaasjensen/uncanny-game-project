@@ -14,7 +14,9 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] float _colorTransitionTime;
     [SerializeField] bool _isInvisible = false;
     [SerializeField] List<AudioClip> _hitSounds;
+    [SerializeField] AudioClip _healingSound;
     [SerializeField] ParticleSystem _deathParticle;
+    [SerializeField] ParticleSystem _healingParticle;
 
     SpriteRenderer _playerSprite;
 
@@ -102,14 +104,17 @@ public class PlayerLife : MonoBehaviour
         _isBeingDamaged = false;
     }
 
-    void OnDisable()
-    {
-        _isBeingDamaged = false;
-    }
+    void OnDisable() => _isBeingDamaged = false;
 
     public void FillHealth()
     {
         _health = _maxHealth;
+
+        if (_healingParticle)
+            _healingParticle.Play();
+
+        SoundManager.Instance.PlaySound(_healingSound);
+        
         print("Player's health filled!");
     }
 
