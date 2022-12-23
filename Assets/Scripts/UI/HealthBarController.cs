@@ -1,17 +1,31 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBarController : MonoBehaviour
 {
+    [SerializeField] PlayerLife _player;
+
+    [Header("Bar images")]
     [SerializeField] Image _frontHealthBar;
     [SerializeField] Image _backHealthBar;
     [SerializeField] Image _backgroundHealthBar;
-    [SerializeField] PlayerLife _player;
+    
+    [Header("Speed transitioning")]
     [SerializeField] [Min(0)] float _damageChipSpeed = 2f;
     [SerializeField][Min(0)] float _healChipSpeed = 4f;
+    
+    [Header("Critical state")]
+    [SerializeField] [Min(-1)] float _criticalThreshold = 10f;
+    [SerializeField] AnimationClip _criticalStateAnimation;
+    [SerializeField] Animator _anim;
+    [SerializeField] AudioClip _criticalHintSound;
 
     float _lerpTimer = 0f;
     float _newHealth = 0;
+    bool _hasPassedCriticalThreshold = false;
+
+    IEnumerator _criticalAnimation;
 
     void Update()
     {
@@ -19,6 +33,7 @@ public class HealthBarController : MonoBehaviour
         UpdateHealthUI();
         OnPLayerDeath();
         OnPlayerOverlaps();
+        OnCriticalState();
     }
 
     void SetNewHealth()
@@ -27,6 +42,39 @@ public class HealthBarController : MonoBehaviour
         {
             _lerpTimer = 0f;
             _newHealth = _player.Health;
+        }
+    }
+
+    void OnCriticalState()
+    {
+        if (_player.Health < _criticalThreshold && _player.Health > 0)
+        {
+            if (!_hasPassedCriticalThreshold)
+            {
+                _hasPassedCriticalThreshold = true;
+                _criticalAnimation = AnimateCriticalBar();
+                StartCoroutine(_criticalAnimation);
+            }
+        }
+        else
+        {
+            _hasPassedCriticalThreshold = false;
+            if(_criticalAnimation != null)
+                StopCoroutine(_criticalAnimation);
+        }
+
+    }
+
+    IEnumerator AnimateCriticalBar()
+    {
+        while (_hasPassedCriticalThreshold)
+        {
+            if (_criticalHintSound)
+                SoundManager.Instance.PlaySound(_criticalHintSound);
+            if (_anim && _criticalStateAnimation)
+                _anim.Play(_criticalStateAnimation.name, -1, 0);
+
+            yield return new WaitForSeconds(1f);
         }
     }
 

@@ -585,12 +585,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d777af23da9cade45aa8d1c49010fa9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 1752679062}
   _frontHealthBar: {fileID: 1405327632}
   _backHealthBar: {fileID: 1268630592}
   _backgroundHealthBar: {fileID: 2084717160}
-  _player: {fileID: 1752679062}
   _damageChipSpeed: 0.5
   _healChipSpeed: 1
+  _criticalThreshold: 30
+  _criticalStateAnimation: {fileID: 7400000, guid: ae520e1545f8bdc4184818d7db52c3dd, type: 2}
+  _anim: {fileID: 1405327634}
+  _criticalHintSound: {fileID: 8300000, guid: b47a25c44081a0d43bddbfd311920251, type: 3}
 --- !u!1 &131471324
 GameObject:
   m_ObjectHideFlags: 0
@@ -16260,7 +16264,7 @@ MonoBehaviour:
   timeToLive: 1
   disappearWhenTouchingTarget: 0
   despawnWhenNotVisible: 0
-  damage: 12
+  damage: 20
   minimumSizeOfDamage: 0.1
   realTimeConfiguration: 1
   _bulletConfiguration: {fileID: 695966875}
@@ -22361,6 +22365,7 @@ GameObject:
   - component: {fileID: 1405327631}
   - component: {fileID: 1405327633}
   - component: {fileID: 1405327632}
+  - component: {fileID: 1405327634}
   m_Layer: 5
   m_Name: Front HealthBar
   m_TagString: Untagged
@@ -22401,7 +22406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.71693945, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.7176471, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -22426,6 +22431,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405327630}
   m_CullTransparentMesh: 1
+--- !u!95 &1405327634
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405327630}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0d90c8e002566df4a9026fac85268b62, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1423547741
 GameObject:
   m_ObjectHideFlags: 0
@@ -27408,7 +27433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1478629478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43168,7 +43193,7 @@ MonoBehaviour:
   timeToLive: 0
   disappearWhenTouchingTarget: 0
   despawnWhenNotVisible: 0
-  damage: 7
+  damage: 15
   minimumSizeOfDamage: 0
   realTimeConfiguration: 0
   _spawningBehaviour: {fileID: 4595697673347831860}
