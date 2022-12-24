@@ -16261,7 +16261,7 @@ MonoBehaviour:
   _projectileCollision: {fileID: 0}
   _projectileAnimation: {fileID: 0}
   isImmortal: 0
-  timeToLive: 1
+  timeToLive: 1.5
   disappearWhenTouchingTarget: 0
   despawnWhenNotVisible: 0
   damage: 20
@@ -22579,7 +22579,7 @@ MonoBehaviour:
     prefab: {fileID: 3997874689077100777, guid: c1278eec964d9174facb5c8df19c5f20, type: 3}
     size: 40
   - tag: 4
-    prefab: {fileID: 3997874689077100777, guid: de92c35a97cf5e14682dd1a9eab03d41, type: 3}
+    prefab: {fileID: 8418500634850148430, guid: 1b0c4ad7c5ea33042aed69b4cb5dfe3b, type: 3}
     size: 20
 --- !u!4 &1467864065
 Transform:
@@ -42706,6 +42706,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 947c67a3674db1c4db3b662189aa3dd0, type: 3}
   _dashSpeed: 2
   _dashDuration: 0.2
+  _dashMinimumMagnitude: 0.7
   _timeBeforeNextDash: 0.5
   _minimumSize: 0.9
   _changeScale: 1

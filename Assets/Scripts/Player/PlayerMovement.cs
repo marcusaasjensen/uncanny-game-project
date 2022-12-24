@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] List<AudioClip> _dashSounds;
     [SerializeField] float _dashSpeed;
     [SerializeField] float _dashDuration;
+    [SerializeField] [Range(0, 1)] float _dashMinimumMagnitude = .7f;
     [SerializeField] [Min(0)] float _timeBeforeNextDash;
     [SerializeField] float _minimumSize;
     [SerializeField] bool _changeScale;
@@ -168,7 +169,7 @@ public class PlayerMovement : MonoBehaviour
 
     float CalculateDashSpeed()
     {
-        bool _isMovingEnough = Mathf.Abs(_currentDirection.magnitude) > .8f;
+        bool _isMovingEnough = Mathf.Abs(_currentDirection.magnitude) > _dashMinimumMagnitude;
         _currentTimeBeforeNextDash += Time.deltaTime;
         if (_dashInput.triggered && _currentTimeBeforeNextDash >= _timeBeforeNextDash && _isMovingEnough)
         {

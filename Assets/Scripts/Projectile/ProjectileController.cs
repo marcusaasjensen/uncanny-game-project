@@ -32,7 +32,7 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
     [Tooltip("The projectile can be affected in real-time with the configuration instead of being affected only when spawning.")]
     [SerializeField] protected bool realTimeConfiguration;
 
-    IEnumerator _selfDespawn;
+    IEnumerator _lifeTime;
 
     public ProjectileMovement ProjectileMovement
     {
@@ -144,7 +144,12 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
     public void OnObjectSpawn(ProjectileController projectile){
         SetInitialValues(projectile); //values that will change only when spawning
         SetProjectile(projectile);
-        StartLifeTime();
+        
+        if (_lifeTime != null)
+            StopCoroutine(_lifeTime);
+
+        _lifeTime = StartLifeTime();
+        StartCoroutine(_lifeTime);
     }
 
 
@@ -202,28 +207,29 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
                damage = tmpDamage;
     }
 
-    void StartLifeTime()
+    IEnumerator StartLifeTime()
     {
-        if(_projectileAnimation)
-            _projectileAnimation.StartAnimation(); //think for desactivating damage at the start animation or not
-        if (isImmortal) return; // make a boolean variable to check if projectile is immortal or not
-        if (_selfDespawn != null) { StopCoroutine(_selfDespawn); }
-        _selfDespawn = SelfDespawnAfter(timeToLive);
-        StartCoroutine(_selfDespawn);
-    }
+        //Start life time with start animation
+        EnableProjectileCollision(false);
 
-    IEnumerator SelfDespawnAfter(float ttl)
-    {
-        if (_projectileCollision)
-        {
-            _projectileCollision.EnableCollider(true);
-            yield return new WaitForSeconds(ttl);
-            _projectileCollision.EnableCollider(false);
-        }
-        else
-            yield return new WaitForSeconds(ttl);
+        yield return new WaitForSeconds(_projectileAnimation ? _projectileAnimation.StartAnimation() : 0);
+        
+        //enable collider during life time
+        EnableProjectileCollision(true);
+        
+        //Doesn't continue lifetime if immortal
+        while (isImmortal);
+        yield return new WaitForSeconds(timeToLive);
+        EnableProjectileCollision(false);
 
+
+        //End life time with ending animation.
         yield return new WaitForSeconds(_projectileAnimation ? _projectileAnimation.EndAnimation() : 0);
         this.gameObject.SetActive(false);
+    }
+
+    void EnableProjectileCollision(bool val)
+    {
+        if (_projectileCollision) _projectileCollision.EnableCollider(val);
     }
 }
