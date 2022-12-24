@@ -112,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
         _currentMoveSpeed = CalculateSmoothSpeed() + _currentDashSpeed * Time.deltaTime * 100;
         _currentDirection = CalculateSmoothDirection();
 
-        _isDashing = _currentDashSpeed > 0 ? true : false;
+        _isDashing = _currentDashSpeed > 0;
 
         Move();
         RotateToDirection();
@@ -168,8 +168,9 @@ public class PlayerMovement : MonoBehaviour
 
     float CalculateDashSpeed()
     {
+        bool _isMovingEnough = Mathf.Abs(_currentDirection.magnitude) > .8f;
         _currentTimeBeforeNextDash += Time.deltaTime;
-        if (_dashInput.triggered && _currentTimeBeforeNextDash >= _timeBeforeNextDash && _currentDirection != Vector2.zero)
+        if (_dashInput.triggered && _currentTimeBeforeNextDash >= _timeBeforeNextDash && _isMovingEnough)
         {
             _currentTimeBeforeNextDash = 0;
             _currentDashDuration = 0;
@@ -178,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // if is no more moving after dash, there will be no more dash effect.
-        _currentDashDuration = _isMoving ? _currentDashDuration + Time.deltaTime : _dashDuration;
+        _currentDashDuration = _isMovingEnough ? _currentDashDuration + Time.deltaTime : _dashDuration;
 
         return Mathf.Lerp(_dashSpeed, 0, _currentDashDuration / _dashDuration);
     }
