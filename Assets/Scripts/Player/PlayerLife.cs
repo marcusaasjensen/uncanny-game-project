@@ -23,6 +23,8 @@ public class PlayerLife : MonoBehaviour
     float _currentColorTransitionTime;
     bool _isBeingDamaged = false;
 
+    IEnumerator _invisibleAnimation;
+
     void Awake()
     {
         if(!_playerSprite)
@@ -75,6 +77,37 @@ public class PlayerLife : MonoBehaviour
         _currentColorTransitionTime += Time.deltaTime;
     }
 
+    IEnumerator MakeInvisible(float time)
+    {
+        if (_isInvisible && _invisibleAnimation == null) yield break;
+
+        _isInvisible = true;
+
+        if(_invisibleAnimation != null)
+            StopCoroutine(_invisibleAnimation);
+
+        _invisibleAnimation = InvisibleAnimation();
+        StartCoroutine(_invisibleAnimation);
+
+        yield return new WaitForSeconds(time);
+        _isInvisible = false;
+    }
+
+    IEnumerator InvisibleAnimation()
+    {
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        
+        while (_isInvisible)
+        { 
+            sprite.enabled = false;
+            yield return new WaitForSeconds(.1f);
+            sprite.enabled = true;
+            yield return new WaitForSeconds(.2f);
+        }
+        sprite.enabled = true;
+
+    }
+
     public void OnDie()
     {
         if (_health > 0) return;
@@ -98,6 +131,7 @@ public class PlayerLife : MonoBehaviour
             _currentColorTransitionTime = 0;
             _health -= damage;
             _isBeingDamaged = true;
+            StartCoroutine(MakeInvisible(_timeBeforeNewDamage));
 
         }
         yield return new WaitForSeconds(_timeBeforeNewDamage);
@@ -114,6 +148,8 @@ public class PlayerLife : MonoBehaviour
             _healingParticle.Play();
 
         SoundManager.Instance.PlaySound(_healingSound);
+
+        StartCoroutine(MakeInvisible(1.5f));
         
         print("Player's health filled!");
     }

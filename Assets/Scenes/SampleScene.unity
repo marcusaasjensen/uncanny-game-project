@@ -42509,7 +42509,7 @@ MonoBehaviour:
   _maxHealth: 100
   _health: 100
   _timeBeforeNewDamage: 0.5
-  _damageSpriteColor: {r: 1, g: 0.43867922, b: 0.8210132, a: 1}
+  _damageSpriteColor: {r: 1, g: 0.35243496, b: 0.3254717, a: 1}
   _colorTransitionTime: 2
   _isInvisible: 0
   _hitSounds:
@@ -42706,7 +42706,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 947c67a3674db1c4db3b662189aa3dd0, type: 3}
   _dashSpeed: 2
   _dashDuration: 0.2
-  _timeBeforeNextDash: 0.4
+  _timeBeforeNextDash: 0.5
   _minimumSize: 0.9
   _changeScale: 1
   _isRotatingToDirection: 1
