@@ -114,6 +114,7 @@ public class PlayerLife : MonoBehaviour
         SoundManager.Instance.PlaySound(_deathSound);
         PlayDeathParticles();
         gameObject.SetActive(false);
+        LevelEvents.level.GameOver();
     }
 
     void PlayDeathParticles()

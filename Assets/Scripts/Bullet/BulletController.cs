@@ -17,7 +17,7 @@ public class BulletController : ProjectileController, IPooledObject<BulletContro
 
     void SetProjectileConfiguration()
     {
-        if (_bulletConfiguration == null || !realTimeConfiguration) return;
+        if (!_bulletConfiguration || !realTimeConfiguration) return;
         SetProjectile(_bulletConfiguration);
     }
 }
