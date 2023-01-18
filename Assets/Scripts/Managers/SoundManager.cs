@@ -58,6 +58,8 @@ public class SoundManager : MonoBehaviour
         _musicSource.PlayOneShot(clip);
     }
 
+    public void StopMusic() => _musicSource.Stop();
+
     public void ChangeMasterVolume(float volume)
     {
         AudioListener.volume = volume;

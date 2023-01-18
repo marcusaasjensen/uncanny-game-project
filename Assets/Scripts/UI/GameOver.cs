@@ -9,6 +9,7 @@ public class GameOver : MonoBehaviour
     public void OnGameOver()
     {
         _gameOverScreen.SetActive(true);
+        SoundManager.Instance.StopMusic();
         IsGameOver = true;
     }
 
