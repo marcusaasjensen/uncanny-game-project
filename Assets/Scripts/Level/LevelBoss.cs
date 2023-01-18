@@ -15,6 +15,7 @@ public class LevelBoss : MonoBehaviour
 
     [ContextMenu("Start Sequence")]
     public void StartActionSequence() => StartCoroutine(ActionSequence());
+    public void StopActionSequence() => StopCoroutine(ActionSequence());
 
     IEnumerator ActionSequence()
     {

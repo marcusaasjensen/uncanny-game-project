@@ -5942,6 +5942,7 @@ GameObject:
   - component: {fileID: 338429010}
   - component: {fileID: 338429012}
   - component: {fileID: 338429011}
+  - component: {fileID: 338429013}
   m_Layer: 5
   m_Name: GameOverBlackScreen
   m_TagString: Untagged
@@ -6007,6 +6008,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338429009}
   m_CullTransparentMesh: 1
+--- !u!114 &338429013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338429009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 042e3420e40618f488119e5f0c714639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  img: {fileID: 338429011}
+  _fadeSpeed: 1
 --- !u!1 &400444167
 GameObject:
   m_ObjectHideFlags: 0
@@ -11274,6 +11289,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1674115616}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &592671660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 592671662}
+  - component: {fileID: 592671661}
+  m_Layer: 0
+  m_Name: Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &592671661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592671660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c936dd223fe54b34b8578db23a171733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &592671662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592671660}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1211.0568, y: 794.2052, z: -146.82483}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &640555765
 GameObject:
@@ -22082,6 +22141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameOverScreen: {fileID: 338429009}
+  _scenario: {fileID: 896471117}
 --- !u!4 &1230640775
 Transform:
   m_ObjectHideFlags: 0
@@ -43162,7 +43222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _progressBar: {fileID: 63339894}
   _totalTime: 40
-  _gameOver: {fileID: 0}
+  _gameOver: {fileID: 1230640774}
 --- !u!114 &2007156949335760027
 MonoBehaviour:
   m_ObjectHideFlags: 0

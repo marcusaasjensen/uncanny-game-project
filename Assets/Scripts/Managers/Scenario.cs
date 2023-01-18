@@ -25,5 +25,18 @@ public class Scenario : MonoBehaviour
             recording.PlayCurrentRecording();
     }
 
+    void StopRhythmicSet()
+    {
+        foreach (RecordingPlayer recording in rhytmicSet)
+            recording.StopRecording();
+    }
+
+    public void StopLevelBoss()
+    {
+        levelBoss.StopActionSequence();
+        StopRhythmicSet();
+        SoundManager.Instance.StopMusic();
+    }
+
 
 }

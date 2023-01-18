@@ -22,7 +22,8 @@ public class ProgressBarController : MonoBehaviour
         Progress();
     }
 
-    void Progress() {
+    void Progress() 
+    {
         _currentProgress = _currentTime / _totalTime;
 
         _progressBar.fillAmount = Mathf.Lerp(0, 1, _currentProgress);
@@ -30,7 +31,8 @@ public class ProgressBarController : MonoBehaviour
         _currentTime += Time.deltaTime;
     }
 
-    void RestartProgress() { 
+    void RestartProgress() 
+    { 
         _currentTime = 0;
         _currentProgress = 0;
     }

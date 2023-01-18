@@ -45,6 +45,16 @@ public class RecordingPlayer : MonoBehaviour
         StartCoroutine(PlayRecordingFromStart(recordingTagToPlay));
     }
 
+    public void StopRecording()
+    {
+        if (mouseClickingRecorder.ContainsRecordingWithTag(recordingTagToPlay) == null)
+        {
+            Debug.LogWarning("The recording \"" + recordingTagToPlay + "\" does not exist.");
+            return;
+        }
+        StopCoroutine(PlayRecordingFromStart(recordingTagToPlay));
+    }
+
     IEnumerator PlayRecordingFromStart(string tag)
     {
         yield return new WaitForSeconds(timeBeforeStarting);

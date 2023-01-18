@@ -12,12 +12,10 @@ public class GameOverScreen : MonoBehaviour
         if (img) img.color = new Color(img.color.r, img.color.b, img.color.g, 0);
     }
 
-    void Update()
-    {
-        ShowOnScreenByFade();
-    }
+    void Update() => ShowOnScreenByFade();
 
-    void ShowOnScreenByFade() {
+    void ShowOnScreenByFade() 
+    {
         if (img.color.a >= 225) return;
         img.color = new Color(img.color.r, img.color.b, img.color.g, img.color.a + _fadeSpeed * Time.deltaTime);
     }
