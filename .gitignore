@@ -30,6 +30,8 @@
 # JetBrains
 
 .idea/
+/.idea
+.idea
 
 # Gradle cache directory
 .gradle/
