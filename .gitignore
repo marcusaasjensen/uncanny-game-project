@@ -27,6 +27,10 @@
 .vs/
 /.vsconfig
 
+# JetBrains
+
+.idea/
+
 # Gradle cache directory
 .gradle/
 
