@@ -37,6 +37,4 @@ public class Scenario : MonoBehaviour
         StopRhythmicSet();
         SoundManager.Instance.StopMusic();
     }
-
-
 }
