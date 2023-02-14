@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
@@ -16,6 +13,7 @@ public class Win : MonoBehaviour
 
     void Start() 
     {
+        gameWinScreen.SetActive(false);
         LevelEvents.level.OnLevelFinished += GameWin;
         playerActions = new PlayerInputActions();
         nextSceneInput = playerActions.Game.NextScene;
@@ -28,8 +26,6 @@ public class Win : MonoBehaviour
 
         if(nextSceneInput.ReadValue<float>() > 0.1f)
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
-
     }
 
     void OnLevelEnd()
@@ -49,7 +45,6 @@ public class Win : MonoBehaviour
 
     void GameWin() 
     {
-        print("Level win!");
         StartCoroutine(GameWinCoroutine());
     }
 

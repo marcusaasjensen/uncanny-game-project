@@ -38,7 +38,6 @@ public class ProgressBarController : MonoBehaviour
             _hasEnded = true;
         else
             _hasEnded = false;
-        print(_currentTime);
     }
 
     void RestartProgress() 
