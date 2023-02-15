@@ -1,23 +1,32 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-
-public class GameOverScreen : MonoBehaviour
+using TMPro;
+public class GameOverScreen : GameScreen
 {
-    [SerializeField] Image img;
-    [SerializeField] float _fadeSpeed;
+    [SerializeField] Image background;
+    [SerializeField] float backgroundFadeSpeed;
+    [SerializeField] TextMeshProUGUI gameOverText;
+    [SerializeField] TextMeshProUGUI pressSpaceText;
+    [SerializeField] float timeBetweenTexts = 1;
 
-    void Start()
+    IEnumerator Start()
     {
-        img = GetComponent<Image>();
-        if (img) img.color = new Color(img.color.r, img.color.b, img.color.g, 0);
+        if (background) background.color = new Color(background.color.r, background.color.b, background.color.g, 0);
+        gameOverText.color = Color.clear;
+        pressSpaceText.color = Color.clear;
+        yield return new WaitForSeconds(timeBetweenTexts);
+        yield return StartCoroutine(AppearText(gameOverText, Color.clear, Color.white));
+        yield return new WaitForSeconds(timeBetweenTexts);
+        yield return StartCoroutine(AppearText(pressSpaceText, Color.clear, Color.white));
     }
 
-    void Update() => ShowOnScreenByFade();
+    void Update() => ShowGameOverBackground();
 
-    void ShowOnScreenByFade()
+    void ShowGameOverBackground()
     {
-        if (img.color.a >= 225) return;
-        img.color = new Color(img.color.r, img.color.b, img.color.g, img.color.a + _fadeSpeed * Time.deltaTime);
+        if (!background) return;
+        if (background.color.a >= 225) return;
+        background.color = new Color(background.color.r, background.color.b, background.color.g, background.color.a + backgroundFadeSpeed * Time.deltaTime);
     }
 }
