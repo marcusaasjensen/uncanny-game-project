@@ -146,6 +146,7 @@ MonoBehaviour:
   _endAnimationClip: {fileID: 7400000, guid: f5e2690c1d5bbbe4a8ad852acd1abbac, type: 2}
   _startAnimationClip: {fileID: 7400000, guid: 20f084803c0dac840b7e3a749b49ecd2, type: 2}
   _idleAnimationClip: {fileID: 7400000, guid: 12dc92d668017794c80e79693c98467b, type: 2}
+  <AnimationLengthOffset>k__BackingField: 0.3
 --- !u!212 &5582411210866037911
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -188,7 +189,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f84c33a6b73095744a444ce58128294f, type: 3}
-  m_Color: {r: 0.990566, g: 0.26788884, b: 0.379202, a: 0.27058825}
+  m_Color: {r: 1, g: 0.2901961, b: 0.3882353, a: 0.27058825}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

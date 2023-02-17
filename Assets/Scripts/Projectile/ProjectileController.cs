@@ -144,14 +144,13 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
     public void OnObjectSpawn(ProjectileController projectile){
         SetInitialValues(projectile); //values that will change only when spawning
         SetProjectile(projectile);
-        
+
         if (_lifeTime != null)
             StopCoroutine(_lifeTime);
 
         _lifeTime = StartLifeTime();
         StartCoroutine(_lifeTime);
     }
-
 
     void SetInitialValues(ProjectileController projectile)
     {
@@ -212,8 +211,10 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
         //Start life time with start animation
         EnableProjectileCollision(false);
 
-        yield return new WaitForSeconds(_projectileAnimation ? _projectileAnimation.StartAnimation() : 0);
-        
+        if (_projectileAnimation)
+            _projectileAnimation.StartAnimation();
+
+        yield return new WaitForSeconds(_projectileAnimation.AnimationLengthOffset);
         //enable collider during life time
         EnableProjectileCollision(true);
         
@@ -224,7 +225,11 @@ public abstract class ProjectileController: MonoBehaviour, IPooledObject<Project
 
 
         //End life time with ending animation.
-        yield return new WaitForSeconds(_projectileAnimation ? _projectileAnimation.EndAnimation() : 0);
+        if (_projectileAnimation)
+            _projectileAnimation.EndAnimation();
+
+        yield return new WaitForSeconds(_projectileAnimation.AnimationLengthOffset);
+
         this.gameObject.SetActive(false);
     }
 

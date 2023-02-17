@@ -6,30 +6,30 @@ public class ProjectileAnimation : MonoBehaviour
     [SerializeField] AnimationClip _endAnimationClip;
     [SerializeField] AnimationClip _startAnimationClip;
     [SerializeField] AnimationClip _idleAnimationClip;
+    [field: SerializeField] public float AnimationLengthOffset { get; set; }
 
-    public float EndAnimation()
+    public void EndAnimation()
     {
-        return PlayAnimation(_endAnimationClip);
+        PlayAnimation(_endAnimationClip);
     }
 
-    public float StartAnimation()
+    public void StartAnimation()
     {
-        return PlayAnimation(_startAnimationClip);
+        PlayAnimation(_startAnimationClip);
     }
 
-    public float IdleAnimation()
+    public void IdleAnimation()
     {
-        return PlayAnimation(_idleAnimationClip);
+        PlayAnimation(_idleAnimationClip);
     }
 
-    float PlayAnimation(AnimationClip animation)
+    void PlayAnimation(AnimationClip animation)
     {
-        if (!animation || !_anim) 
+        if (!animation || !_anim)
         { 
             Debug.LogWarning("A projectile animation clip or animator reference in Projectile Animation script missing.", this); 
-            return 0f;
+            return;
         }
         _anim.Play(animation.name);
-        return animation.length;
     }
 }
