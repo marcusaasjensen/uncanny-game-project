@@ -9,6 +9,10 @@ public class GameOverScreen : GameScreen
     [SerializeField] TextMeshProUGUI gameOverText;
     [SerializeField] TextMeshProUGUI pressSpaceText;
     [SerializeField] float timeBetweenTexts = 1;
+    
+    Color _defaultSpaceTextColor;
+
+    void Awake() => _defaultSpaceTextColor = pressSpaceText ? pressSpaceText.color : Color.white;
 
     IEnumerator Start()
     {
@@ -18,7 +22,7 @@ public class GameOverScreen : GameScreen
         yield return new WaitForSeconds(timeBetweenTexts);
         yield return StartCoroutine(AppearText(gameOverText, Color.clear, Color.white));
         yield return new WaitForSeconds(timeBetweenTexts);
-        yield return StartCoroutine(AppearText(pressSpaceText, Color.clear, Color.white));
+        yield return StartCoroutine(AppearText(pressSpaceText, Color.clear, _defaultSpaceTextColor));
     }
 
     void Update() => ShowGameOverBackground();
