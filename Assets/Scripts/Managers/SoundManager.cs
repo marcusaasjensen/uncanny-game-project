@@ -9,6 +9,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioSource _musicSource, _effectsSource;
     void Awake()
     {
+        _musicSource.Stop();
+        _effectsSource.Stop();
+
         #region Singleton
         if (Instance == null) 
         { 

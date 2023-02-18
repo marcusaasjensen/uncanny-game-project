@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -42,6 +43,13 @@ public class PauseMenu : MonoBehaviour
         isGamePaused = true;
         if (pauseMenuUI) pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
+    }
+
+    void Restart()
+    {
+        isGamePaused = false;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void Quit()
