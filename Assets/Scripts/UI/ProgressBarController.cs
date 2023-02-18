@@ -22,7 +22,7 @@ public class ProgressBarController : MonoBehaviour
     void UpdateProgressBar()
     {
         if (!_progressBar) return;
-        if(_gameOver ? _gameOver.IsGameOver : false) return;
+        if(GameOver.IsGameOver) return;
         Progress();
     }
 

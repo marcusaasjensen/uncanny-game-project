@@ -8,10 +8,13 @@ public class Win : MonoBehaviour
     [SerializeField] ProgressBarController progressBarController;
     [SerializeField] GameObject gameWinScreen;
     [SerializeField] float timeBeforeNextScene;
+    [SerializeField] static bool isLevelFinished = false;
     InputAction nextSceneInput;
     PlayerInputActions playerActions;
 
-    void Start() 
+    public static bool IsLevelFinished { get { return isLevelFinished; } }
+
+    void Start()
     {
         gameWinScreen.SetActive(false);
         LevelEvents.level.OnLevelFinished += GameWin;
@@ -23,9 +26,13 @@ public class Win : MonoBehaviour
     void Update()
     {
         OnLevelEnd();
+        OnNextScene();
+    }
 
-        if(nextSceneInput.ReadValue<float>() > 0.1f)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    void OnNextScene()
+    {
+        if (nextSceneInput.ReadValue<float>() <= 0.1f) return;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     void OnLevelEnd()
@@ -34,6 +41,8 @@ public class Win : MonoBehaviour
 
         if (progressBarController.HasEnded)
             LevelEvents.level.LevelFinished();
+
+        isLevelFinished = progressBarController.HasEnded;
     }
 
     IEnumerator GameWinCoroutine()
@@ -47,7 +56,6 @@ public class Win : MonoBehaviour
     {
         StartCoroutine(GameWinCoroutine());
     }
-
 
     void OnDisable() => LevelEvents.level.OnLevelFinished -= GameWin;
 }

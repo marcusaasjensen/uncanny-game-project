@@ -20,6 +20,25 @@ public class SoundManager : MonoBehaviour
         #endregion
     }
 
+    void Update()
+    {
+        OnPause();
+    }
+
+    void OnPause()
+    {
+        if (PauseMenu.IsGamePaused)
+        {
+            _musicSource.Pause();
+            _effectsSource.Pause();
+        }
+        else if (!_musicSource.isPlaying)
+        {
+            _musicSource.UnPause();
+            _effectsSource.UnPause();
+        }
+    }
+
     public void PlaySound(AudioClip clip)
     {
         if (clip == null) return;

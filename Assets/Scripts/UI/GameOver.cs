@@ -8,14 +8,15 @@ public class GameOver : MonoBehaviour
     [SerializeField] GameObject _gameOverScreen;
     [SerializeField] Scenario _scenario;
     [SerializeField] float _timeBeforeRestarting;
+    [SerializeField] static bool isGameOver;
     PlayerInputActions playerActions;
     InputAction _restartInput;
 
-    public bool IsGameOver { get; private set; }
+    public static bool IsGameOver { get { return isGameOver; } }
 
     public void OnGameOver()
     {
-        IsGameOver = true;
+        isGameOver = true;
         StartCoroutine(GameOverCoroutine());
     }
 
@@ -29,16 +30,25 @@ public class GameOver : MonoBehaviour
 
     void Start()
     {
+        isGameOver = false;
         LevelEvents.level.OnGameOver += OnGameOver;
         playerActions = new PlayerInputActions();
         _restartInput = playerActions.Game.Restart;
         _restartInput.Disable();
     }
 
-    void Update()
+    void Update() => OnRestart();
+
+    void OnRestart()
     {
-        if(_restartInput.ReadValue<float>() > 0.1f)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (_restartInput.ReadValue<float>() <= 0.1f) return;
+        Restart();
+    }
+
+    void Restart()
+    {
+        isGameOver = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void OnDisable() => LevelEvents.level.OnGameOver -= OnGameOver;
