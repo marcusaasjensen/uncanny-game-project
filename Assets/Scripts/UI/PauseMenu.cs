@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] static bool isGamePaused = false;
     [SerializeField] GameObject pauseMenuUI;
+    [SerializeField] GameObject settingsMenuUI;
 
     PlayerInputActions _playerActions;
     InputAction _pauseMenuInput;
@@ -15,6 +16,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         if(pauseMenuUI) pauseMenuUI.SetActive(false);
+        if(settingsMenuUI) settingsMenuUI.SetActive(false);
         _playerActions = new PlayerInputActions();
         _pauseMenuInput = _playerActions.Menu.OpenMenu;
         _pauseMenuInput.Enable();
@@ -56,5 +58,18 @@ public class PauseMenu : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Application closed.");
+    }
+
+    void OpenSettings()
+    {
+        isGamePaused = true;
+        pauseMenuUI.SetActive(false);
+        settingsMenuUI.SetActive(true);
+    }
+
+    public void CloseSettings()
+    {
+        pauseMenuUI.SetActive(true);
+        settingsMenuUI.SetActive(false);
     }
 }
