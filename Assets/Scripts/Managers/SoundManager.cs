@@ -7,8 +7,17 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance;
 
     [SerializeField] AudioSource _musicSource, _effectsSource;
+
+    [SerializeField] static float musicVolume, sfxVolume = 1f;
+
+    public float MusicVolume { get { return musicVolume; } }
+    public float SFXVolume { get { return sfxVolume; } }
+
     void Awake()
     {
+        _musicSource.volume = musicVolume; 
+        _effectsSource.volume = sfxVolume;
+
         _musicSource.Stop();
         _effectsSource.Stop();
 
@@ -23,10 +32,7 @@ public class SoundManager : MonoBehaviour
         #endregion
     }
 
-    void Update()
-    {
-        OnPause();
-    }
+    void Update() => OnPause();
 
     void OnPause()
     {
@@ -82,9 +88,16 @@ public class SoundManager : MonoBehaviour
 
     public void StopMusic() => _musicSource.Stop();
 
-    public void ChangeMasterVolume(float volume)
+    public void ChangeMusicVolume(float volume)
     {
-        AudioListener.volume = volume;
+        musicVolume = volume;
+        _musicSource.volume = volume;
+    }
+
+    public void ChangeSFXVolume(float volume) 
+    { 
+        sfxVolume = volume;
+        _effectsSource.volume = volume;
     }
 
     [ContextMenu("Toggle Effects")]

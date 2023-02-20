@@ -1,12 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] static bool isGamePaused = false;
     [SerializeField] GameObject pauseMenuUI;
     [SerializeField] GameObject settingsMenuUI;
+
+    [Header("Slider volumes")]
+    [SerializeField] Slider musicSlider;
+    [SerializeField] Slider effectSlider;
 
     PlayerInputActions _playerActions;
     InputAction _pauseMenuInput;
@@ -15,17 +20,18 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-        if(pauseMenuUI) pauseMenuUI.SetActive(false);
+        if (pauseMenuUI) pauseMenuUI.SetActive(false);
         if(settingsMenuUI) settingsMenuUI.SetActive(false);
         _playerActions = new PlayerInputActions();
         _pauseMenuInput = _playerActions.Menu.OpenMenu;
         _pauseMenuInput.Enable();
+
+        if (musicSlider) musicSlider.onValueChanged.AddListener(val => SoundManager.Instance.ChangeMusicVolume(val));
+        if (effectSlider) effectSlider.onValueChanged.AddListener(val => SoundManager.Instance.ChangeSFXVolume(val));
+
     }
 
-    void Update()
-    {
-        OnPause();
-    }
+    void Update() => OnPause();
 
     void OnPause()
     {
@@ -65,6 +71,8 @@ public class PauseMenu : MonoBehaviour
         isGamePaused = true;
         pauseMenuUI.SetActive(false);
         settingsMenuUI.SetActive(true);
+        musicSlider.value = SoundManager.Instance.MusicVolume;
+        effectSlider.value = SoundManager.Instance.SFXVolume;
     }
 
     public void CloseSettings()
