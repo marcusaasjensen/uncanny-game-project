@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] AudioSource _musicSource, _effectsSource;
 
-    [SerializeField] static float musicVolume, sfxVolume = 1f;
+    [SerializeField] static float musicVolume = 1f, sfxVolume = 1f;
 
     public float MusicVolume { get { return musicVolume; } }
     public float SFXVolume { get { return sfxVolume; } }

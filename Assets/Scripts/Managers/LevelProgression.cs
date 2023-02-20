@@ -2,12 +2,12 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [DisallowMultipleComponent]
-public class Scenario : MonoBehaviour
+public class LevelProgression : MonoBehaviour
 {
     public AudioClip music; //to add in an audio library
     public List<RecordingPlayer> rhytmicSet;
     public ProjectileController projectilePrefab;
-    public LevelBoss levelBoss;
+    public WandererLevelBoss levelBoss;
 
     void Start() => StartLevelBoss();
 

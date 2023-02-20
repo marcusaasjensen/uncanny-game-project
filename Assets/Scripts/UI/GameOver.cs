@@ -6,7 +6,7 @@ using System.Collections;
 public class GameOver : MonoBehaviour
 {
     [SerializeField] GameObject _gameOverScreen;
-    [SerializeField] Scenario _scenario;
+    [SerializeField] LevelProgression _scenario;
     [SerializeField] float _timeBeforeRestarting;
     [SerializeField] static bool isGameOver;
     PlayerInputActions playerActions;

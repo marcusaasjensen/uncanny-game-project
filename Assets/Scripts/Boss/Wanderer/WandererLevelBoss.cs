@@ -2,16 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelBoss : MonoBehaviour
+public class WandererLevelBoss : MonoBehaviour
 {
-    [SerializeField] BossController _boss;
+    [SerializeField] WandererAttacks _boss;
     [SerializeField] List<GameObject> _levelElements;
-
-
-    void Awake()
-    {
-        if(!_boss) _boss = FindObjectOfType<BossController>();
-    }
 
     [ContextMenu("Start Sequence")]
     public void StartActionSequence() => StartCoroutine(ActionSequence());
@@ -24,9 +18,9 @@ public class LevelBoss : MonoBehaviour
             Debug.LogWarning("The BossController reference in LevelBoss script is missing.", this);
             yield break;
         }
-        yield return StartCoroutine(_boss.AttackController.ThrowStars(12, 1));
+        yield return StartCoroutine(_boss.ThrowStars(12, 1));
         yield return new WaitForSeconds(1f);
-        yield return StartCoroutine(_boss.AttackController.ThrowBalloons(18, 2));
+        yield return StartCoroutine(_boss.ThrowBalloons(18, 2));
         print("finished");
     }
 }

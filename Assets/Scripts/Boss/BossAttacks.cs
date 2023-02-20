@@ -30,16 +30,11 @@ public class BossAttacks : MonoBehaviour
         }
     }
 
-    [SerializeField] BossController _bossController;
     [SerializeField] List<ProjectileAttack> _attacks;
-
-    Dictionary<string, ProjectileAttack> _attackMap;
+    protected Dictionary<string, ProjectileAttack> _attackMap;
 
     void Awake() 
     { 
-        if(!_bossController)
-            _bossController = GetComponent<BossController>();
-
         InstiantiateAttacks();
         SetAttacksToInactive();
     }
@@ -53,7 +48,7 @@ public class BossAttacks : MonoBehaviour
         }
     }
 
-    IEnumerator DeployAttack(ProjectileAttack attack, float time, float hintTimeBeforeAttack)
+    protected IEnumerator DeployAttack(ProjectileAttack attack, float time, float hintTimeBeforeAttack)
     {
         yield return StartCoroutine(attack.ShowHint(hintTimeBeforeAttack));
         yield return StartCoroutine(attack.StartAttack(time));
@@ -64,19 +59,4 @@ public class BossAttacks : MonoBehaviour
         _attackMap = new Dictionary<string, ProjectileAttack>();
         foreach(ProjectileAttack attack in _attacks) _attackMap.Add(attack.Name, attack);
     }
-
-    public IEnumerator ThrowStars(float attackTime, float hintTimeBeforeAttack)
-    {
-        //animation for boss dancing, boss hint before attack, etc...
-        ProjectileAttack starsAttack = _attackMap["Stars"];
-        yield return StartCoroutine(DeployAttack(starsAttack, attackTime, hintTimeBeforeAttack));
-    }
-
-    public IEnumerator ThrowBalloons(float attackTime, float hintTimeBeforeAttack)
-    {
-        //""
-        ProjectileAttack balloonsAttack = _attackMap["Balloons"];
-        yield return StartCoroutine(DeployAttack(balloonsAttack, attackTime, hintTimeBeforeAttack));
-    }
-
 }
