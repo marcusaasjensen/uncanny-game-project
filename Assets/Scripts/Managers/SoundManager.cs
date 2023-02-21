@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.Profiling;
+using System.Collections;
 
 [DisallowMultipleComponent]
 public class SoundManager : MonoBehaviour
@@ -58,7 +59,7 @@ public class SoundManager : MonoBehaviour
 
     public void TestSoundWithVolume(float value)
     {
-        if( _testSound == null) return;
+        if(_testSound == null || _testSource.isPlaying) return;
         _testSource.PlayOneShot(_testSound, value);
     }
 

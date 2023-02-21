@@ -36,16 +36,15 @@ public class PauseMenu : MonoBehaviour
 
     void ChangeMusicVolumeByTesting(float volume)
     {
-        SoundManager.Instance.ChangeMusicVolume(volume);
         SoundManager.Instance.TestSoundWithVolume(volume);
+        SoundManager.Instance.ChangeMusicVolume(volume);
     }
 
     void ChangeSFXVolumeByTesting(float volume)
     {
-        SoundManager.Instance.ChangeSFXVolume(volume);
         SoundManager.Instance.TestSoundWithVolume(volume);
+        SoundManager.Instance.ChangeSFXVolume(volume);
     }
-
 
     void OnPause()
     {

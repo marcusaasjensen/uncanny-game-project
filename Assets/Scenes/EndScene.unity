@@ -17072,7 +17072,6 @@ MonoBehaviour:
   settingsMenuUI: {fileID: 18535694}
   musicSlider: {fileID: 49678209}
   effectSlider: {fileID: 1330533492}
-  audioTestSound: {fileID: 8300000, guid: 6ab452a74fbbc354da06172491d87184, type: 3}
 --- !u!114 &784382151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22652,6 +22651,7 @@ MonoBehaviour:
   _musicSource: {fileID: 192922294}
   _effectsSource: {fileID: 1166146366}
   _testSource: {fileID: 684599004}
+  _testSound: {fileID: 8300000, guid: 6ab452a74fbbc354da06172491d87184, type: 3}
 --- !u!4 &1204699810
 Transform:
   m_ObjectHideFlags: 0
