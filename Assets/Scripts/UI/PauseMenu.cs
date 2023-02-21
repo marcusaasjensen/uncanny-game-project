@@ -48,7 +48,7 @@ public class PauseMenu : MonoBehaviour
 
     void OnPause()
     {
-        if (_pauseMenuInput.ReadValue<float>() <= 0.1f || GameOver.IsGameOver || Win.IsLevelFinished) return;
+        if (_pauseMenuInput.ReadValue<float>() <= 0.1f || GameOver.IsGameOver || Win.IsLevelFinished || isGamePaused) return;
         Pause();
     }
 
