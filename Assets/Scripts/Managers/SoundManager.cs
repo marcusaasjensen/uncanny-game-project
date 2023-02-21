@@ -1,14 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.Profiling;
 
 [DisallowMultipleComponent]
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
-    [SerializeField] AudioSource _musicSource, _effectsSource;
+    [SerializeField] AudioSource _musicSource, _effectsSource, _testSource;
 
     [SerializeField] static float musicVolume = 1f, sfxVolume = 1f;
+    [SerializeField] AudioClip _testSound;
 
     public float MusicVolume { get { return musicVolume; } }
     public float SFXVolume { get { return sfxVolume; } }
@@ -52,6 +54,12 @@ public class SoundManager : MonoBehaviour
     {
         if (clip == null) return;
         _effectsSource.PlayOneShot(clip);
+    }
+
+    public void TestSoundWithVolume(float value)
+    {
+        if( _testSound == null) return;
+        _testSource.PlayOneShot(_testSound, value);
     }
 
     int _indexTMP = -1;

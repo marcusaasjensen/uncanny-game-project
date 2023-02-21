@@ -37,7 +37,7 @@ public class RecordingPlayer : MonoBehaviour
     [ContextMenu("Play Recording (In Play Mode)")]
     public void PlayCurrentRecording()
     {
-        if (mouseClickingRecorder.ContainsRecordingWithTag(recordingTagToPlay) == null)
+        if (!mouseClickingRecorder || mouseClickingRecorder.ContainsRecordingWithTag(recordingTagToPlay) == null)
         {
             Debug.LogWarning("The recording \"" + recordingTagToPlay + "\" does not exist.");
             return;

@@ -22,16 +22,30 @@ public class PauseMenu : MonoBehaviour
     {
         if (pauseMenuUI) pauseMenuUI.SetActive(false);
         if(settingsMenuUI) settingsMenuUI.SetActive(false);
+
         _playerActions = new PlayerInputActions();
         _pauseMenuInput = _playerActions.Menu.OpenMenu;
         _pauseMenuInput.Enable();
 
-        if (musicSlider) musicSlider.onValueChanged.AddListener(val => SoundManager.Instance.ChangeMusicVolume(val));
-        if (effectSlider) effectSlider.onValueChanged.AddListener(val => SoundManager.Instance.ChangeSFXVolume(val));
+        if (musicSlider) musicSlider.onValueChanged.AddListener(val => ChangeMusicVolumeByTesting(val));
+        if (effectSlider) effectSlider.onValueChanged.AddListener(val => ChangeSFXVolumeByTesting(val));
 
     }
 
     void Update() => OnPause();
+
+    void ChangeMusicVolumeByTesting(float volume)
+    {
+        SoundManager.Instance.ChangeMusicVolume(volume);
+        SoundManager.Instance.TestSoundWithVolume(volume);
+    }
+
+    void ChangeSFXVolumeByTesting(float volume)
+    {
+        SoundManager.Instance.ChangeSFXVolume(volume);
+        SoundManager.Instance.TestSoundWithVolume(volume);
+    }
+
 
     void OnPause()
     {
@@ -69,15 +83,15 @@ public class PauseMenu : MonoBehaviour
     void OpenSettings()
     {
         isGamePaused = true;
-        pauseMenuUI.SetActive(false);
-        settingsMenuUI.SetActive(true);
-        musicSlider.value = SoundManager.Instance.MusicVolume;
-        effectSlider.value = SoundManager.Instance.SFXVolume;
+        if(pauseMenuUI) pauseMenuUI.SetActive(false);
+        if(settingsMenuUI) settingsMenuUI.SetActive(true);
+        if(musicSlider) musicSlider.value = SoundManager.Instance.MusicVolume;
+        if(effectSlider) effectSlider.value = SoundManager.Instance.SFXVolume;
     }
 
     public void CloseSettings()
     {
-        pauseMenuUI.SetActive(true);
-        settingsMenuUI.SetActive(false);
+        if(pauseMenuUI) pauseMenuUI.SetActive(true);
+        if(settingsMenuUI) settingsMenuUI.SetActive(false);
     }
 }

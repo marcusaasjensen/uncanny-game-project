@@ -6,7 +6,7 @@ using System.Collections;
 public class GameOver : MonoBehaviour
 {
     [SerializeField] GameObject _gameOverScreen;
-    [SerializeField] LevelProgression _scenario;
+    [SerializeField] LevelProgression _levelProgression;
     [SerializeField] float _timeBeforeRestarting;
     [SerializeField] static bool isGameOver;
     PlayerInputActions playerActions;
@@ -23,7 +23,7 @@ public class GameOver : MonoBehaviour
     IEnumerator GameOverCoroutine()
     {
         if (_gameOverScreen) _gameOverScreen.SetActive(true);
-        if (_scenario) _scenario.StopLevelBoss();
+        if (_levelProgression) _levelProgression.StopLevelBoss();
         yield return new WaitForSeconds(_timeBeforeRestarting);
         _restartInput.Enable();
     }

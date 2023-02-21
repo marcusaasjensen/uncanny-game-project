@@ -16,5 +16,4 @@ public class WandererAttacks : BossAttacks
         ProjectileAttack balloonsAttack = _attackMap["Balloons"];
         yield return StartCoroutine(DeployAttack(balloonsAttack, attackTime, hintTimeBeforeAttack));
     }
-
 }

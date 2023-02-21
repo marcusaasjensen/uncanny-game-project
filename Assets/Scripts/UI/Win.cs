@@ -31,8 +31,10 @@ public class Win : MonoBehaviour
 
     void OnNextScene()
     {
+        if (nextSceneInput == null) return;
         if (nextSceneInput.ReadValue<float>() <= 0.1f) return;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        isLevelFinished = false;
     }
 
     void OnLevelEnd()
