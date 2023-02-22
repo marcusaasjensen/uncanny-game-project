@@ -727,6 +727,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "WinRestart",
+                    "type": "Button",
+                    "id": "203d55da-10d0-4d5d-9258-467ac9ff961c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -760,6 +769,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "NextScene",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "989f40a6-4d1e-42bf-b231-2f505c715628",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "WinRestart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

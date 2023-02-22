@@ -749,6 +749,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WinRestart"",
+                    ""type"": ""Button"",
+                    ""id"": ""203d55da-10d0-4d5d-9258-467ac9ff961c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -782,6 +791,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""NextScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""989f40a6-4d1e-42bf-b231-2f505c715628"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""WinRestart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -900,6 +920,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
         m_Game_Restart = m_Game.FindAction("Restart", throwIfNotFound: true);
         m_Game_NextScene = m_Game.FindAction("NextScene", throwIfNotFound: true);
+        m_Game_WinRestart = m_Game.FindAction("WinRestart", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_OpenMenu = m_Menu.FindAction("OpenMenu", throwIfNotFound: true);
@@ -1118,12 +1139,14 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private IGameActions m_GameActionsCallbackInterface;
     private readonly InputAction m_Game_Restart;
     private readonly InputAction m_Game_NextScene;
+    private readonly InputAction m_Game_WinRestart;
     public struct GameActions
     {
         private @PlayerInputActions m_Wrapper;
         public GameActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Restart => m_Wrapper.m_Game_Restart;
         public InputAction @NextScene => m_Wrapper.m_Game_NextScene;
+        public InputAction @WinRestart => m_Wrapper.m_Game_WinRestart;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1139,6 +1162,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @NextScene.started -= m_Wrapper.m_GameActionsCallbackInterface.OnNextScene;
                 @NextScene.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnNextScene;
                 @NextScene.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnNextScene;
+                @WinRestart.started -= m_Wrapper.m_GameActionsCallbackInterface.OnWinRestart;
+                @WinRestart.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnWinRestart;
+                @WinRestart.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnWinRestart;
             }
             m_Wrapper.m_GameActionsCallbackInterface = instance;
             if (instance != null)
@@ -1149,6 +1175,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @NextScene.started += instance.OnNextScene;
                 @NextScene.performed += instance.OnNextScene;
                 @NextScene.canceled += instance.OnNextScene;
+                @WinRestart.started += instance.OnWinRestart;
+                @WinRestart.performed += instance.OnWinRestart;
+                @WinRestart.canceled += instance.OnWinRestart;
             }
         }
     }
@@ -1254,6 +1283,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     {
         void OnRestart(InputAction.CallbackContext context);
         void OnNextScene(InputAction.CallbackContext context);
+        void OnWinRestart(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
