@@ -18375,6 +18375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelElements: []
+  _isLevelCompleted: 0
   _boss: {fileID: 2032167680}
 --- !u!114 &896471120
 MonoBehaviour:
@@ -24982,7 +24983,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1343300072
 RectTransform:
   m_ObjectHideFlags: 0
