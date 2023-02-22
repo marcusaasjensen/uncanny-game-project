@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class LevelBoss : MonoBehaviour
 {
     [SerializeField] List<GameObject> _levelElements;
-    [SerializeField] bool _isLevelCompleted = false;
+    public static bool isLevelCompleted = false;
 
     IEnumerator _actionSequenceCoroutine;
 

@@ -17,5 +17,6 @@ public class WandererLevelBoss : LevelBoss
         yield return new WaitForSeconds(1f);
         yield return StartCoroutine(_boss.ThrowBalloons(18, 2));
         print("finished");
+        isLevelCompleted = true;
     }
 }

@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] static bool isGamePaused = false;
     [SerializeField] GameObject pauseMenuUI;
     [SerializeField] GameObject settingsMenuUI;
+    [SerializeField] Button nextLevelButton;
 
     [Header("Slider volumes")]
     [SerializeField] Slider musicSlider;
@@ -64,6 +65,14 @@ public class PauseMenu : MonoBehaviour
         isGamePaused = true;
         if (pauseMenuUI) pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
+
+        if (!nextLevelButton) return;
+
+        if (!WandererLevelBoss.isLevelCompleted)
+            nextLevelButton.interactable = false;
+        else
+            nextLevelButton.interactable = true;
+            
     }
 
     void Restart()
@@ -71,6 +80,13 @@ public class PauseMenu : MonoBehaviour
         isGamePaused = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void NextLevel()
+    {
+        isGamePaused = false;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     void Quit()
