@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -14,10 +15,16 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] Slider musicSlider;
     [SerializeField] Slider effectSlider;
 
+    [Header("VFX")]
+    [SerializeField] static bool vfxActive = true;
+    [SerializeField] TextMeshProUGUI vfxText;
+    [SerializeField] VFXManager vfxManager;
+
     PlayerInputActions _playerActions;
     InputAction _pauseMenuInput;
 
     public static bool IsGamePaused { get { return isGamePaused; } }
+    public static bool VFXActive { get { return vfxActive; } }
 
     void Start()
     {
@@ -30,6 +37,8 @@ public class PauseMenu : MonoBehaviour
 
         if (musicSlider) musicSlider.onValueChanged.AddListener(val => ChangeMusicVolumeByTesting(val));
         if (effectSlider) effectSlider.onValueChanged.AddListener(val => ChangeSFXVolumeByTesting(val));
+
+        OnVFX();
 
     }
 
@@ -63,6 +72,7 @@ public class PauseMenu : MonoBehaviour
     void Pause()
     {
         isGamePaused = true;
+
         if (pauseMenuUI) pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
 
@@ -75,6 +85,19 @@ public class PauseMenu : MonoBehaviour
         isGamePaused = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void ToggleVFX()
+    {
+        vfxActive = !vfxActive;
+        OnVFX();
+    }
+
+    void OnVFX()
+    {
+        if (!vfxText) return;
+        vfxText.text = vfxActive ? "VFX : YES" : "VFX : NO";
+        if (vfxManager) vfxManager.OnVFXActive(vfxActive);
     }
 
     void NextLevel()
