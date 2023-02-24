@@ -49,6 +49,16 @@ public class PlayerCollision : MonoBehaviour
             StopCoroutine(_doDamage);
             _doDamage = null;
         }
+
+        if(collider.CompareTag("Boss"))
+        {
+            BossAttacks bossAttacks = collider.GetComponent<BossAttacks>();
+            if (_doDamage != null) yield break;
+            _doDamage = _playerController.PlayerLife.DoDamage(bossAttacks.DamageToPlayer);
+            yield return StartCoroutine(_doDamage);
+            StopCoroutine(_doDamage);
+            _doDamage = null;
+        }
     }
 
     void PlayCollisionParticle()

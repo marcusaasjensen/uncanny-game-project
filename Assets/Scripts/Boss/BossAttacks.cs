@@ -30,8 +30,12 @@ public abstract class BossAttacks : MonoBehaviour
         }
     }
 
+    [SerializeField] float _damageToPlayer = 30f;
     [SerializeField] List<ProjectileAttack> _attacks;
     protected Dictionary<string, ProjectileAttack> _attackMap;
+
+    public float DamageToPlayer { get { return _damageToPlayer; } }
+
 
     void Awake() 
     { 

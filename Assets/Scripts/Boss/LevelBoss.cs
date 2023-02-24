@@ -9,12 +9,13 @@ public abstract class LevelBoss : MonoBehaviour
 
     IEnumerator _actionSequenceCoroutine;
 
-    [ContextMenu("Start Sequence")]
 
     void Start()
     {
         this.gameObject.SetActive(true);    
     }
+
+    [ContextMenu("Start Sequence")]
     public void StartActionSequence()
     {
          StartCoroutine(ActionSequence());
