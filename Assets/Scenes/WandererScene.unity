@@ -18491,6 +18491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelElements: []
   _boss: {fileID: 189181172}
+  _bossAnimator: {fileID: 1441520675}
 --- !u!114 &896471120
 MonoBehaviour:
   m_ObjectHideFlags: 0

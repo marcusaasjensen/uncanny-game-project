@@ -5,10 +5,15 @@ using UnityEngine;
 public class WandererLevelBoss : LevelBoss
 {
     [SerializeField] WandererAttacks _boss;
+    [SerializeField] Animator _bossAnimator;
+
+    void Awake()
+    {
+        if(!_bossAnimator) _bossAnimator = _boss.GetComponent<Animator>();
+    }
 
     public override IEnumerator ActionSequence()
     {
-        _boss.GetComponent<Animator>().enabled = false;
         if (!_boss)
         {
             Debug.LogWarning("The BossController reference in LevelBoss script is missing.", this);
@@ -17,8 +22,9 @@ public class WandererLevelBoss : LevelBoss
         yield return StartCoroutine(_boss.ThrowStars(12, 1));
         yield return new WaitForSeconds(1f);
         yield return StartCoroutine(_boss.ThrowBalloons(17, 2));
-        _boss.GetComponent<Animator>().enabled = true;
-        yield return new WaitForSeconds(10f);
+        _bossAnimator.Play("Walking");
+        yield return new WaitForSeconds(7f);
+        _bossAnimator.Play("Idle");
         print("finished");
         isLevelCompleted = true;
     }
