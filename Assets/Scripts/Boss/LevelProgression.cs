@@ -1,14 +1,19 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class LevelProgression : MonoBehaviour
 {
-    public AudioClip music; //to add in an audio library
     public List<RecordingPlayer> rhytmicSet;
-    public LevelBoss levelBoss;
-
+    public PlayableDirector timeLine;
+    public ProgressBarController progressBar;
+    public static bool IsLevelCompleted = false;
     void Start() => StartLevelBoss();
-
+    void Update()
+    {
+        if (!progressBar) return;
+        IsLevelCompleted = progressBar.HasEnded || IsLevelCompleted;
+    }
     //A rhytmic set is a set of rhythms that are used in a precised scenario. It can be music rhythm, events when projectiles have to follow a certain rhythm.
     void StartRhythmicSet()
     {
@@ -24,14 +29,13 @@ public class LevelProgression : MonoBehaviour
 
     public void StartLevelBoss()
     {
-        levelBoss.StartActionSequence();
+        timeLine.Play();
         StartRhythmicSet();
-        SoundManager.Instance.PlayMusic(music);
     }
 
     public void StopLevelBoss()
     {
-        levelBoss.StopActionSequence();
+        timeLine.Stop();
         StopRhythmicSet();
         SoundManager.Instance.StopMusic();
     }

@@ -77,7 +77,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
 
         if (!nextLevelButton) return;
-        nextLevelButton.interactable = WandererLevelBoss.isLevelCompleted;
+        nextLevelButton.interactable = LevelProgression.IsLevelCompleted;
     }
 
     void Restart()

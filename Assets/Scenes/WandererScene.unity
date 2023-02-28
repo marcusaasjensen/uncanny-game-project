@@ -231,7 +231,7 @@ PolygonCollider2D:
       - {x: 1.4865997, y: -1.9535089}
       - {x: 2.71046, y: -1.5548407}
       - {x: 2.6024752, y: 1.359494}
---- !u!114 &20305753
+--- !u!114 &20305755
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -240,11 +240,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 20305750}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c9bc566fc679d4197f56bec911b10b, type: 3}
+  m_Script: {fileID: 11500000, guid: f8c600f1dd136a44fb7a9b0b90fc15bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageToPlayer: 30
-  _attacks: []
+  <Alias>k__BackingField: Wanderer's hips
+  <DamageOnCollision>k__BackingField: 40
 --- !u!1 &63339892
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,7 +747,7 @@ PolygonCollider2D:
       - {x: 4.957934, y: -0.5184071}
       - {x: 4.931496, y: 0.6757081}
       - {x: 4.5259113, y: 2.4415166}
---- !u!114 &128064204
+--- !u!114 &128064206
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -756,11 +756,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 128064201}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c9bc566fc679d4197f56bec911b10b, type: 3}
+  m_Script: {fileID: 11500000, guid: f8c600f1dd136a44fb7a9b0b90fc15bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageToPlayer: 30
-  _attacks: []
+  <Alias>k__BackingField: Wanderer's torso
+  <DamageOnCollision>k__BackingField: 40
 --- !u!1 &131471324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,26 +1386,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177086593}
   m_CullTransparentMesh: 1
---- !u!114 &189181172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742993147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c9bc566fc679d4197f56bec911b10b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damageToPlayer: 30
-  _attacks:
-  - <Name>k__BackingField: Stars
-    <AttackToDeploy>k__BackingField: {fileID: 6768507520081417528}
-    <AttackHint>k__BackingField: {fileID: 1674115615}
-  - <Name>k__BackingField: Balloons
-    <AttackToDeploy>k__BackingField: {fileID: 1478629478}
-    <AttackHint>k__BackingField: {fileID: 1956243631}
 --- !u!1 &192922293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,7 +1413,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8128747f3bfabc645b4cee638b2f2c16, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1576,11 +1556,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 624190647}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c9bc566fc679d4197f56bec911b10b, type: 3}
+  m_Script: {fileID: 11500000, guid: f8c600f1dd136a44fb7a9b0b90fc15bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageToPlayer: 10
-  _attacks: []
+  <Alias>k__BackingField: Wanderer's arm
+  <DamageOnCollision>k__BackingField: 30
 --- !u!1 &278967162
 GameObject:
   m_ObjectHideFlags: 0
@@ -12002,7 +11982,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7279123173932583770, guid: 1bd9b7e5b5c9e71429e759391b0d1d5b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 752
+      value: 366
       objectReference: {fileID: 0}
     - target: {fileID: 7279123173932583770, guid: 1bd9b7e5b5c9e71429e759391b0d1d5b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -18241,20 +18221,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781976683}
   m_CullTransparentMesh: 1
---- !u!114 &807142565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656973418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c9bc566fc679d4197f56bec911b10b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damageToPlayer: 10
-  _attacks: []
 --- !u!1 &822734796
 GameObject:
   m_ObjectHideFlags: 0
@@ -18451,7 +18417,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 896471118}
-  - component: {fileID: 896471119}
   - component: {fileID: 896471120}
   - component: {fileID: 896471121}
   m_Layer: 0
@@ -18477,21 +18442,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &896471119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 896471116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45a2400b738ff8f4a830df412542f42a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _levelElements: []
-  _boss: {fileID: 189181172}
-  _bossAnimator: {fileID: 1441520675}
 --- !u!114 &896471120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18504,12 +18454,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11e2745e8b783e40b1f1c6c320fca64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music: {fileID: 8300000, guid: 8128747f3bfabc645b4cee638b2f2c16, type: 3}
   rhytmicSet:
   - {fileID: 822734797}
   - {fileID: 1290546389}
   - {fileID: 420613373}
-  levelBoss: {fileID: 896471119}
+  timeLine: {fileID: 1380063436}
+  progressBar: {fileID: 2142532589}
 --- !u!114 &896471121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29368,7 +29318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7279123173932583770, guid: 1bd9b7e5b5c9e71429e759391b0d1d5b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -352
+      value: -633
       objectReference: {fileID: 0}
     - target: {fileID: 7279123173932583770, guid: 1bd9b7e5b5c9e71429e759391b0d1d5b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -29847,11 +29797,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1233065132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c9bc566fc679d4197f56bec911b10b, type: 3}
+  m_Script: {fileID: 11500000, guid: f8c600f1dd136a44fb7a9b0b90fc15bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageToPlayer: 30
-  _attacks: []
+  <Alias>k__BackingField: Wanderer's head
+  <DamageOnCollision>k__BackingField: 40
 --- !u!1 &1268630590
 GameObject:
   m_ObjectHideFlags: 0
@@ -30090,6 +30040,20 @@ Transform:
   m_Father: {fileID: 1956243632}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -28.437}
+--- !u!114 &1295319287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656973418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c600f1dd136a44fb7a9b0b90fc15bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Alias>k__BackingField: Wanderer's leg
+  <DamageOnCollision>k__BackingField: 30
 --- !u!1 &1297764454
 GameObject:
   m_ObjectHideFlags: 0
@@ -30365,6 +30329,69 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1380063435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1380063437}
+  - component: {fileID: 1380063436}
+  m_Layer: 0
+  m_Name: Timeline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!320 &1380063436
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380063435}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 26c4cc2590ad78542989ccfe8721ab4c, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 75212485724377034, guid: 26c4cc2590ad78542989ccfe8721ab4c, type: 2}
+    value: {fileID: 1441520675}
+  - key: {fileID: -1244643529796693975, guid: 26c4cc2590ad78542989ccfe8721ab4c, type: 2}
+    value: {fileID: 3710304223680846932}
+  - key: {fileID: -3504759584151670023, guid: 26c4cc2590ad78542989ccfe8721ab4c, type: 2}
+    value: {fileID: 1478629477}
+  - key: {fileID: 1799108752675676864, guid: 26c4cc2590ad78542989ccfe8721ab4c, type: 2}
+    value: {fileID: 1956243631}
+  - key: {fileID: -7572019038677034628, guid: 26c4cc2590ad78542989ccfe8721ab4c, type: 2}
+    value: {fileID: 1674115615}
+  - key: {fileID: -366064231761857958, guid: 26c4cc2590ad78542989ccfe8721ab4c, type: 2}
+    value: {fileID: 192922294}
+  m_ExposedReferences:
+    m_References:
+    - 2aaa67271ee638e4f8e3aa7139eca7c7: {fileID: 1956243631}
+    - 655e1f8c5b26db34ea2fcb822d4bd6a7: {fileID: 1478629477}
+--- !u!4 &1380063437
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380063435}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.897034, y: -2.1318874, z: -0.6461425}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1391742074
 GameObject:
   m_ObjectHideFlags: 0
@@ -30581,6 +30608,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1420884925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742993147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c600f1dd136a44fb7a9b0b90fc15bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Alias>k__BackingField: Wanderer
+  <DamageOnCollision>k__BackingField: 40
 --- !u!1 &1423547741
 GameObject:
   m_ObjectHideFlags: 0
@@ -51348,20 +51389,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1675308854}
   m_CullTransparentMesh: 1
---- !u!114 &1695680858
+--- !u!114 &1692777679
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 607206168}
+  m_GameObject: {fileID: 857562357}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c9bc566fc679d4197f56bec911b10b, type: 3}
+  m_Script: {fileID: 11500000, guid: f8c600f1dd136a44fb7a9b0b90fc15bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageToPlayer: 10
-  _attacks: []
+  <Alias>k__BackingField: Wanderer's leg
+  <DamageOnCollision>k__BackingField: 30
 --- !u!60 &1704123166
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -52173,11 +52214,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 707612034}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c9bc566fc679d4197f56bec911b10b, type: 3}
+  m_Script: {fileID: 11500000, guid: f8c600f1dd136a44fb7a9b0b90fc15bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageToPlayer: 10
-  _attacks: []
+  <Alias>k__BackingField: Wanderer's leg
+  <DamageOnCollision>k__BackingField: 30
 --- !u!114 &1742993163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52187,11 +52228,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1008106845}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c9bc566fc679d4197f56bec911b10b, type: 3}
+  m_Script: {fileID: 11500000, guid: f8c600f1dd136a44fb7a9b0b90fc15bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageToPlayer: 10
-  _attacks: []
+  <Alias>k__BackingField: Wanderer's arm
+  <DamageOnCollision>k__BackingField: 30
 --- !u!114 &1742993164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52201,11 +52242,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1706386654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c9bc566fc679d4197f56bec911b10b, type: 3}
+  m_Script: {fileID: 11500000, guid: f8c600f1dd136a44fb7a9b0b90fc15bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageToPlayer: 10
-  _attacks: []
+  <Alias>k__BackingField: Wanderer's arm
+  <DamageOnCollision>k__BackingField: 30
 --- !u!114 &1742993165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52215,11 +52256,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1183610293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c9bc566fc679d4197f56bec911b10b, type: 3}
+  m_Script: {fileID: 11500000, guid: f8c600f1dd136a44fb7a9b0b90fc15bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageToPlayer: 10
-  _attacks: []
+  <Alias>k__BackingField: Wanderer's arm
+  <DamageOnCollision>k__BackingField: 30
+--- !u!114 &1744897422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607206168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c600f1dd136a44fb7a9b0b90fc15bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Alias>k__BackingField: Wanderer's leg
+  <DamageOnCollision>k__BackingField: 30
 --- !u!1 &1752679058
 GameObject:
   m_ObjectHideFlags: 0
@@ -53325,20 +53380,6 @@ Transform:
   m_Father: {fileID: 278967163}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1957222057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 857562357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c9bc566fc679d4197f56bec911b10b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damageToPlayer: 10
-  _attacks: []
 --- !u!1 &1976796838
 GameObject:
   m_ObjectHideFlags: 0
@@ -53772,8 +53813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _progressBar: {fileID: 63339894}
-  _totalTime: 40
-  _gameOver: {fileID: 0}
+  _levelTimeline: {fileID: 11400000, guid: 26c4cc2590ad78542989ccfe8721ab4c, type: 2}
 --- !u!114 &2007156949335760027
 MonoBehaviour:
   m_ObjectHideFlags: 0
