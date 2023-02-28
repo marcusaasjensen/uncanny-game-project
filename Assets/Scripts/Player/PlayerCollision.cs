@@ -30,7 +30,10 @@ public class PlayerCollision : MonoBehaviour
 
     IEnumerator OnTriggerEnter2D(Collider2D collider)
     {
-        if(!_playerController)
+        PlayCollisionParticle();
+        ShakeOnCollision();
+
+        if (!_playerController)
         {
             Debug.LogWarning("Player controller reference inb player collision script is missing.", this);
             yield break;
@@ -39,10 +42,6 @@ public class PlayerCollision : MonoBehaviour
         if (collider.CompareTag("Damage"))
         {
             ProjectileController proj = collider.GetComponent<ProjectileController>();
-
-            PlayCollisionParticle();
-            ShakeOnCollision();
-
             if(_doDamage != null) yield break;
             _doDamage = _playerController.PlayerLife.DoDamage(proj.Damage);
             yield return StartCoroutine(_doDamage);
