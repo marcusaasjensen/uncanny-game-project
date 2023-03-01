@@ -33,6 +33,7 @@ public class Win : MonoBehaviour
         if (nextSceneInput == null) return;
         if (nextSceneInput.ReadValue<float>() <= 0.1f) return;
         isLevelFinished = false;
+        LevelEvents.level.OnLevelFinished -= GameWin;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -41,6 +42,7 @@ public class Win : MonoBehaviour
         if (restartAfterWinInput == null) return;
         if (restartAfterWinInput.ReadValue<float>() <= 0.1f) return;
         isLevelFinished = false;
+        LevelEvents.level.OnLevelFinished -= GameWin;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -69,6 +71,4 @@ public class Win : MonoBehaviour
     {
         StartCoroutine(GameWinCoroutine());
     }
-
-    void OnDisable() => LevelEvents.level.OnLevelFinished -= GameWin;
 }

@@ -41,7 +41,9 @@ public class GameOver : MonoBehaviour
 
     void OnRestart()
     {
+        if (_restartInput == null) return;
         if (_restartInput.ReadValue<float>() <= 0.1f) return;
+        LevelEvents.level.OnGameOver -= OnGameOver;
         Restart();
     }
 
@@ -50,6 +52,4 @@ public class GameOver : MonoBehaviour
         isGameOver = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
-    void OnDisable() => LevelEvents.level.OnGameOver -= OnGameOver;
 }
