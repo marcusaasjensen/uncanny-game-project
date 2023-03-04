@@ -24094,7 +24094,7 @@ MonoBehaviour:
   timeToLive: 0
   disappearWhenTouchingTarget: 0
   despawnWhenNotVisible: 0
-  damage: 5
+  damage: 15
   minimumSizeOfDamage: 0
   realTimeConfiguration: 0
   _spawningBehaviour: {fileID: 866912278}
@@ -24518,7 +24518,7 @@ MonoBehaviour:
   timeToLive: 0
   disappearWhenTouchingTarget: 0
   despawnWhenNotVisible: 0
-  damage: 5
+  damage: 15
   minimumSizeOfDamage: 0
   realTimeConfiguration: 0
   _spawningBehaviour: {fileID: 893964850}
@@ -36202,7 +36202,7 @@ MonoBehaviour:
   timeToLive: 2
   disappearWhenTouchingTarget: 1
   despawnWhenNotVisible: 0
-  damage: 12
+  damage: 20
   minimumSizeOfDamage: 0.1
   realTimeConfiguration: 1
   _bulletConfiguration: {fileID: 1228727385}
