@@ -17,6 +17,7 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] AudioClip _healingSound;
     [SerializeField] ParticleSystem _deathParticle;
     [SerializeField] ParticleSystem _healingParticle;
+    [SerializeField] private float invisibilityTime = 1.5f;
 
     SpriteRenderer _playerSprite;
 
@@ -150,7 +151,7 @@ public class PlayerLife : MonoBehaviour
 
         SoundManager.Instance.PlaySound(_healingSound);
 
-        StartCoroutine(MakeInvisible(1.5f));
+        StartCoroutine(MakeInvisible(invisibilityTime));
         
         print("Player's health filled!");
     }

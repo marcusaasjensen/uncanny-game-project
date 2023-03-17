@@ -10,7 +10,8 @@ public class LevelTutorial : MonoBehaviour
 
     void Start()
     {
-        LevelEvents.level.OnGameOver += RespawnPlayer;    
+        LevelEvents.level.OnGameOver += RespawnPlayer;
+        StartCoroutine(TutorialCoroutine());
     }
 
     void RespawnPlayer()
@@ -24,5 +25,13 @@ public class LevelTutorial : MonoBehaviour
         yield return new WaitForSeconds(timebetweenRespawns);
         player.gameObject.SetActive(true);
         player.FillHealth();
+    }
+
+    IEnumerator TutorialCoroutine()
+    {
+        player.GetComponent<PlayerMovement>().enabled = false;
+        yield return new WaitForSeconds(3);
+        player.GetComponent<PlayerMovement>().enabled = true;
+        
     }
 }
