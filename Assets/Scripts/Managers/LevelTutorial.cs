@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor;
 using UnityEngine.Serialization;
 
 public class LevelTutorial : MonoBehaviour
@@ -15,12 +16,22 @@ public class LevelTutorial : MonoBehaviour
     [SerializeField] private List<GameObject> exampleAttacks;
     [SerializeField] private Vector3 textOffset;
     [SerializeField] private AudioClip nextTextSound;
-    
+    [SerializeField] private AudioClip musicTutorial;
+
+    private IEnumerator _tutorialCoroutine;
+
+    void Awake()
+    {
+        LevelEvents.level.OnGameOver += RespawnPlayer;
+    }
 
     void Start()
     {
-        LevelEvents.level.OnGameOver += RespawnPlayer;
+        if(_tutorialCoroutine != null)
+            StopCoroutine(_tutorialCoroutine);
         StartCoroutine(TutorialCoroutine());
+        _tutorialCoroutine = TutorialCoroutine();
+        SoundManager.Instance.LoopMusic(musicTutorial);
     }
 
     void Update()
@@ -47,7 +58,6 @@ public class LevelTutorial : MonoBehaviour
         var movement = player.GetComponent<PlayerMovement>();
         movement.enabled = false;
         yield return new WaitForSeconds(3);
-        
         ShowText("You are that cube.");
         yield return new WaitForSeconds(2f);
         
@@ -66,14 +76,14 @@ public class LevelTutorial : MonoBehaviour
         ShowText("Perfect!");
         yield return new WaitForSeconds(2f);
         ShowText("Now... You see that blue cube cascade?");
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4f);
         ShowText("Try dashing through it to get to the other side.");
         
         yield return new WaitUntil(() => player.transform.position.x > 5);
         ShowText("Well done.");
+        startPosition = new Vector3(6,0,0);
         yield return new WaitForSeconds(2f);
         ShowText("Yup, you don't take damages while dashing.");
-        startPosition = new Vector3(6,0,0);
         yield return new WaitForSeconds(5f);
         RespawnPlayer();
         ShowText("Now, go back to where you were.");
@@ -95,9 +105,10 @@ public class LevelTutorial : MonoBehaviour
         exampleAttacks[2].SetActive(true);
         yield return new WaitForSeconds(2f);
         ShowText("");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(6f);
         exampleAttacks[2].SetActive(false);
         LevelEvents.level.LevelFinished();
+        LevelProgression.IsLevelCompleted = true;
     }
 
     void ShowText(string text)

@@ -19,6 +19,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] static bool vfxActive = true;
     [SerializeField] TextMeshProUGUI vfxText;
     [SerializeField] VFXManager vfxManager;
+    [SerializeField] private bool nextLevelButtonDependsOnProgressBar = true;
 
     PlayerInputActions _playerActions;
     InputAction _pauseMenuInput;
@@ -77,7 +78,8 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
 
         if (!nextLevelButton) return;
-        nextLevelButton.interactable = LevelProgression.IsLevelCompleted;
+        if(nextLevelButtonDependsOnProgressBar)
+            nextLevelButton.interactable = LevelProgression.IsLevelCompleted;
     }
 
     void Restart()
@@ -100,7 +102,7 @@ public class PauseMenu : MonoBehaviour
         if (vfxManager) vfxManager.OnVFXActive(vfxActive);
     }
 
-    void NextLevel()
+    public void NextLevel()
     {
         isGamePaused = false;
         Time.timeScale = 1f;
@@ -121,6 +123,11 @@ public class PauseMenu : MonoBehaviour
         if(musicSlider) musicSlider.value = SoundManager.Instance.MusicVolume;
         if(effectSlider) effectSlider.value = SoundManager.Instance.SFXVolume;
     }
+
+    // public void LoadTutorial()
+    // {
+    //     SceneManager.LoadScene(0);
+    // }
 
     public void CloseSettings()
     {

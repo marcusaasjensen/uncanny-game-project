@@ -25,13 +25,9 @@ public class SoundManager : MonoBehaviour
         _effectsSource.Stop();
 
         #region Singleton
-        if (Instance == null) 
-        { 
+        if (Instance == null)
             Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-            Destroy(gameObject);
+
         #endregion
     }
 
@@ -49,6 +45,13 @@ public class SoundManager : MonoBehaviour
             _musicSource.UnPause();
             _effectsSource.UnPause();
         }
+    }
+
+    public void LoopMusic(AudioClip clip)
+    {
+        if (clip == null) return;
+        _musicSource.loop = true;
+        _musicSource.Play();
     }
 
     public void PlaySound(AudioClip clip)
