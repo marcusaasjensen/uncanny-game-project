@@ -108,7 +108,6 @@ public class LevelTutorial : MonoBehaviour
         yield return new WaitForSeconds(6f);
         exampleAttacks[2].SetActive(false);
         LevelEvents.level.LevelFinished();
-        LevelProgression.IsLevelCompleted = true;
     }
 
     void ShowText(string text)

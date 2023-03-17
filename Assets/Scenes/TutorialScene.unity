@@ -853,7 +853,7 @@ MonoBehaviour:
   _stopWhenNotVisible: 0
   _activateWhenVisible: 0
   _isTargetting: 1
-  _targettingSpeed: 0.4
+  _targettingSpeed: 0.1
 --- !u!1 &127586551
 GameObject:
   m_ObjectHideFlags: 0
