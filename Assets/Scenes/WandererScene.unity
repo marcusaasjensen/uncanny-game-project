@@ -1258,7 +1258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &151987784
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36068,7 +36068,7 @@ MonoBehaviour:
   timeToLive: 2
   disappearWhenTouchingTarget: 1
   despawnWhenNotVisible: 0
-  damage: 20
+  damage: 15
   minimumSizeOfDamage: 0.1
   realTimeConfiguration: 1
   _bulletConfiguration: {fileID: 1228727385}

@@ -781,6 +781,7 @@ MonoBehaviour:
   effectSlider: {fileID: 1027836404}
   vfxText: {fileID: 2099863260}
   vfxManager: {fileID: 1785584725}
+  nextLevelButtonDependsOnProgressBar: 1
 --- !u!1 &137322114
 GameObject:
   m_ObjectHideFlags: 0
@@ -49599,6 +49600,7 @@ MonoBehaviour:
   _healingSound: {fileID: 8300000, guid: bf17f73e006ea874b83237992cfd779a, type: 3}
   _deathParticle: {fileID: 1654925495}
   _healingParticle: {fileID: 1477510150}
+  invisibilityTime: 1.5
 --- !u!114 &1752679064
 MonoBehaviour:
   m_ObjectHideFlags: 0
