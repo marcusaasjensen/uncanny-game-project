@@ -53,6 +53,11 @@ public class PlayerMovement : MonoBehaviour
     {
         get { return _isDashing; }
     }
+    
+    public bool IsMoving
+    {
+        get { return _isMoving; }
+    }
 
     Transform _transform;
 
