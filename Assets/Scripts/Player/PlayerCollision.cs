@@ -16,7 +16,6 @@ public class PlayerCollision : MonoBehaviour
 
     void Awake()
     {
-        LevelEvents.level.OnGameOver += ResetDamage;
         if (!_playerController)
             _playerController = GetComponent<PlayerController>();
         
@@ -24,6 +23,11 @@ public class PlayerCollision : MonoBehaviour
             _collider = GetComponent<Collider2D>();
     }
 
+
+    void Start()
+    {
+        LevelEvents.level.OnGameOver += ResetDamage;
+    }
     void ResetDamage()
     {
         _doDamage = null;

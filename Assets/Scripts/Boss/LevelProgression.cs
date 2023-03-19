@@ -30,7 +30,7 @@ public class LevelProgression : MonoBehaviour
 
     public void StartLevelBoss()
     {
-        timeLine.Play();
+        timeLine?.Play();
         StartRhythmicSet();
     }
 
