@@ -8,9 +8,9 @@ using UnityEngine.Serialization;
 
 public class LevelTutorial : MonoBehaviour
 {
-    [SerializeField] PlayerLife player;
-    [SerializeField] float timebetweenRespawns = .5f;
-    [SerializeField] Vector3 startPosition;
+    [SerializeField] private PlayerLife player;
+    [SerializeField] private float timeBetweenRespawns = .5f;
+    [SerializeField] private Vector3 startPosition;
     [SerializeField] private Image controlsImage;
     [SerializeField] private TextMeshProUGUI playerText;
     [SerializeField] private List<GameObject> exampleAttacks;
@@ -47,7 +47,7 @@ public class LevelTutorial : MonoBehaviour
     IEnumerator RespawnPlayerCoroutine()
     {
         player.transform.SetPositionAndRotation(startPosition, Quaternion.identity);
-        yield return new WaitForSeconds(timebetweenRespawns);
+        yield return new WaitForSeconds(timeBetweenRespawns);
         player.gameObject.SetActive(true);
         player.FillHealth();
     }
@@ -61,7 +61,7 @@ public class LevelTutorial : MonoBehaviour
         ShowText("You are that cube.");
         yield return new WaitForSeconds(2f);
         
-        ShowText("Try moving with the controls (ZQSD).");
+        ShowText("Try moving with the controls (WASD OR ZQSD).");
         movement.enabled = true;
         controlsImage.enabled = true;
         

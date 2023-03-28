@@ -123,12 +123,7 @@ public class PauseMenu : MonoBehaviour
         if(musicSlider) musicSlider.value = SoundManager.Instance.MusicVolume;
         if(effectSlider) effectSlider.value = SoundManager.Instance.SFXVolume;
     }
-
-    // public void LoadTutorial()
-    // {
-    //     SceneManager.LoadScene(0);
-    // }
-
+    
     public void CloseSettings()
     {
         if(pauseMenuUI) pauseMenuUI.SetActive(true);
