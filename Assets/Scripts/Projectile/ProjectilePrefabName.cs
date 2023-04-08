@@ -6,6 +6,11 @@
     Balloon,
     Star,
     Spark,
+    Lightning,
+    Moon,
+    Card,
+    Eye,
+    SmallEye,
     Spawner,
 
     SpawnerConfig,
