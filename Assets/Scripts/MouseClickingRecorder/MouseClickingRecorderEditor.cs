@@ -1,6 +1,8 @@
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
+
 [CustomEditor(typeof(MouseClickingRecorder))]
 public class MouseClickingRecorderEditor : Editor
 {
@@ -24,3 +26,5 @@ public class MouseClickingRecorderEditor : Editor
             mouseClickingRecorder.AddKeyFrame();
     }
 }
+
+#endif

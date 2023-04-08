@@ -71,7 +71,7 @@ public class MouseClickingRecorder : MonoBehaviour
         hasStartedRecording = false;
         timer = 0;
     }
-
+#if UNITY_EDITOR
     public void AddKeyFrame()
     {
         List<double> keyFrameList = ContainsRecordingWithTag(recordingTag).timeBetweenClicks;
@@ -97,4 +97,5 @@ public class MouseClickingRecorder : MonoBehaviour
 
         keyFrameList.Add(timeBetweenTwoClicks);
     }
+#endif
 }
