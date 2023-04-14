@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] static bool isGamePaused = false;
     [SerializeField] GameObject pauseMenuUI;
     [SerializeField] GameObject settingsMenuUI;
+    [SerializeField] GameObject creditsUI;
     [SerializeField] Button nextLevelButton;
 
     [Header("Slider volumes")]
@@ -102,11 +103,39 @@ public class PauseMenu : MonoBehaviour
         if (vfxManager) vfxManager.OnVFXActive(vfxActive);
     }
 
-    public void NextLevel()
+    void NextLevel()
     {
         isGamePaused = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void PreviousLevel()
+    {
+        isGamePaused = false;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+    public void FirstLevel()
+    {
+        isGamePaused = false;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(2);
+    }
+
+    public void SecondLevel()
+    {
+        isGamePaused = false;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(3);
+    }
+
+    public void OpenCredits()
+    {
+        isGamePaused = true;
+        if(pauseMenuUI) pauseMenuUI.SetActive(false);
+        if(creditsUI) creditsUI.SetActive(true);
     }
 
     void Quit()
@@ -128,5 +157,11 @@ public class PauseMenu : MonoBehaviour
     {
         if(pauseMenuUI) pauseMenuUI.SetActive(true);
         if(settingsMenuUI) settingsMenuUI.SetActive(false);
+    }
+
+    public void CloseCredits()
+    {
+        if(pauseMenuUI) pauseMenuUI.SetActive(true);
+        if(creditsUI) creditsUI.SetActive(false);
     }
 }

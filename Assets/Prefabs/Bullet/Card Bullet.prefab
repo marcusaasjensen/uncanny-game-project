@@ -146,7 +146,7 @@ MonoBehaviour:
   _endAnimationClip: {fileID: 7400000, guid: f5e2690c1d5bbbe4a8ad852acd1abbac, type: 2}
   _startAnimationClip: {fileID: 7400000, guid: 06c02602b6477b04990b16c90c55af20, type: 2}
   _idleAnimationClip: {fileID: 7400000, guid: 12dc92d668017794c80e79693c98467b, type: 2}
-  <AnimationLengthOffset>k__BackingField: 0
+  <AnimationLengthOffset>k__BackingField: 0.3
 --- !u!212 &8824468957349258532
 SpriteRenderer:
   m_ObjectHideFlags: 0
