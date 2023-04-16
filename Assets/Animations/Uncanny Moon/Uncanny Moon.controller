@@ -94,6 +94,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -6532780700790390936}
     m_Position: {x: 685, y: 785, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 3138632860712721920}
+    m_Position: {x: 720, y: 850, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -225,6 +228,32 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 5db199771fee8a04586fb06c3ab8e915, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &3138632860712721920
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: uncanny_moon_attacking
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 7bdb1f9f8d82a20409a2f741ca7fe9cc, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

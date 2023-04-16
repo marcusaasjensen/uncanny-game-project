@@ -1505,7 +1505,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 138453959}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6927943, y: -8.1, z: 1.893137}
+  m_LocalPosition: {x: -1.6927943, y: -8.1, z: 3.5}
   m_LocalScale: {x: 30.1554, y: -48.1895, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2326,6 +2326,10 @@ PlayableDirector:
     value: {fileID: 958243635}
   - key: {fileID: 3069941240097708078, guid: cae0d285bc5643a4eb03dd84c981583a, type: 2}
     value: {fileID: 297820016}
+  - key: {fileID: 2468943895736926690, guid: cae0d285bc5643a4eb03dd84c981583a, type: 2}
+    value: {fileID: 2072884908}
+  - key: {fileID: 7845007307737294363, guid: cae0d285bc5643a4eb03dd84c981583a, type: 2}
+    value: {fileID: 1077866077}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &208904246
@@ -2361,7 +2365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Alias>k__BackingField: Uncanny Moon's Left Suit
-  <DamageOnCollision>k__BackingField: 15
+  <DamageOnCollision>k__BackingField: 25
 --- !u!60 &237621867
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -7899,7 +7903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Alias>k__BackingField: Uncanny Moon's Head
-  <DamageOnCollision>k__BackingField: 30
+  <DamageOnCollision>k__BackingField: 45
 --- !u!60 &328594814
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -8038,6 +8042,142 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338429009}
   m_CullTransparentMesh: 0
+--- !u!1 &356524082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 356524083}
+  - component: {fileID: 356524088}
+  - component: {fileID: 356524087}
+  - component: {fileID: 356524086}
+  - component: {fileID: 356524085}
+  - component: {fileID: 356524084}
+  m_Layer: 0
+  m_Name: Bullet Configuration
+  m_TagString: Damage
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &356524083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356524082}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.93, y: 2.2, z: 0}
+  m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1077866078}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &356524084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356524082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals: []
+    m_Events: []
+--- !u!58 &356524085
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356524082}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &356524086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356524082}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7af3852f85c404d95793d86bbf5058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationCurveFunctions: {fileID: 68498873}
+  _projectile: {fileID: 356524087}
+  _curveType: 0
+  _timingBehaviour: 2
+  _period: 1
+  _emphasize: 1
+  _periodDependsOnRhythm: 0
+  _smoothPeriodChanges: 0
+  _affectSpeed: 0
+  _affectDirection: 0
+  _affectSize: 1
+--- !u!114 &356524087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356524082}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f49e639f8bf2c2148bfaa632fce1a051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectileController: {fileID: 356524088}
+  _settingBehaviour: {fileID: 356524086}
+  _moveSpeed: 5
+  _direction: 0
+  _movementBehaviour: 4
+  _size: 0.4
+  _rotateToDirection: 1
+  _rotation: 0
+--- !u!114 &356524088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356524082}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a74ee6ee3ddb3e4686af7a58486c2da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileName: 7
+  _projectileMovement: {fileID: 356524087}
+  target: {fileID: 1736677846}
+  _rhythm: {fileID: 822734797}
+  _projectileCollision: {fileID: 0}
+  _projectileAnimation: {fileID: 0}
+  isImmortal: 0
+  timeToLive: 8
+  disappearWhenTouchingTarget: 1
+  despawnWhenNotVisible: 1
+  damage: 35
+  minimumSizeOfDamage: 0.05
+  realTimeConfiguration: 1
+  _bulletConfiguration: {fileID: 356524088}
 --- !u!1 &383425644
 GameObject:
   m_ObjectHideFlags: 0
@@ -22873,7 +23013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Alias>k__BackingField: Uncanny Moon's Lower Leg
-  <DamageOnCollision>k__BackingField: 40
+  <DamageOnCollision>k__BackingField: 80
 --- !u!60 &496607691
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -22904,10 +23044,10 @@ PolygonCollider2D:
       - {x: -0.55312407, y: -0.0002914071}
       - {x: -0.41508853, y: -0.34412736}
       - {x: 0.35044438, y: -0.55075014}
-      - {x: 0.8861352, y: -1.0795641}
-      - {x: 7.849695, y: -0.2708493}
-      - {x: 7.8690987, y: 0.2925983}
-      - {x: 0.8715167, y: 1.0816724}
+      - {x: 0.5268177, y: -1.0856173}
+      - {x: 7.9387174, y: -0.46714282}
+      - {x: 7.9632025, y: 0.57996845}
+      - {x: 0.5585933, y: 1.0718315}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -33423,7 +33563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Alias>k__BackingField: Unanny Moon's Hat
-  <DamageOnCollision>k__BackingField: 7
+  <DamageOnCollision>k__BackingField: 15
 --- !u!60 &751979138
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -38610,10 +38750,10 @@ RectTransform:
   m_Father: {fileID: 151987784}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &879950321 stripped
 GameObject:
@@ -38633,7 +38773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Alias>k__BackingField: Uncanny Moon's Upper Leg
-  <DamageOnCollision>k__BackingField: 20
+  <DamageOnCollision>k__BackingField: 50
 --- !u!60 &879950325
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -39220,7 +39360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &958243636
 Transform:
   m_ObjectHideFlags: 0
@@ -39229,7 +39369,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 958243635}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0916031, y: 0.28244314, z: 1.7773333e-10}
+  m_LocalPosition: {x: -0.09160334, y: 0.28244308, z: 0}
   m_LocalScale: {x: 0.3046565, y: 0.3046565, z: 0.3046565}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39553,9 +39693,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980144481}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.31, y: 1.31, z: 1.31}
+  m_LocalScale: {x: 1.31, y: 1.3099998, z: 1.31}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 958243636}
@@ -39805,9 +39945,9 @@ MonoBehaviour:
   _randomizeSpeed: 0
   _randomizeSize: 0
   _timeBeforeActivating: 0
-  _isSpawning: 0
+  _isSpawning: 1
   _stopWhenNotVisible: 0
-  _activateWhenVisible: 0
+  _activateWhenVisible: 1
   _isTargetting: 0
   _targettingSpeed: 1.5
 --- !u!1 &984089402
@@ -39881,7 +40021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Alias>k__BackingField: Uncanny Moon's Upper Left Arm
-  <DamageOnCollision>k__BackingField: 15
+  <DamageOnCollision>k__BackingField: 20
 --- !u!60 &984460106
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -40221,6 +40361,295 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040140742}
   m_CullTransparentMesh: 1
+--- !u!1 &1077866077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1077866078}
+  - component: {fileID: 1077866088}
+  - component: {fileID: 1077866087}
+  - component: {fileID: 1077866086}
+  - component: {fileID: 1077866085}
+  - component: {fileID: 1077866084}
+  - component: {fileID: 1077866083}
+  - component: {fileID: 1077866082}
+  - component: {fileID: 1077866081}
+  - component: {fileID: 1077866080}
+  - component: {fileID: 1077866079}
+  m_Layer: 0
+  m_Name: Eye Moon Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1077866078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077866077}
+  m_LocalRotation: {x: -0, y: -0, z: -0.72029394, w: 0.693669}
+  m_LocalPosition: {x: 4.1782784, y: -0.011490976, z: 0.013941487}
+  m_LocalScale: {x: 3.6256711, y: 3.6256711, z: 3.6256716}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 356524083}
+  m_Father: {fileID: 328594815}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1077866079
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077866077}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!61 &1077866080
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077866077}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.1202507, y: -0.0054763556}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 3}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.2866821, y: 1.9435542}
+  m_EdgeRadius: 0
+--- !u!212 &1077866081
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077866077}
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1096725413
+  m_SortingLayer: 1
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: fbf37ddd6dc126a4a962fdd3c0a35b9b, type: 3}
+  m_Color: {r: 0.9150943, g: 0.9150943, b: 0.9150943, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &1077866082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077866077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d6a4249731bacb4c9a83ce4ea5186e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectileController: {fileID: 1077866087}
+  _projectileCollider: {fileID: 1077866080}
+  _collisionSounds: []
+--- !u!114 &1077866083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077866077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bb3cf018fdb9cf41ab102b426dacde6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawner: {fileID: 1077866087}
+  _patternName: 0
+--- !u!114 &1077866084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077866077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284eedcafabd9ed4d8a29db6e208d227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnerController: {fileID: 1077866087}
+  _lineGizmosColor: {r: 0.80927104, g: 0.8867924, b: 0, a: 1}
+  _scopeCubeGizmosSize: 0.23
+  _scopeCubeGizmosColor: {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &1077866085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077866077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7af3852f85c404d95793d86bbf5058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationCurveFunctions: {fileID: 68498873}
+  _projectile: {fileID: 1077866086}
+  _curveType: 0
+  _timingBehaviour: 0
+  _period: 1
+  _emphasize: 2
+  _periodDependsOnRhythm: 0
+  _smoothPeriodChanges: 0
+  _affectSpeed: 0
+  _affectDirection: 0
+  _affectSize: 0
+--- !u!114 &1077866086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077866077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f49e639f8bf2c2148bfaa632fce1a051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectileController: {fileID: 1077866087}
+  _settingBehaviour: {fileID: 1077866085}
+  _moveSpeed: 0
+  _direction: 180
+  _movementBehaviour: 2
+  _size: 1
+  _rotateToDirection: 0
+  _rotation: 0
+--- !u!114 &1077866087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077866077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04064161166d393448ffc5ecf33f3336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileName: 12
+  _projectileMovement: {fileID: 1077866086}
+  target: {fileID: 1736677846}
+  _rhythm: {fileID: 822734797}
+  _projectileCollision: {fileID: 1077866082}
+  _projectileAnimation: {fileID: 0}
+  isImmortal: 0
+  timeToLive: 0.2
+  disappearWhenTouchingTarget: 0
+  despawnWhenNotVisible: 0
+  damage: 30
+  minimumSizeOfDamage: 0
+  realTimeConfiguration: 0
+  _spawningBehaviour: {fileID: 1077866088}
+  _spawnerConfiguration: {fileID: 1077866087}
+--- !u!114 &1077866088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077866077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67a33bafd9a86d4e89d61f9418592af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnerController: {fileID: 1077866087}
+  _projectileToSpawnConfig: {fileID: 356524088}
+  _projectilePrefabToSpawn: 7
+  _spawnerDirectionAffectsProjectile: 1
+  _timeBetweenSpawns: 0.7
+  _spawningOnRhythm: 0
+  _numberOfProjectilesPerSpawn: 3
+  _spawningRange: 1
+  _numberOfScopes: 1
+  _scopeRange: 0.108
+  _numberOfSides: 0
+  _sideBending: 0
+  _randomizePosition: 0
+  _randomizeDirection: 0
+  _randomizeSpeed: 0
+  _randomizeSize: 0
+  _timeBeforeActivating: 0
+  _isSpawning: 1
+  _stopWhenNotVisible: 0
+  _activateWhenVisible: 1
+  _isTargetting: 1
+  _targettingSpeed: 0.5
 --- !u!1 &1090523453
 GameObject:
   m_ObjectHideFlags: 0
@@ -42539,7 +42968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Alias>k__BackingField: Uncanny Moon's Right Upper Arm
-  <DamageOnCollision>k__BackingField: 15
+  <DamageOnCollision>k__BackingField: 20
 --- !u!60 &1240757140
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -43736,9 +44165,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectileController: {fileID: 1483618459}
   _settingBehaviour: {fileID: 1483618457}
-  _moveSpeed: 2
+  _moveSpeed: 0.5
   _direction: 30
-  _movementBehaviour: 16
+  _movementBehaviour: 15
   _size: 0.3
   _rotateToDirection: 0
   _rotation: 0
@@ -44577,7 +45006,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1648634011
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44687,7 +45116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7279123173932583770, guid: 1bd9b7e5b5c9e71429e759391b0d1d5b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 541
+      value: 405
       objectReference: {fileID: 0}
     - target: {fileID: 7279123173932583770, guid: 1bd9b7e5b5c9e71429e759391b0d1d5b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -50650,7 +51079,7 @@ MonoBehaviour:
   _projectileToSpawnConfig: {fileID: 2099818779}
   _projectilePrefabToSpawn: 10
   _spawnerDirectionAffectsProjectile: 1
-  _timeBetweenSpawns: 1.5
+  _timeBetweenSpawns: 0.7
   _spawningOnRhythm: 0
   _numberOfProjectilesPerSpawn: 20
   _spawningRange: 1
@@ -50686,7 +51115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Alias>k__BackingField: Uncanny Moon's Right Lower Arm
-  <DamageOnCollision>k__BackingField: 15
+  <DamageOnCollision>k__BackingField: 20
 --- !u!60 &1793765967
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -51162,7 +51591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Alias>k__BackingField: Uncanny Moon's Lower Left Arm
-  <DamageOnCollision>k__BackingField: 15
+  <DamageOnCollision>k__BackingField: 20
 --- !u!60 &1946736520
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -51404,7 +51833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Alias>k__BackingField: Uncanny Moon's Torso
-  <DamageOnCollision>k__BackingField: 30
+  <DamageOnCollision>k__BackingField: 55
 --- !u!60 &2039968870
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -51473,7 +51902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Alias>k__BackingField: Uncanny Moon's Right Suit
-  <DamageOnCollision>k__BackingField: 15
+  <DamageOnCollision>k__BackingField: 25
 --- !u!60 &2047506719
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -51560,26 +51989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Alias>k__BackingField: Uncanny Moon's Shoe
-  <DamageOnCollision>k__BackingField: 20
---- !u!1 &2079465941 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9139100118169358624, guid: 9d3eb723698be964187039d9772ab63c, type: 3}
-  m_PrefabInstance: {fileID: 1797495827097820632}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2079465943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2079465941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8c600f1dd136a44fb7a9b0b90fc15bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Alias>k__BackingField: 
-  <DamageOnCollision>k__BackingField: 0
+  <DamageOnCollision>k__BackingField: 35
 --- !u!1 &2084717158
 GameObject:
   m_ObjectHideFlags: 0
@@ -57329,6 +57739,14 @@ PrefabInstance:
       value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 4166391649624626586, guid: 9d3eb723698be964187039d9772ab63c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.1824107
+      objectReference: {fileID: 0}
+    - target: {fileID: 4166391649624626586, guid: 9d3eb723698be964187039d9772ab63c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00000029732757
+      objectReference: {fileID: 0}
+    - target: {fileID: 4166391649624626586, guid: 9d3eb723698be964187039d9772ab63c, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9995787
       objectReference: {fileID: 0}
@@ -57434,23 +57852,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5392615400632233443, guid: 9d3eb723698be964187039d9772ab63c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6912042
+      value: 0.68706846
       objectReference: {fileID: 0}
     - target: {fileID: 5392615400632233443, guid: 9d3eb723698be964187039d9772ab63c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5392615400632233443, guid: 9d3eb723698be964187039d9772ab63c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5392615400632233443, guid: 9d3eb723698be964187039d9772ab63c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.7226596
+      value: 0.7265927
       objectReference: {fileID: 0}
     - target: {fileID: 5392615400632233443, guid: 9d3eb723698be964187039d9772ab63c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 93.203
       objectReference: {fileID: 0}
     - target: {fileID: 5527161004380203651, guid: 9d3eb723698be964187039d9772ab63c, type: 3}
       propertyPath: m_IsActive
@@ -57698,7 +58116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9139100118169358624, guid: 9d3eb723698be964187039d9772ab63c, type: 3}
       propertyPath: m_TagString
-      value: Boss
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 9202022758307441518, guid: 9d3eb723698be964187039d9772ab63c, type: 3}
       propertyPath: m_IsActive
