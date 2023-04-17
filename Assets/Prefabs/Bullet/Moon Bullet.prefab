@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8665386611276827264}
   - component: {fileID: 8824468957349258532}
   - component: {fileID: 4141599934150463221}
-  - component: {fileID: 5013221939437954189}
+  - component: {fileID: 4000013281035332233}
   m_Layer: 0
   m_Name: Moon Bullet
   m_TagString: Damage
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileController: {fileID: 502755866251594360}
-  _projectileCollider: {fileID: 5013221939437954189}
+  _projectileCollider: {fileID: 4000013281035332233}
   _collisionSounds:
   - {fileID: 8300000, guid: db5bc95349ef5e44baf09bad39a82a44, type: 3}
   - {fileID: 8300000, guid: 364dc97f72153cb47b637b273c7d9a07, type: 3}
@@ -219,7 +219,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!60 &5013221939437954189
+--- !u!60 &4000013281035332233
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
