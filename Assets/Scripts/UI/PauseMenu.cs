@@ -138,13 +138,15 @@ public class PauseMenu : MonoBehaviour
         if(creditsUI) creditsUI.SetActive(true);
     }
 
-    void Quit()
+    public void Quit()
     {
         Application.Quit();
         Debug.Log("Application closed.");
     }
 
-    void OpenSettings()
+    public void OpenURL(string URL) => Application.OpenURL(URL);
+
+        void OpenSettings()
     {
         isGamePaused = true;
         if(pauseMenuUI) pauseMenuUI.SetActive(false);
